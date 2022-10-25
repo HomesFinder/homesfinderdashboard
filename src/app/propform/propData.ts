@@ -17,7 +17,8 @@ export class propData {
         public    highriseCount: String,
         public    Flat_Floor: String,
         public    carpetArea: String,
-        public    Pricing: String,
+        public    minPricing: String,
+        public    maxPricing: String,
         public    Lobby: String,
         public    Living:String,
         public    Dining: String,
@@ -50,7 +51,9 @@ export class propData {
         public    EarthquakeResistance: String,            
         public    WaterHarvesting: String,            
         public    DGBackup: String,            
-        public    RatingontheBasisofStandard:String,    
+       public   rating: number,
+        public    latitude:String,
+        public    longitude:String,
         public    imagesUri:any[]        
     ) {}
   }

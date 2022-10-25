@@ -11,14 +11,16 @@ export class PropformComponent implements OnInit {
   files:FileList | undefined
   constructor(private propService:PropserviceService) { }
   imagesUri:any[]=[]
-  data=new propData('','','','','','','','','','',0,'',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',this.imagesUri)
+  data=new propData('','','','','','','','','','',0,'',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',0,'','',[])
 
   ngOnInit(): void {
   }
   postProp(){
     console.log("in prop");
       this.data.imagesUri=this.imagesUri
-      this.propService.postProp(this.data)   
+      // this.propService.postProp(this.data) 
+      console.log(this.data);
+        
     }
     
     async handleFileInput(event: Event){

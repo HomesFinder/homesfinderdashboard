@@ -1,19 +1,19 @@
-<div class="container">
+<div class="container" id="propform">
   <div class="jumbotron">
     <form>
       <div class="row">
         <div class="col">
-          <h1 style="border: 2px solid blue">Details</h1>
+          <h1  id="heads">Details</h1>
           <div class="form-group">
             <label for="Name" class="jumbotron">Developer Name</label>
             <div class="form-group">
-              <input type="text"  class="form-control" name="name" [(ngModel)]="data.DeveloperName" placeholder="Enter Name">
+              <input type="text"  class="form-control" name="name" [(ngModel)]="data.DeveloperName" placeholder="Enter Developer Name">
             </div>
           </div>
           <div class="form-group">
             <label for="Name" class="jumbotron">Developer Brief Details</label>
             <div class="form-group">
-              <input type="text"  class="form-control" name="name" [(ngModel)]="data.DeveloperBriefDetails" placeholder="Enter Name">
+              <input type="text"  class="form-control" name="name" [(ngModel)]="data.DeveloperBriefDetails" placeholder="Enter Developer Brief Details">
             </div>
           </div>
           <div class="form-group row">
@@ -31,17 +31,22 @@
         </div>
         
         <div class="col">
-          <br>
-          <h1 style="border: 2px solid blue">Location</h1>
+
+          <h1 id="heads">Location</h1>
           <div class="form-row">
             <div class="form-group mb-2">
-              <input type="text"  [(ngModel)]="data.locationName" class="form-control" placeholder="City">
+              <input type="text"  [(ngModel)]="data.locationName" class="form-control" placeholder="Location Name" name="location">
             </div>
             <div class="form-group mb-2">
-              <input type="text"  [(ngModel)]="data.connectivitytoProject" class="form-control" placeholder="Connectivity to Project">
+              <input type="text"  [(ngModel)]="data.connectivitytoProject" class="form-control" placeholder="Connectivity to Project" name="Connectivity to Project">
             </div>
             <div class="form-group mb-2">
-              <input type="text"  [(ngModel)]="data.basicNecessity" class="form-control" placeholder="Basic Necessity">
+              <input type="text"  [(ngModel)]="data.basicNecessity" class="form-control" placeholder="Basic Necessity" name="Basic Necessity">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">Co-ordinates</span>
+              <input type="text" class="form-control" placeholder="Lattitude"  [(ngModel)]="data.latitude" name="Lattitude">
+              <input type="text" class="form-control" placeholder="Longitude"  [(ngModel)]="data.longitude" name="Longitude">
             </div>
           </div>
         </div>
@@ -51,23 +56,20 @@
     <br> 
 
   <br>
-  <h3 style="border: 2px solid blue">Project Details</h3>
+  <h1 id="heads">Project Details</h1>
   <br>
 
   <form class="row g-3">
     <div class="col-auto mb-2">
-      <label for="Project Construction" class="visually-hidden">Construction</label>
-      <input type="text"  [(ngModel)]="data.constructionType" readonly class="form-control-plaintext"  value="Construction Type :">
+      <label for="Project Construction" >Construction Type</label>
+      <input type="text"  [(ngModel)]="data.constructionType"  class="form-control"  placeholder="Construction Type" name="Construction Type">
     </div>
-    <div class="col-auto">
-      <label for="input construction type" class="visually-hidden">Name of Construction</label>
-      <input type="text"  [(ngModel)]="data.ProjectName" class="form-control" id="input construction type" placeholder="Name Of Construction">
-    </div>
+   
   </form>
   <br>
-  <input type="text"  [(ngModel)]="data.Typology" class="form-control-plaintext"  value= "Typology :">
+ 
   <div class="form-floating  mb-3">
-    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  [(ngModel)]="data.Typology">
       <option selected>Open this select menu</option>
       <option value="1">1BHK</option>
       <option value="2">2BHK</option>
@@ -84,7 +86,8 @@
   <div>
     <label for="Timeline" class="jumbotron">Possession Timeline :</label>
     <br>
-    <input type="text"  [(ngModel)]="data.possessionTimeline" class="Numbers"  pattern="[0-50]*:"> 
+    <input type="month"  [(ngModel)]="data.possessionTimeline" class="Numbers"> 
+    {{data.possessionTimeline}}
   </div>
   <br>
   
@@ -95,6 +98,24 @@
         <label for="Land acers" class="jumbotron">Land Parcel in acers</label>
         <div class="form-group">
           <input type="text"  [(ngModel)]="data.landParcelInAcres" class="form-control "  placeholder="Enter acers">
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label>Rating</label>
+        <div class="form-group">
+          <input type="text"  [(ngModel)]="data.rating" class="form-control "  placeholder="Enter Rating">
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label>Min Price</label>
+        <div class="form-group">
+          <input type="text"  [(ngModel)]="data.minPricing" class="form-control "  placeholder="Enter Min Price">
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label >Max Price</label>
+        <div class="form-group">
+          <input type="text"  [(ngModel)]="data.maxPricing" class="form-control "  placeholder="Enter Max Price">
         </div>
       </div>
       <div class="form-group row mb-3">
@@ -109,11 +130,23 @@
           <input type="text"  [(ngModel)]="data.carpetArea" class="form-control"  placeholder="Enter area">
         </div>
       </div>
+      <div class="form-group row mb-3">
+        <label>Flat/Floor</label>
+        <div class="form-group">
+          <input type="text"  [(ngModel)]="data.Flat_Floor" class="form-control"  placeholder="Enter Flat/Floor" name="Flat/Floor">
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <label>Highrise Count</label>
+        <div class="form-group">
+          <input type="text"  [(ngModel)]="data.highriseCount" class="form-control"  placeholder="Enter highriseCount" name="highriseCount">
+        </div>
+      </div>
     </div>
   </div>
 
   <br>
-  <h3 style="border: 2px solid blue">Flat Dimension</h3>
+  <h1 id="heads">Flat Dimension</h1>
   <br>
   <div class="form-control cols mb-2">
     <label for="Name" class="jumbotron">Lobby :</label>
@@ -126,7 +159,11 @@
     <br>
     <input type="text"  [(ngModel)]="data.Living" class="text"  pattern="[0-50]*:"> 
   </div>
-
+  <div class="form-control cols mb-2">
+    <label for="Name" class="jumbotron">Liv Terrace/Balcony :</label>
+    <br>
+    <input type="text"  [(ngModel)]="data.LivTerrace_Balcony" class="text"  pattern="[0-50]:"> 
+  </div>
   <div class="form-control cols mb-2">
     <label for="Name" class="jumbotron">Dining :</label>
     <br>
@@ -183,7 +220,7 @@
   </div>
 
   <br>
-  <h3 style="border: 2px solid blue">Amenities</h3>
+  <h1 id="heads">Amenities</h1>
   <br>
 
   <div class="form-control cols mb-2">
@@ -356,7 +393,7 @@
   </div>
   <br>
 
-  <h3 style="border: 2px solid blue">Others Things</h3>
+  <h1 id="heads">Others Things</h1>
   <br>
 
   <div class="form-control cols mb-2">

@@ -12,12 +12,17 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
+import { InquriesComponent } from './inquries/inquries.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PropformComponent,
-    ProplistComponent
+    ProplistComponent,
+   
+    InquriesComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
