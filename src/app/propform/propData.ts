@@ -1,8 +1,10 @@
 
 export class propData {
     constructor(
+        public _id: String,
         public DeveloperName: String,
         public DeveloperBriefDetails: String,
+        public DeveloperLogo: String,
         public ProjectName: String,
         public    MuncipleCorporationName: String,  
         public    locationName: String,
@@ -52,7 +54,7 @@ export class propData {
         public    WaterHarvesting: String,            
         public    DGBackup: String,            
        public   rating: number,
-        public    latitude:String,
+        public    lattitude:String,
         public    longitude:String,
         public    imagesUri:any[]        
     ) {}

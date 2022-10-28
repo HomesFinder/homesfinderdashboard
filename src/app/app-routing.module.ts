@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InquriesComponent } from './inquries/inquries.component';
 
 import { PropformComponent } from './propform/propform.component';
+import { ProplistComponent } from './proplist/proplist.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -11,8 +12,12 @@ const routes: Routes = [
     component:PropformComponent
   },
   {
-    path: 'prop',
+    path: 'prop-add',
     component:PropformComponent
+  },
+  {
+    path: 'prop-edit',
+    component:ProplistComponent
   },
   {
     path: 'inquiries',

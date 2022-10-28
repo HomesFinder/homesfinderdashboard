@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {PropserviceService} from '../propservice.service'
 
 @Component({
@@ -8,7 +9,7 @@ import {PropserviceService} from '../propservice.service'
 })
 export class ProplistComponent implements OnInit {
 
-  constructor(private propService:PropserviceService) {this.getData() }
+  constructor(private propService:PropserviceService, private router:Router) {this.getData() }
   propList:any=[]
 
   ngOnInit(): void {
@@ -24,4 +25,8 @@ export class ProplistComponent implements OnInit {
     });   
   }
 
+  editData(prop:any){
+    this.propService.editProp(prop)
+    this.router.navigateByUrl('prop-add')
+  }
 }

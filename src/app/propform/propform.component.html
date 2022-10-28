@@ -1,4 +1,5 @@
 <div class="container" id="propform">
+  <button type="button" class="btn btn-primary" (click)="editProp()">Do Edit</button>
   <div class="jumbotron">
     <form>
       <div class="row">
@@ -7,13 +8,26 @@
           <div class="form-group">
             <label for="Name" class="jumbotron">Developer Name</label>
             <div class="form-group">
-              <input type="text"  class="form-control" name="name" [(ngModel)]="data.DeveloperName" placeholder="Enter Developer Name">
+              <input type="text"  class="form-control" name="DeveloperName" [(ngModel)]="data.DeveloperName" placeholder="Enter Developer Name">
             </div>
           </div>
           <div class="form-group">
             <label for="Name" class="jumbotron">Developer Brief Details</label>
             <div class="form-group">
-              <input type="text"  class="form-control" name="name" [(ngModel)]="data.DeveloperBriefDetails" placeholder="Enter Developer Brief Details">
+              <input type="text"  class="form-control" name="Developer Details" [(ngModel)]="data.DeveloperBriefDetails" placeholder="Enter Developer Brief Details">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Developer Logo</label>
+            <div class="form-group">
+              <div>
+                <label for="files">Select Logo:</label>
+                <input type="file" id="files" name="logofile"  (change)="handleLogoFileInput($event)" ><br><br>
+                <!-- <img src={{uri}} height="100"> -->
+                <ul *ngFor="let uri of logoUri"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeLogoImage()">Remove</button></li></ul>
+                
+              </div>
+            
             </div>
           </div>
           <div class="form-group row">
@@ -45,7 +59,7 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">Co-ordinates</span>
-              <input type="text" class="form-control" placeholder="Lattitude"  [(ngModel)]="data.latitude" name="Lattitude">
+              <input type="text" class="form-control" placeholder="Lattitude"  [(ngModel)]="data.lattitude" name="Lattitude">
               <input type="text" class="form-control" placeholder="Longitude"  [(ngModel)]="data.longitude" name="Longitude">
             </div>
           </div>
@@ -512,7 +526,7 @@
 <div>
   <label for="files">Select files:</label>
   <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
-  <ul *ngFor="let uri of imagesUri"><li><img src={{uri}} height="100"> </li></ul>
+  <ul *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
   
 </div>
   <button type="button" class="btn btn-primary" (click)="postProp()">Submit</button>

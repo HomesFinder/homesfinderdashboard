@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, Observable } from 'rxjs';
 import { resolve } from 'dns';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,8 @@ export class PropserviceService {
 
   private url = 'https://homesfinder-service.onrender.com/api/';
   private basePath = '/uploads';
-  
+  currentPropHolder:any
+  isEdit:boolean = false
 
 
   constructor(private httpClient: HttpClient, private storage: AngularFireStorage) { }
@@ -27,8 +29,8 @@ export class PropserviceService {
   }
 
 
-  uploadImages(images:any){
-   let imagesUri: any[]=[]
+  uploadImages(images:any,imgsArray:any[]){
+   let imagesUri=imgsArray
     return new Promise((resolve=>{
     console.log(images.length);
     for (let i = 0; i < images.length; i++) {
@@ -54,4 +56,38 @@ export class PropserviceService {
   }))
 }
  
+// uploadSingleImage(images:any){
+//   let imageUri: any
+//    return new Promise((resolve=>{
+ 
+   
+     
+//      const filePath = `${this.basePath}/${images[0].name}`;
+//    const storageRef = this.storage.ref(filePath);
+//    const uploadTask = this.storage.upload(filePath,images[0]);
+
+//    uploadTask.snapshotChanges().pipe(
+//      finalize(() => {
+//        storageRef.getDownloadURL().subscribe(downloadURL => {
+//           let url = downloadURL;
+//           imageUri=url
+//            console.log(url);
+           
+         
+//        });
+//      })
+//    ).subscribe();
+   
+//    resolve(imageUri)
+//  return imageUri
+//  }))
+// }
+
+
+editProp(prop:any) {
+  this.currentPropHolder=prop;
+  console.log(this.currentPropHolder);
+  
+}
+
  }
