@@ -6,6 +6,7 @@ export class propData {
         public DeveloperBriefDetails: String,
         public DeveloperLogo: String,
         public ProjectName: String,
+        public aboutProperty: String,
         public    MuncipleCorporationName: String,  
         public    locationName: String,
         public    connectivitytoProject: String,
