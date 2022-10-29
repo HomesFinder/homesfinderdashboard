@@ -56,6 +56,8 @@ export class propData {
        public   rating: number,
         public    lattitude:String,
         public    longitude:String,
-        public    imagesUri:any[]        
+        public    youtubeUri:String,
+        public    imagesUri:any[],
+        public dimensionMapImages:any[]        
     ) {}
   }

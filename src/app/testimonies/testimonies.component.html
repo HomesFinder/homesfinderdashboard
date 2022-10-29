@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add Testimonies</h4>
+            <div class="mb-3">
+              <label for="" class="form-label">Name:</label>
+              <input type="text"
+                class="form-control" name="name" id=""  placeholder="Name" [(ngModel)]="name">    
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Testimony:</label>
+                <textarea class="form-control" name="" id=""  placeholder="Testimony" [(ngModel)]="testimony">    
+              </textarea>
+              <div class="mb-3">
+                <label for="" class="form-label">Rating:</label>
+                <input type="number" min="1.0" max="5.0"
+                  class="form-control" name="" id=""  placeholder="Rating 1-5" [(ngModel)]="rating">    
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label">Image:  </label><br>
+                <input type="file" id="files" name="logofile"  (change)="handleLogoFileInput($event)" ><br><br>
+                <!-- <img src={{uri}} height="100"> -->
+                <ul *ngFor="let uri of logoUri"><li><img src={{uri}} height="100"> 
+                    <!-- <button *ngIf="uri!==''" class="btn btn-danger" >Remove</button> -->
+                </li></ul>
+                   
+              </div>
+              </div>
+              <button type="button" class="btn btn-dark" (click)="postData()">Submit</button>
+        </div>
+    </div>
+    </div>
+</div>
+
+</div>

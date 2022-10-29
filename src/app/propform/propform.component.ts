@@ -13,7 +13,8 @@ export class PropformComponent implements OnInit {
    
    }
   imagesUri:any[]=[]
-  data=new propData('','','','','','','','','','','','',0,'',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',0,'','',[])
+  dimensionsUris:any[]=[]
+  data=new propData('','','','','','','','','','','','',0,'',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',0,'','','',[],[])
    logoUri:any[]=[]
   ngOnInit(): void {
   
@@ -29,6 +30,7 @@ export class PropformComponent implements OnInit {
     this.propService.isEdit=false
     console.log("in prop");
       this.data.imagesUri=this.imagesUri
+      this.data.dimensionMapImages=this.dimensionsUris
       this.data.DeveloperLogo=this.logoUri[0]
       this.propService.postProp(this.data) 
       console.log(this.data);
@@ -53,6 +55,27 @@ export class PropformComponent implements OnInit {
        // this.data.imagesUri=this.propService.uploadImages((event.target as HTMLInputElement).files)
                
     }
+
+
+    async handleDimensionFileInput(event: Event){
+      // console.log("before", this.dimensionsUris.length);
+      
+     
+     // console.log((event.target as HTMLInputElement).files);
+      this.dimensionsUris=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.DimensionMapImages))
+     
+      // uris.forEach(uris=>{
+      //   this.imagesUri.push(uris)
+      // })
+      // console.log("in images uri",this.dimensionsUris);
+      // console.log("after", this.dimensionsUris.length);
+      
+      
+      
+     // this.data.imagesUri=this.propService.uploadImages((event.target as HTMLInputElement).files)
+             
+  }
+
     async handleLogoFileInput(event: Event){
       console.log((event.target as HTMLInputElement).files);
       this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[])
@@ -64,6 +87,7 @@ export class PropformComponent implements OnInit {
       this.data=this.propService.currentPropHolder
       this.imagesUri=this.propService.currentPropHolder.imagesUri
       this.logoUri.push(this.propService.currentPropHolder.DeveloperLogo)
+      this.dimensionsUris.push(this.propService.currentPropHolder.dimensionMapImages)
     }
 
 
@@ -77,4 +101,9 @@ export class PropformComponent implements OnInit {
         console.log(this.imagesUri);
         
     }
+    removeMultipleDimensionImages(index:number){
+      this.dimensionsUris.splice(index, 1)
+      console.log(this.dimensionsUris);
+      
+  }
 }

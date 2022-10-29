@@ -90,4 +90,11 @@ editProp(prop:any) {
   
 }
 
+postTestimony(obj:any) {
+
+ this.httpClient.post(this.url + "postTestimonyinDB", obj).subscribe(data => {
+  console.log(data);
+  console.log("Testimony data posted");
+});
+}
  }

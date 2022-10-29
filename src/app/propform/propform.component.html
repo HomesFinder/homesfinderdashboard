@@ -1,5 +1,5 @@
 <div class="container" id="propform">
-  <button type="button" class="btn btn-primary" (click)="editProp()">Do Edit</button>
+  <button type="button" class="btn btn-warning " (click)="editProp()">Do Edit</button>
   <div class="jumbotron">
     <form>
       <div class="row">
@@ -40,6 +40,12 @@
             <label for="Phone number" class="jumbotron">Muncipal Corporation Name</label>
             <div class="form-group">
               <input type="text"   class="form-control"  name="muncipal" placeholder="Enter Muncipal Corporation Name" [(ngModel)]="data.MuncipleCorporationName">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label>Youtube URL</label>
+            <div class="form-group">
+              <input type="text"   class="form-control"  name="youtubeUri" placeholder="Enter a valid Youtube URL" [(ngModel)]="data.youtubeUri">
             </div>
           </div>
         </div>
@@ -154,6 +160,19 @@
         <label>Highrise Count</label>
         <div class="form-group">
           <input type="text"  [(ngModel)]="data.highriseCount" class="form-control"  placeholder="Enter highriseCount" name="highriseCount">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Dimension Maps</label>
+        <div class="form-group">
+          <div>
+            <label for="files">Select Logo:</label>
+            <input type="file" id="files" name="Dimension"  (change)="handleDimensionFileInput($event)" ><br><br>
+            <!-- <img src={{uri}} height="100"> -->
+            <ul *ngFor="let uri of dimensionsUris;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleDimensionImages(i)">Remove</button></li></ul>
+            
+          </div>
+        
         </div>
       </div>
     </div>

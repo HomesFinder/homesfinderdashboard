@@ -4,6 +4,7 @@ import { InquriesComponent } from './inquries/inquries.component';
 
 import { PropformComponent } from './propform/propform.component';
 import { ProplistComponent } from './proplist/proplist.component';
+import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'users',
     component:UsersComponent
+  },
+  {
+    path: 'testimonies',
+    component:TestimoniesComponent
   },
 
 ];

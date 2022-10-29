@@ -14,6 +14,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
 import { InquriesComponent } from './inquries/inquries.component';
 import { UsersComponent } from './users/users.component';
+import { TestimoniesComponent } from './testimonies/testimonies.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UsersComponent } from './users/users.component';
     ProplistComponent,
    
     InquriesComponent,
-    UsersComponent
+    UsersComponent,
+    TestimoniesComponent
   ],
   imports: [
     BrowserModule,
