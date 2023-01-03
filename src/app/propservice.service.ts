@@ -30,9 +30,12 @@ export class PropserviceService {
 
 
   uploadImages(images:any,imgsArray:any[]){
+    
    let imagesUri=imgsArray
+   console.log(imagesUri);
+   
     return new Promise((resolve=>{
-    console.log(images.length);
+    console.log("inimg",images.length);
     for (let i = 0; i < images.length; i++) {
       
       const filePath = `${this.basePath}/${images[i].name}`;
@@ -85,6 +88,8 @@ export class PropserviceService {
 
 
 editProp(prop:any) {
+  console.log(prop);
+  
   this.currentPropHolder=prop;
   console.log(this.currentPropHolder);
   

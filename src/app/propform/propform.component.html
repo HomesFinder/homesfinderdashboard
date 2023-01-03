@@ -17,19 +17,19 @@
               <input type="text"  class="form-control" name="Developer Details" [(ngModel)]="data.DeveloperBriefDetails" placeholder="Enter Developer Brief Details">
             </div>
           </div>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>Developer Logo</label>
             <div class="form-group">
               <div>
                 <label for="files">Select Logo:</label>
                 <input type="file" id="files" name="logofile"  (change)="handleLogoFileInput($event)" ><br><br>
-                <!-- <img src={{uri}} height="100"> -->
+               
                 <ul *ngFor="let uri of logoUri"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeLogoImage()">Remove</button></li></ul>
                 
               </div>
             
             </div>
-          </div>
+          </div> -->
           <div class="form-group row">
             <label for="Project name" class="jumbotron">Project Name</label>
             <div class="col-sm-10">
@@ -133,15 +133,15 @@
         </div>
       </div>
       <div class="form-group mb-3">
-        <label>Min Price</label>
+        <label>Actual Price in Numbers</label>
         <div class="form-group">
-          <input type="text"  [(ngModel)]="data.minPricing" class="form-control "  placeholder="Enter Min Price">
+          <input type="text"  [(ngModel)]="data.priceActual" class="form-control "  placeholder="Enter Min Price eg. 5000000">
         </div>
       </div>
       <div class="form-group mb-3">
-        <label >Max Price</label>
+        <label >Price to Display</label>
         <div class="form-group">
-          <input type="text"  [(ngModel)]="data.maxPricing" class="form-control "  placeholder="Enter Max Price">
+          <input type="text"  [(ngModel)]="data.price2Display" class="form-control "  placeholder="Enter Max Price eg- 50L">
         </div>
       </div>
       <div class="form-group row mb-3">
@@ -169,12 +169,12 @@
         </div>
       </div>
       <div class="form-group">
-        <label>Dimension Maps</label>
+        <!-- <label>Dimension Maps</label> -->
         <div class="form-group">
           <div>
             <label for="files">Select Logo:</label>
             <input type="file" id="files" name="Dimension"  (change)="handleDimensionFileInput($event)" ><br><br>
-            <!-- <img src={{uri}} height="100"> -->
+           
             <ul *ngFor="let uri of dimensionsUris;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleDimensionImages(i)">Remove</button></li></ul>
             
           </div>
@@ -549,7 +549,7 @@
   </div>
 
 <div>
-  <label for="files">Select files:</label>
+  <label for="files">All Image for Property:</label><br>
   <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
   <ul *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
   

@@ -3,16 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: true
   ,
   firebase:{
-    apiKey: "AIzaSyDfnmdMrJuUUA1VC-P7fw9DAZ1fogWJAac",
-    authDomain: "homesfinder-81130.firebaseapp.com",
-    projectId: "homesfinder-81130",
-    storageBucket: "homesfinder-81130.appspot.com",
-    messagingSenderId: "5751844377",
-    appId: "1:5751844377:web:0816a62f1eb7d8e4c88488",
-    measurementId: "G-YHP68BBHCV"
+    apiKey: "AIzaSyCNW1hP4PwAsuGgQ2tmdKj7OEm3kXM6eeA",
+    authDomain: "homesfinder-cd1d1.firebaseapp.com",
+    projectId: "homesfinder-cd1d1",
+    storageBucket: "homesfinder-cd1d1.appspot.com",
+    messagingSenderId: "173729063900",
+    appId: "1:173729063900:web:4952b195f09c957ab0a519",
+    measurementId: "G-3ZEXD2T6GM"
   }
 };
 
