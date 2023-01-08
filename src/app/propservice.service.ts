@@ -25,7 +25,9 @@ export class PropserviceService {
     this.httpClient.post(this.url + "postPropertyinDB", postData).subscribe(data => {
       console.log(data);
       console.log("data posted");
-    });
+      alert(data)
+    })
+  
   }
 
 
@@ -100,6 +102,7 @@ postTestimony(obj:any) {
  this.httpClient.post(this.url + "postTestimonyinDB", obj).subscribe(data => {
   console.log(data);
   console.log("Testimony data posted");
+  alert(data)
 });
 }
  }

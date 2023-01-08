@@ -9,12 +9,18 @@ import {PropserviceService} from '../propservice.service'
 export class PropformComponent implements OnInit {
   fileToUpload: File | null = null;
   files:FileList | undefined
+  tyopoArray:any[]=[]
   constructor(private propService:PropserviceService) {
    
    }
+   bhk:any
+   bhkArea:any
+   bhkPrice:any
+   neighbour:any
+   neighbourArr:any[]=[]
   imagesUri:any[]=[]
   dimensionsUris:any[]=[]
-  data=new propData('','','','','','','','','','','','','',0,'',0,'','','',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',0,'','','',[],[])
+  data=new propData('','','','','','','','','','','','','',0,'',0,'','','',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',0,'','','',[],[],[],[])
    logoUri:any[]=[]
   ngOnInit(): void {
   
@@ -32,6 +38,8 @@ export class PropformComponent implements OnInit {
       this.data.imagesUri=this.imagesUri
       this.data.dimensionMapImages=this.dimensionsUris
       this.data.DeveloperLogo=this.logoUri[0]
+      this.data.TypologyAvailable=this.tyopoArray
+      this.data.AreasNearby=this.neighbourArr
       this.propService.postProp(this.data) 
       console.log(this.data);
         
@@ -42,8 +50,20 @@ export class PropformComponent implements OnInit {
         
        
        // console.log((event.target as HTMLInputElement).files);
-        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri))
        
+      console.log(this.propService.currentPropHolder);
+      
+       if(this.propService.currentPropHolder==undefined){
+      
+          
+        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+      }
+      else if(this.propService.currentPropHolder!=undefined){
+        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length))
+      }
+ 
+        // this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+   
         // uris.forEach(uris=>{
         //   this.imagesUri.push(uris)
         // })
@@ -105,5 +125,27 @@ export class PropformComponent implements OnInit {
       this.dimensionsUris.splice(index, 1)
       console.log(this.dimensionsUris);
       
+  }
+
+
+  appendBHK(){
+    let bhkTypo={
+      bhk:this.bhk,
+      bhkPrice:this.bhkPrice,
+      bhkArea:this.bhkArea
+    }
+    console.log(bhkTypo);
+    
+    this.tyopoArray.push(bhkTypo)
+    console.log(this.tyopoArray);
+  }
+  removetypo(ind:number){
+      this.tyopoArray.splice(ind,1)
+  }
+  appendNeighbour(){
+    this.neighbourArr.push(this.neighbour)
+  }
+  removeNeighbour(ind:number){
+    this.neighbourArr.splice(ind,1)
   }
 }

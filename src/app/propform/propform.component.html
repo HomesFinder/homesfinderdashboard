@@ -95,13 +95,60 @@
   <br>
  
   <div class="form-floating  mb-3">
-    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  [(ngModel)]="data.Typology">
+    <!-- <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  [(ngModel)]="data.Typology">
       <option selected>Open this select menu</option>
       <option value="1">1BHK</option>
       <option value="2">2BHK</option>
       <option value="3">3BHK</option>
-    </select>
-    <label for="floatingSelect">Select BHK</label>
+    </select> -->
+    <div class="input-group">
+      <span class="input-group-text">Typology Details</span>
+      <input type="number" aria-label="N BHK" class="form-control" min="1" max="4" placeholder="N BHK" [(ngModel)]="bhk">
+      <button disabled  class="btn btn-light">BHK</button>
+      <input type="number" aria-label="Starting From Price" class="form-control" placeholder="Price eg, 75000000" [(ngModel)]="bhkPrice">
+      <button disabled  class="btn btn-light">Rs</button>
+      <input type="text" aria-label="Carpet Area" class="form-control" placeholder="1920x1080" [(ngModel)]="bhkArea">
+      <button disabled  class="btn btn-light">Sq/ft</button>
+    
+    <button type="button" class="btn btn-dark" (click)="appendBHK()">Add</button>
+   
+  </div>
+  <table class="table">
+    <tr>
+    <td>BHK</td>
+    <td>Price</td>
+    <td> Area</td>
+  </tr>
+  <tr *ngFor="let i of tyopoArray; index as ind">
+      <td>{{i.bhk}}</td>
+      <td>{{i.bhkPrice}}</td>
+      <td>{{i.bhkArea}}</td>
+      <button class="btn btn-danger" (click)="removetypo(ind)">X</button>
+  </tr>
+  </table>
+  </div>
+  <div class="form-floating  mb-3">
+
+    <div class="input-group">
+      <span class="input-group-text">Neighbourhood</span>
+
+      <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhood" [(ngModel)]="neighbour">
+     
+    
+    <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
+   
+  </div>
+  <table class="table">
+    <tr>
+    <td>Neighbourhood List</td>
+ 
+  </tr>
+  <tr *ngFor="let n of neighbourArr; index as ind">
+      <td>{{n}}</td>
+
+      <button class="btn btn-danger" (click)="removeNeighbour(ind)">X</button>
+  </tr>
+  </table>
   </div>
    <div class="form-control cols mb-2">
       <label for="Number of towers" class="jumbotron">Number of Tower :</label>

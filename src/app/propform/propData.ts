@@ -59,6 +59,8 @@ export class propData {
         public    longitude:String,
         public    youtubeUri:String,
         public    imagesUri:any[],
-        public dimensionMapImages:any[]        
+        public dimensionMapImages:any[],
+         public AreasNearby:any[],
+         public     TypologyAvailable:any[]    
     ) {}
   }
