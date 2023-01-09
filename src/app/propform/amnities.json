@@ -1,0 +1,50 @@
+[
+    {
+      "key": "Garden",
+      "value": false
+    },
+    {
+      "key": "Amphi_Theatre",
+      "value": false
+    },
+    {
+      "key": "Kids_Play",
+      "value": false
+    },
+    {
+      "key": "Co_WorkSpace",
+      "value": false
+    },
+    {
+      "key": "GYM",
+      "value": false
+    },
+    {
+      "key": "SeniorCitizenSitout",
+      "value": false
+    },
+    {
+      "key": "Club_House",
+      "value": false
+    },
+    {
+      "key": "Football_Cricket",
+      "value": false
+    },
+    {
+      "key": "Swimming_Pool",
+      "value": false
+    },
+    {
+      "key": "Badminton_Squash",
+      "value": false
+    },
+    {
+      "key": "Jogging_Track",
+      "value": false
+    },
+    {
+      "key": "E_Charging",
+      "value": false
+    }
+  ]

@@ -1,617 +1,220 @@
-<div class="container" id="propform">
-  <button type="button" class="btn btn-warning " (click)="editProp()">Do Edit</button>
-  <div class="jumbotron">
-    <form>
-      <div class="row">
-        <div class="col">
-          <h1  id="heads">Details</h1>
-          <div class="form-group">
-            <label for="Name" class="jumbotron">Developer Name</label>
-            <div class="form-group">
-              <input type="text"  class="form-control" name="DeveloperName" [(ngModel)]="data.DeveloperName" placeholder="Enter Developer Name">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="Name" class="jumbotron">Developer Brief Details</label>
-            <div class="form-group">
-              <input type="text"  class="form-control" name="Developer Details" [(ngModel)]="data.DeveloperBriefDetails" placeholder="Enter Developer Brief Details">
-            </div>
-          </div>
-          <!-- <div class="form-group">
-            <label>Developer Logo</label>
-            <div class="form-group">
-              <div>
-                <label for="files">Select Logo:</label>
-                <input type="file" id="files" name="logofile"  (change)="handleLogoFileInput($event)" ><br><br>
-               
-                <ul *ngFor="let uri of logoUri"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeLogoImage()">Remove</button></li></ul>
-                
-              </div>
-            
-            </div>
-          </div> -->
-          <div class="form-group row">
-            <label for="Project name" class="jumbotron">Project Name</label>
-            <div class="col-sm-10">
-              <input type="text"   class="form-control" name="projectname" placeholder="Enter Project Name" [(ngModel)]="data.ProjectName">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label>About property</label>
-            <div class="col-sm-10">
-              <textarea   class="form-control" name="aboutProperty" placeholder="Enter About Property" [(ngModel)]="data.aboutProperty"></textarea>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="Phone number" class="jumbotron">Muncipal Corporation Name</label>
-            <div class="form-group">
-              <input type="text"   class="form-control"  name="muncipal" placeholder="Enter Muncipal Corporation Name" [(ngModel)]="data.MuncipleCorporationName">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label>Youtube URL</label>
-            <div class="form-group">
-              <input type="text"   class="form-control"  name="youtubeUri" placeholder="Enter a valid Youtube URL" [(ngModel)]="data.youtubeUri">
-            </div>
-          </div>
-        </div>
-        
-        <div class="col">
-
-          <h1 id="heads">Location</h1>
-          <div class="form-row">
-            <div class="form-group mb-2">
-              <input type="text"  [(ngModel)]="data.locationName" class="form-control" placeholder="Location Name" name="location">
-            </div>
-            <div class="form-group mb-2">
-              <input type="text"  [(ngModel)]="data.connectivitytoProject" class="form-control" placeholder="Connectivity to Project" name="Connectivity to Project">
-            </div>
-            <div class="form-group mb-2">
-              <input type="text"  [(ngModel)]="data.basicNecessity" class="form-control" placeholder="Basic Necessity" name="Basic Necessity">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Co-ordinates</span>
-              <input type="text" class="form-control" placeholder="Lattitude"  [(ngModel)]="data.lattitude" name="Lattitude">
-              <input type="text" class="form-control" placeholder="Longitude"  [(ngModel)]="data.longitude" name="Longitude">
-            </div>
-          </div>
-        </div>
-      </div>
-     
-    </form> 
-    <br> 
-
-  <br>
-  <h1 id="heads">Project Details</h1>
-  <br>
-
-  <form class="row g-3">
-    <div class="col-auto mb-2">
-      <label for="Project Construction" >Construction Type</label>
-      <input type="text"  [(ngModel)]="data.constructionType"  class="form-control"  placeholder="Construction Type" name="Construction Type">
-    </div>
-   
-  </form>
-  <br>
- 
-  <div class="form-floating  mb-3">
-    <!-- <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  [(ngModel)]="data.Typology">
-      <option selected>Open this select menu</option>
-      <option value="1">1BHK</option>
-      <option value="2">2BHK</option>
-      <option value="3">3BHK</option>
-    </select> -->
-    <div class="input-group">
-      <span class="input-group-text">Typology Details</span>
-      <input type="number" aria-label="N BHK" class="form-control" min="1" max="4" placeholder="N BHK" [(ngModel)]="bhk">
-      <button disabled  class="btn btn-light">BHK</button>
-      <input type="number" aria-label="Starting From Price" class="form-control" placeholder="Price eg, 75000000" [(ngModel)]="bhkPrice">
-      <button disabled  class="btn btn-light">Rs</button>
-      <input type="text" aria-label="Carpet Area" class="form-control" placeholder="1920x1080" [(ngModel)]="bhkArea">
-      <button disabled  class="btn btn-light">Sq/ft</button>
-    
-    <button type="button" class="btn btn-dark" (click)="appendBHK()">Add</button>
-   
-  </div>
-  <table class="table">
-    <tr>
-    <td>BHK</td>
-    <td>Price</td>
-    <td> Area</td>
-  </tr>
-  <tr *ngFor="let i of tyopoArray; index as ind">
-      <td>{{i.bhk}}</td>
-      <td>{{i.bhkPrice}}</td>
-      <td>{{i.bhkArea}}</td>
-      <button class="btn btn-danger" (click)="removetypo(ind)">X</button>
-  </tr>
-  </table>
-  </div>
-  <div class="form-floating  mb-3">
-
-    <div class="input-group">
-      <span class="input-group-text">Neighbourhood</span>
-
-      <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhood" [(ngModel)]="neighbour">
-     
-    
-    <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
-   
-  </div>
-  <table class="table">
-    <tr>
-    <td>Neighbourhood List</td>
- 
-  </tr>
-  <tr *ngFor="let n of neighbourArr; index as ind">
-      <td>{{n}}</td>
-
-      <button class="btn btn-danger" (click)="removeNeighbour(ind)">X</button>
-  </tr>
-  </table>
-  </div>
-   <div class="form-control cols mb-2">
-      <label for="Number of towers" class="jumbotron">Number of Tower :</label>
-      <input type="number"  [(ngModel)]="data.noOfTowers" class="form-control-plaintext"  value="Numbers of tower :">
-   </div>  
-  <br>
-
-  <div>
-    <label for="Timeline" class="jumbotron">Possession Timeline :</label>
-    <br>
-    <input type="month"  [(ngModel)]="data.possessionTimeline" class="Numbers"> 
-    {{data.possessionTimeline}}
-  </div>
-  <br>
-  
-  <div class="row">
+<div class="container">
+  <form>
+    <div class="row">
     <div class="col">
-      
-      <div class="form-group mb-3">
-        <label for="Land acers" class="jumbotron">Land Parcel in acers</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.landParcelInAcres" class="form-control "  placeholder="Enter acers">
-        </div>
-      </div>
-      <div class="form-group mb-3">
-        <label>Rating</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.rating" class="form-control "  placeholder="Enter Rating">
-        </div>
-      </div>
-      <div class="form-group mb-3">
-        <label>Actual Price in Numbers</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.priceActual" class="form-control "  placeholder="Enter Min Price eg. 5000000">
-        </div>
-      </div>
-      <div class="form-group mb-3">
-        <label >Price to Display</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.price2Display" class="form-control "  placeholder="Enter Max Price eg- 50L">
-        </div>
-      </div>
-      <div class="form-group row mb-3">
-        <label for="Number of units" class="jumbotron">Total Number of units</label>
-        <div class="col-sm-10">
-          <input type="number unit" [(ngModel)]="data.totalNumberOfUnits" class="form-control"  placeholder="Enter number units">
-        </div>
-      </div>
-      <div class="form-group row mb-3">
-        <label for="Carpet area" class="jumbotron">Carpet Area</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.carpetArea" class="form-control"  placeholder="Enter area">
-        </div>
-      </div>
-      <div class="form-group row mb-3">
-        <label>Flat/Floor</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.Flat_Floor" class="form-control"  placeholder="Enter Flat/Floor" name="Flat/Floor">
-        </div>
-      </div>
-      <div class="form-group row mb-3">
-        <label>Highrise Count</label>
-        <div class="form-group">
-          <input type="text"  [(ngModel)]="data.highriseCount" class="form-control"  placeholder="Enter highriseCount" name="highriseCount">
-        </div>
-      </div>
-      <div class="form-group">
-        <!-- <label>Dimension Maps</label> -->
-        <div class="form-group">
-          <div>
-            <label for="files">Select Logo:</label>
-            <input type="file" id="files" name="Dimension"  (change)="handleDimensionFileInput($event)" ><br><br>
-           
-            <ul *ngFor="let uri of dimensionsUris;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleDimensionImages(i)">Remove</button></li></ul>
-            
-          </div>
-        
-        </div>
-      </div>
+    <div class="mb-3 mt-3">
+      <label for="text" class="form-label">Developer/Builder Name</label>
+      <input type="text"  class="form-control" placeholder="Godrej Developers"  name="Developer Name" [(ngModel)]="data.DeveloperName">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Project Name</label>
+      <input type="text" class="form-control" placeholder="Godrej Hills"  name="Project Name" [(ngModel)]="data.ProjectName">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Location Name</label>
+      <input type="text" class="form-control" placeholder="Baner" [(ngModel)]="data.locationName" name="Location Name">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Land Parcel in Acres</label>
+      <input type="text" class="form-control" placeholder="7 Acres" [(ngModel)]="data.landParcelInAcres" name="Land Parcel in Acres">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Builder Land/JV</label>
+      <input type="text" class="form-control" placeholder="" [(ngModel)]="data.builder_land" name="Builder Land/JV">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Munciple Corporation Name</label>
+      <select class="form-select" [(ngModel)]="data.MuncipleCorporationName">
+        <option>PMC</option>
+        <option>PCMC</option>
+        <option>PMRDA</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">About Builder</label>
+      <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">About Property</label>
+      <textarea class="from-control" ngModel)]="data.aboutProperty"></textarea>
     </div>
   </div>
+  <div class="col">
+    <div class="mb-3 mt-3">
+      <label for="text" class="form-label">Construction Type</label>
+      <input type="text" class="form-control" placeholder="" [(ngModel)]="data.constructionType" name="Construction Type">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Possession Timeline</label>
+      <select class="form-select" [(ngModel)]="data.possessionTimeline">
+        <option>Ready Possession</option>
+        <option>Under Construction</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Total Number of Units</label>
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.totalNumberOfUnits" name="Total Number of Units">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">No of Towers</label>
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfTowers" name="No of Towers">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Highrise Count</label>
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.highriseCount" name="Highrise Count">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Flat/Floor</label>
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.Flat_Floor" name="Flat/Floor">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Project Open Space in %</label>
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.ProjectOpenSpace" name="Project Open Space in %">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">No Of Lifts</label>
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="No Of Lifts">
+    </div>
+    <div class="mb-3">
+      <label for="number" class="form-label">Staircase</label>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="check1" [(ngModel)]="data.Staircase" name="option1" value="Common" checked>
+      <label class="form-check-label" for="check1">Common: </label>
+    </div>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="check2" [(ngModel)]="data.Staircase" name="option2" value="FireExit">
+      <label class="form-check-label" for="check2">Fire Exit:</label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="text" class="form-label">Refugee Area- Floors</label>
+    <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors">
+  </div>
+  <div class="mb-3">
+    <label for="text" class="form-label">DG Backup</label>
+    <select class="form-select" [(ngModel)]="data.DGBackup">
+      <option>Common</option>
+      <option>Flats</option>
+    </select>
+  </div>
+  </div>
+  <div class="col">
+  <!-- Features -->
+  <div class="mb-3 mt-3">
+    <label for="radio" class="form-label">Features</label>
+     <table class="table table-bordered">
+       <thead>
+         <tr>
+       <th>Feature</th>
+       <th>Value</th>
+     </tr>
+   </thead>
+       
+   
+    <tbody  *ngFor="let feature of propFeatures">
+         <tr>
+         <td>{{feature.key}}</td>
+      
+         <td>
+           <div class="form-check">
+            
+             <input type="radio" class="form-check-input" id="radio1" name={{feature.key}} value="yes" >
+             <label class="form-check-label" for="radio1">Yes</label>
+           </div>
+           <div class="form-check">
+             <input type="radio" class="form-check-input" id="radio2"  name={{feature.key}} value="no" checked>
+             <label class="form-check-label" for="radio2">No</label>
+           </div>
+         </td>
+       </tr>
+     </tbody>
+       
+     </table>
+      
+     <div class="form-floating  mb-3">
 
-  <br>
-  <h1 id="heads">Flat Dimension</h1>
-  <br>
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Lobby :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.Lobby" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Living :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.Living" class="text"  pattern="[0-50]*:"> 
-  </div>
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Liv Terrace/Balcony :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.LivTerrace_Balcony" class="text"  pattern="[0-50]:"> 
-  </div>
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Dining :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.Dining" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Kitchen :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.Kitchen" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Dry Balcony :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.DryBalcony" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Common W/C :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.CommonW_c" class="text"  pattern="[0-50]*:"> 
-  </div>
-
+      <div class="input-group">
+        <!-- <span class="input-group-text" style="font-size: smaller;">Neighbourhood</span> -->
   
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Master Bedroom :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.MasterBedroom" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">M/B W/C :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.M_B_W_c" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Terrace/Balcony :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.Terrace_Balcony" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Guest Bedroom :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.GuestBedroom" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">G/B W/C :</label>
-    <br>
-    <input type="text"  [(ngModel)]="data.G_B_W_c" class="text"  pattern="[0-50]*:"> 
-  </div>
-
-  <br>
-  <h1 id="heads">Amenities</h1>
-  <br>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Garden :</label>
-    <br>
-    <input class="form-check-input"  [(ngModel)]="data.Garden" type="radio"  value="Yes" name="flexRadio1" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.Garden" type="radio"  value="No" name="flexRadio1" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Kids Play:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.KidsPlay" type="radio"  value="Yes" name="flexRadio2" id="flexRadioDefault3">
-    <label class="form-check-labe2" for="flexRadioDefault3">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input"  [(ngModel)]="data.KidsPlay" type="radio"  value="No" name="flexRadio2" id="flexRadioDefault4" checked>
-    <label class="form-check-labe2" for="flexRadioDefault4">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Gym:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.gym" type="radio"  value="Yes" name="flexRadio3" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.gym" type="radio"  value="No" name="flexRadio3" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Club House:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.ClubHouse" type="radio"  value="Yes" name="flexRadio4" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.ClubHouse" type="radio"  value="No" name="flexRadio4" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Swimming Pool:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.SwimmingPool" type="radio"  value="Yes" name="flexRadio5" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.SwimmingPool" type="radio"  value="No" name="flexRadio5" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Jogging Track:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.JoggingTrack" type="radio"  value="Yes" name="flexRadio6" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.JoggingTrack" type="radio"  value="No" name="flexRadio6" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Amphi Theatre:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.AmphiTheatre" type="radio"  value="Yes" name="flexRadio7" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.AmphiTheatre" type="radio"  value="No" name="flexRadio7" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Co Work Space:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.CoWorkSpace" type="radio"  value="Yes" name="flexRadio8" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.CoWorkSpace"  type="radio"  value="No" name="flexRadio8" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Senior Citizen Sit Out:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. SeniorCitizenSitout" type="radio"  value="Yes" name="flexRadio9" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. SeniorCitizenSitout" type="radio"  value="No" name="flexRadio9" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Football/Cricket:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. Football_Cricket" type="radio"  value="Yes" name="flexRadio10" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. Football_Cricket" type="radio"  value="No" name="flexRadio10" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Badmintor/Squash:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. Badminton_Squash" type="radio"  value="Yes" name="flexRadio11" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. Badminton_Squash" type="radio"  value="No" name="flexRadio11" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">E-Charging:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.ECharging" type="radio"  value="Yes" name="flexRadioDefault12" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.ECharging" type="radio"  value="No" name="flexRadio12" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-  <br>
-
-  <h1 id="heads">Others Things</h1>
-  <br>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Commercial in Project:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.CommercialsinProject" type="radio"  value="Yes" name="flexRadio13" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.CommercialsinProject" type="radio"  value="No" name="flexRadio13" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Gas Connection:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.  GasConnection" type="radio"  value="Yes" name="flexRadio14" id="flexRadioDefault3">
-    <label class="form-check-labe2" for="flexRadioDefault3">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.  GasConnection" type="radio"  value="No" name="flexRadio14" id="flexRadioDefault4" checked>
-    <label class="form-check-labe2" for="flexRadioDefault4">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Water Provision:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.WaterProvision" type="radio"  value="Yes" name="flexRadio15" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data.WaterProvision" type="radio"  value="No" name="flexRadio15" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">STP:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. STP" type="radio"  value="Yes" name="flexRadio16" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. STP" type="radio"  value="No" name="flexRadio16" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Earthquake Resistance:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. EarthquakeResistance" type="radio"  value="Yes" name="flexRadio17" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. EarthquakeResistance" type="radio"  value="No" name="flexRadio17" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Solar Water:</label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. Garden" type="radio"  value="Yes" name="flexRadio18" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input" [(ngModel)]="data. Garden" type="radio"  value="No" name="flexRadio18" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">Water Harvesting:</label>
-    <br>
-    <input class="form-check-input"[(ngModel)]="data. WaterHarvesting" type="radio" value="Yes" name="flexRadio19" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-     Yes
-    </label>
-    <br>
-    <input class="form-check-input"[(ngModel)]="data. WaterHarvesting" type="radio"  value="No" name="flexRadio19" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-      No
-    </label>
-  </div>
-
-  <div class="form-control cols mb-2">
-    <label for="Name" class="jumbotron">DG Backup:</label>
-    <br>
-    <input class="form-check-input"[(ngModel)]="data.DGBackup" type="radio" value="Yes" name="flexRadio20" id="flexRadioDefault1">
-    <label class="form-check-label" for="flexRadioDefault1">
-    Yes
-    </label>
-    <br>
-    <input class="form-check-input"[(ngModel)]="data.DGBackup" type="radio" value="No" name="flexRadio20" id="flexRadioDefault2" checked>
-    <label class="form-check-label" for="flexRadioDefault2">
-    No
-    </label>
-  </div>
-
-<div>
-  <label for="files">All Image for Property:</label><br>
-  <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
-  <ul *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+        <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhoods" [(ngModel)]="neighbour">
+       
+      
+      <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
+     
+    </div>
+    <table class="table">
+      <tr>
+      <td>Neighbourhood List</td>
+   
+    </tr>
+    <tr *ngFor="let n of neighbourArr; index as ind">
+        <td>{{n}}</td>
   
+        <button class="btn btn-danger " (click)="removeNeighbour(ind)">X</button>
+    </tr>
+    </table>
+    </div>
+   </div>
+  </div>
+  <div class="col">
+  <!-- Amenities -->
+  <div class="mb-3 mt-3">
+   <label for="radio" class="form-label">Amenities</label>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+      <th>Amenity</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+      
+  
+   <tbody  *ngFor="let amenity of amenities">
+        <tr>
+        <td>{{amenity.key}}</td>
+     
+        <td>
+          <div class="form-check">
+           
+            <input type="radio" class="form-check-input" id="radio1" name={{amenity.key}} value="yes" >
+            <label class="form-check-label" for="radio1">Yes</label>
+          </div>
+          <div class="form-check">
+            <input type="radio" class="form-check-input" id="radio2"  name={{amenity.key}} value="no" checked>
+            <label class="form-check-label" for="radio2">No</label>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+      
+    </table>
+     
+   
+  </div>
+  
+</div> 
+   
+<table class="table table-bordered mt-4">
+  <thead> 
+    <tr>
+      <th></th>
+      <th>1BHK</th>
+      <th>2BHK</th>
+      <th>3BHK</th>
+      <th>4BHK</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let flat of bhkSpecificObj">
+    <tr>
+      <td>{{flat.key}}</td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 1 BHK"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 2 BHK"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 3 BHK"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 4 BHK"></td>
+    </tr>
+  </tbody>
+</table>
 </div>
-  <button type="button" class="btn btn-primary" (click)="postProp()">Submit</button>
-
-  
-
-
-
-
-
-
-  
-
-
- </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form> 
 </div>

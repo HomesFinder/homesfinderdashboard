@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {propData} from '../propform/propData'
 import {PropserviceService} from '../propservice.service'
+
 @Component({
   selector: 'app-propform',
   templateUrl: './propform.component.html',
@@ -10,6 +11,7 @@ export class PropformComponent implements OnInit {
   fileToUpload: File | null = null;
   files:FileList | undefined
   tyopoArray:any[]=[]
+  
   constructor(private propService:PropserviceService) {
    
    }
@@ -20,8 +22,190 @@ export class PropformComponent implements OnInit {
    neighbourArr:any[]=[]
   imagesUri:any[]=[]
   dimensionsUris:any[]=[]
-  data=new propData('','','','','','','','','','','','','',0,'',0,'','','',0,'','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',0,'','','',[],[],[],[])
+  data=new propData('','','','','','','','','','','','',0,0,0,0,'','',0,'','',0,'','','',[],[],[],[],[],[],[])
    logoUri:any[]=[]
+   amenities=[
+    
+ 
+    {
+      "key": "Garden",
+      "value": false
+    },
+    {
+      "key": "Amphi_Theatre",
+      "value": false
+    },
+    {
+      "key": "Kids_Play",
+      "value": false
+    },
+    {
+      "key": "Co_WorkSpace",
+      "value": false
+    },
+    {
+      "key": "GYM",
+      "value": false
+    },
+    {
+      "key": "SeniorCitizenSitout",
+      "value": false
+    },
+    {
+      "key": "Club_House",
+      "value": false
+    },
+    {
+      "key": "Football_Cricket",
+      "value": false
+    },
+    {
+      "key": "Swimming_Pool",
+      "value": false
+    },
+    {
+      "key": "Badminton_Squash",
+      "value": false
+    },
+    {
+      "key": "Jogging_Track",
+      "value": false
+    },
+    {
+      "key": "E_Charging",
+      "value": false
+    }
+  ]
+  bhkSpecificObj=[
+    {
+      "key": "Carpet_Area",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Pricing",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Lobby",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Living",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Dining",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "LivTerrace_Balcony",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Kitchen",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Dry_Balcony",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "CommonW_c",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "MasterBedroom",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "M_BW_c",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Terrace_Balcony",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "Guest_Bedroom",
+      "value1": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    },
+    {
+      "key": "G_BW_c",
+      "'value": null,
+      "value2": null,
+      "value3": null,
+      "value4": null
+    }
+  ]
+  propFeatures=[
+    {
+      "key": "Commercials_in_Project",
+      "value": false
+    },
+    {
+      "key": "Gas_Connection",
+      "value": false
+    },
+    {
+      "key": "Water_Provision",
+      "value": false
+    },
+    {
+      "key": "STP",
+      "value": false
+    },
+    {
+      "key": "Earthquake_Resistance",
+      "value": false
+    },
+    {
+      "key": "Solar_Water",
+      "value": false
+    },
+    {
+      "key": "Water_Harvesting",
+      "value": false
+    },
+  ]
   ngOnInit(): void {
   
   }
@@ -37,7 +221,7 @@ export class PropformComponent implements OnInit {
     console.log("in prop");
       this.data.imagesUri=this.imagesUri
       this.data.dimensionMapImages=this.dimensionsUris
-      this.data.DeveloperLogo=this.logoUri[0]
+      
       this.data.TypologyAvailable=this.tyopoArray
       this.data.AreasNearby=this.neighbourArr
       this.propService.postProp(this.data) 
@@ -144,6 +328,7 @@ export class PropformComponent implements OnInit {
   }
   appendNeighbour(){
     this.neighbourArr.push(this.neighbour)
+    this.neighbour=''
   }
   removeNeighbour(ind:number){
     this.neighbourArr.splice(ind,1)
