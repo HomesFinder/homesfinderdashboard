@@ -36,7 +36,13 @@
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">About Property</label>
-      <textarea class="from-control" ngModel)]="data.aboutProperty"></textarea>
+      <textarea class="from-control" [(ngModel)]="data.aboutProperty"></textarea>
+    </div>
+    <div>
+      <label for="files">All Image for Property:</label><br>
+      <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
+      <ul *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+      
     </div>
   </div>
   <div class="col">
