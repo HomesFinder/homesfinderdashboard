@@ -105,4 +105,12 @@ postTestimony(obj:any) {
   alert(data)
 });
 }
+
+deleteDatafromDB(id:any){
+  this.httpClient.post(this.url + "deleteDatafromDB", {"_id":id}).subscribe(data => {
+    
+    console.log("Deleted Successfully");
+    alert(data)
+  });
+}
  }

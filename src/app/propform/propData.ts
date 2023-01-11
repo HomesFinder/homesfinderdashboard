@@ -17,7 +17,7 @@ export class propData {
     public ProjectOpenSpace: Number,
     public noOfTowers: Number,
     public noOfLifts: Number,
-    public Staircase: String,
+   
     public RefugeAreaFloors: String,
     public highriseCount: Number,
     public Flat_Floor: String,
@@ -26,6 +26,7 @@ export class propData {
     public lattitude: String,
     public longitude: String,
     public youtubeUri: String,
+    public Staircase: any[],
     public Amenities: any[],
     public imagesUri: any[],
     public bhkSpecific: any[],

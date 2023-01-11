@@ -1,4 +1,5 @@
 <div class="container">
+  <button class="btn btn-warning" (click)="editProp()">Edit Mode</button>
   <form>
     <div class="row">
     <div class="col">
@@ -12,7 +13,7 @@
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">Location Name</label>
-      <input type="text" class="form-control" placeholder="Baner" [(ngModel)]="data.locationName" name="Location Name">
+      <input type="text" class="form-control" placeholder="Example: Baner" [(ngModel)]="data.locationName" name="Location Name">
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">Land Parcel in Acres</label>
@@ -34,10 +35,12 @@
       <label for="text" class="form-label">About Builder</label>
       <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails"></textarea>
     </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">About Property</label>
-      <textarea class="from-control" [(ngModel)]="data.aboutProperty"></textarea>
+    <div class="input-group">
+
+      <input type="text" aria-label="lattitude" class="form-control"  placeholder="lattitude" name="lattitude" [(ngModel)]="data.lattitude">
+      <input type="text" aria-label="longitiude" class="form-control" placeholder="longitude" name="longititude" [(ngModel)]="data.longitude">
     </div>
+    <br>
     <div>
       <label for="files">All Image for Property:</label><br>
       <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
@@ -83,14 +86,16 @@
     </div>
     <div class="mb-3">
       <label for="number" class="form-label">Staircase</label>
+      <div *ngFor="let stair of staircaseList">
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="check1" [(ngModel)]="data.Staircase" name="option1" value="Common" checked>
+      <input type="checkbox" class="form-check-input" id="check1" [(ngModel)]="stair.common" name="option1" value=true checked>
       <label class="form-check-label" for="check1">Common: </label>
     </div>
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="check2" [(ngModel)]="data.Staircase" name="option2" value="FireExit">
+      <input type="checkbox" class="form-check-input" id="check2" [(ngModel)]="stair.fireExit" name="option2" value=true>
       <label class="form-check-label" for="check2">Fire Exit:</label>
     </div>
+  </div>
   </div>
   <div class="mb-3">
     <label for="text" class="form-label">Refugee Area- Floors</label>
@@ -124,11 +129,11 @@
          <td>
            <div class="form-check">
             
-             <input type="radio" class="form-check-input" id="radio1" name={{feature.key}} value="yes" >
+             <input type="radio" class="form-check-input" id="radio1" name={{feature.key}} value=true [(ngModel)]="feature.value" >
              <label class="form-check-label" for="radio1">Yes</label>
            </div>
            <div class="form-check">
-             <input type="radio" class="form-check-input" id="radio2"  name={{feature.key}} value="no" checked>
+             <input type="radio" class="form-check-input" id="radio2"  name={{feature.key}} value=false [(ngModel)]="feature.value"checked>
              <label class="form-check-label" for="radio2">No</label>
            </div>
          </td>
@@ -182,11 +187,11 @@
         <td>
           <div class="form-check">
            
-            <input type="radio" class="form-check-input" id="radio1" name={{amenity.key}} value="yes" >
+            <input type="radio" class="form-check-input" id="radio1" name={{amenity.key}} value=true [(ngModel)]="amenity.value" >
             <label class="form-check-label" for="radio1">Yes</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="radio2"  name={{amenity.key}} value="no" checked>
+            <input type="radio" class="form-check-input" id="radio2"  name={{amenity.key}} value=false [(ngModel)]="amenity.value" checked>
             <label class="form-check-label" for="radio2">No</label>
           </div>
         </td>
@@ -213,14 +218,14 @@
   <tbody *ngFor="let flat of bhkSpecificObj">
     <tr>
       <td>{{flat.key}}</td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 1 BHK"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 2 BHK"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 3 BHK"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 4 BHK"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 1 BHK" [(ngModel)]="flat.value1"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 2 BHK" [(ngModel)]="flat.value2"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 3 BHK" [(ngModel)]="flat.value3"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 4 BHK" [(ngModel)]="flat.value4"></td>
     </tr>
   </tbody>
 </table>
 </div>
-<button type="submit" class="btn btn-primary">Submit</button>
+<button type="submit" class="btn btn-primary" (click)="postProp()">Submit</button>
 </form> 
 </div>

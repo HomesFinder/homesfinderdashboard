@@ -29,4 +29,9 @@ export class ProplistComponent implements OnInit {
     this.propService.editProp(prop)
     this.router.navigateByUrl('prop-add')
   }
+
+  deleteData(id:any){
+    this.propService.deleteDatafromDB(id)
+    this.getData()
+  }
 }

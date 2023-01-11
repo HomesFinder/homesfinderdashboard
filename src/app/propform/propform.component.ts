@@ -22,7 +22,7 @@ export class PropformComponent implements OnInit {
    neighbourArr:any[]=[]
   imagesUri:any[]=[]
   dimensionsUris:any[]=[]
-  data=new propData('','','','','','','','','','','','',0,0,0,0,'','',0,'','',0,'','','',[],[],[],[],[],[],[])
+  data=new propData('','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
    amenities=[
     
@@ -170,7 +170,7 @@ export class PropformComponent implements OnInit {
     },
     {
       "key": "G_BW_c",
-      "'value": null,
+      "value": null,
       "value2": null,
       "value3": null,
       "value4": null
@@ -206,6 +206,15 @@ export class PropformComponent implements OnInit {
       "value": false
     },
   ]
+  staircaseList = [
+    {
+      common: true,
+      fireExit: false,
+     
+    },
+  ]
+
+    
   ngOnInit(): void {
   
   }
@@ -221,10 +230,14 @@ export class PropformComponent implements OnInit {
     console.log("in prop");
       this.data.imagesUri=this.imagesUri
       this.data.dimensionMapImages=this.dimensionsUris
-      
+      this.data.Amenities=this.amenities
+      this.data.bhkSpecific=this.bhkSpecificObj
+      this.data.propFeatures=this.propFeatures
+      this.data.Staircase=this.staircaseList
       this.data.TypologyAvailable=this.tyopoArray
       this.data.AreasNearby=this.neighbourArr
-      this.propService.postProp(this.data) 
+       this.propService.postProp(this.data)
+       
       console.log(this.data);
         
     }
@@ -333,4 +346,5 @@ export class PropformComponent implements OnInit {
   removeNeighbour(ind:number){
     this.neighbourArr.splice(ind,1)
   }
+  
 }
