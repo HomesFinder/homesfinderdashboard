@@ -215,13 +215,13 @@
       <th>4BHK</th>
     </tr>
   </thead>
-  <tbody *ngFor="let flat of bhkSpecificObj">
+  <tbody *ngFor="let flat of bhkSpecificObj ;let i =index;">
     <tr>
       <td>{{flat.key}}</td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 1 BHK" [(ngModel)]="flat.value1"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 2 BHK" [(ngModel)]="flat.value2"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 3 BHK" [(ngModel)]="flat.value3"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 4 BHK" [(ngModel)]="flat.value4"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 1 BHK" [(ngModel)]="bhkSpecificObj[i].value1"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 2 BHK" [(ngModel)]="bhkSpecificObj[i].value2"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 3 BHK" [(ngModel)]="bhkSpecificObj[i].value3"></td>
+      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 4 BHK" [(ngModel)]="bhkSpecificObj[i].value4"></td>
     </tr>
   </tbody>
 </table>

@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit,Input, ChangeDetectorRef  } from '@angular/core';
 import {propData} from '../propform/propData'
 import {PropserviceService} from '../propservice.service'
 
 @Component({
   selector: 'app-propform',
   templateUrl: './propform.component.html',
-  styleUrls: ['./propform.component.scss']
+  styleUrls: ['./propform.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PropformComponent implements OnInit {
   fileToUpload: File | null = null;
   files:FileList | undefined
   tyopoArray:any[]=[]
   
-  constructor(private propService:PropserviceService) {
+  constructor(private propService:PropserviceService,private cd: ChangeDetectorRef) {
    
    }
    bhk:any
@@ -76,7 +77,7 @@ export class PropformComponent implements OnInit {
       "value": false
     }
   ]
-  bhkSpecificObj=[
+  @Input()  bhkSpecificObj=[
     {
       "key": "Carpet_Area",
       "value1": null,
@@ -302,9 +303,22 @@ export class PropformComponent implements OnInit {
       console.log(this.propService.isEdit);
       
       this.data=this.propService.currentPropHolder
+      console.log('in current',this.propService.currentPropHolder);
+      
       this.imagesUri=this.propService.currentPropHolder.imagesUri
       this.logoUri.push(this.propService.currentPropHolder.DeveloperLogo)
-      this.dimensionsUris.push(this.propService.currentPropHolder.dimensionMapImages)
+     
+      this.dimensionsUris=this.propService.currentPropHolder.dimensionMapImages
+      this.amenities=this.propService.currentPropHolder.Amenities
+      this.bhkSpecificObj=this.propService.currentPropHolder.bhkSpecific
+      console.log(this.bhkSpecificObj);
+      console.log(this.bhkSpecificObj[0].value3);
+      
+      this.propFeatures=this.propService.currentPropHolder.propFeatures
+      this.staircaseList=this.propService.currentPropHolder.Staircase
+      this.tyopoArray=this.propService.currentPropHolder.TypologyAvailable
+      this.neighbourArr=this.propService.currentPropHolder.AreasNearby
+      this.cd.detectChanges();
     }
 
 
