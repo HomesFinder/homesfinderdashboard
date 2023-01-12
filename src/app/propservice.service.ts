@@ -13,7 +13,7 @@ export class PropserviceService {
   private url = 'https://homesfinder-service.onrender.com/api/';
   private basePath = '/uploads';
   currentPropHolder:any
-  isEdit:boolean = false
+  public isEdit:boolean = false
 
 
   constructor(private httpClient: HttpClient, private storage: AngularFireStorage) { }

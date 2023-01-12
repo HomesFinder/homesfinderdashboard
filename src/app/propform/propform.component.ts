@@ -1,4 +1,7 @@
+import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit,Input, ChangeDetectorRef  } from '@angular/core';
+import { flush } from '@angular/core/testing';
+import { fail } from 'assert';
 import {propData} from '../propform/propData'
 import {PropserviceService} from '../propservice.service'
 
@@ -11,11 +14,12 @@ import {PropserviceService} from '../propservice.service'
 export class PropformComponent implements OnInit {
   fileToUpload: File | null = null;
   files:FileList | undefined
-  tyopoArray:any[]=[]
-  
-  constructor(private propService:PropserviceService,private cd: ChangeDetectorRef) {
+  @Input() tyopoArray:any[]=[]
+  editabletyopoArray:any[]=[]
+  constructor(public propService:PropserviceService,private cd: ChangeDetectorRef) {
    
    }
+   
    bhk:any
    bhkArea:any
    bhkPrice:any
@@ -77,106 +81,106 @@ export class PropformComponent implements OnInit {
       "value": false
     }
   ]
-  @Input()  bhkSpecificObj=[
-    {
-      "key": "Carpet_Area",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Pricing",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Lobby",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Living",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Dining",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "LivTerrace_Balcony",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Kitchen",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Dry_Balcony",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "CommonW_c",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "MasterBedroom",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "M_BW_c",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Terrace_Balcony",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "Guest_Bedroom",
-      "value1": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    },
-    {
-      "key": "G_BW_c",
-      "value": null,
-      "value2": null,
-      "value3": null,
-      "value4": null
-    }
-  ]
+  // @Input()  bhkSpecificObj=[
+  //   {
+  //     "key": "Carpet_Area",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Pricing",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Lobby",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Living",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Dining",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "LivTerrace_Balcony",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Kitchen",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Dry_Balcony",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "CommonW_c",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "MasterBedroom",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "M_BW_c",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Terrace_Balcony",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "Guest_Bedroom",
+  //     "value1": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   },
+  //   {
+  //     "key": "G_BW_c",
+  //     "value": null,
+  //     "value2": null,
+  //     "value3": null,
+  //     "value4": null
+  //   }
+  // ]
   propFeatures=[
     {
       "key": "Commercials_in_Project",
@@ -215,7 +219,22 @@ export class PropformComponent implements OnInit {
     },
   ]
 
-    
+  newBhkSpecific=[
+    {
+      "key":"carpet",
+      value1: [] as string[],
+      value2: [] as string[],
+      value3: [] as string[],
+      value4: [] as string[]
+    },
+    {
+      "key":"pricing",
+      value1: [] as string[],
+      value2: [] as string[],
+      value3: [] as string[],
+      value4: [] as string[]
+    }
+  ]  
   ngOnInit(): void {
   
   }
@@ -232,7 +251,7 @@ export class PropformComponent implements OnInit {
       this.data.imagesUri=this.imagesUri
       this.data.dimensionMapImages=this.dimensionsUris
       this.data.Amenities=this.amenities
-      this.data.bhkSpecific=this.bhkSpecificObj
+      this.data.bhkSpecific=this.tyopoArray
       this.data.propFeatures=this.propFeatures
       this.data.Staircase=this.staircaseList
       this.data.TypologyAvailable=this.tyopoArray
@@ -300,6 +319,7 @@ export class PropformComponent implements OnInit {
       console.log("in logo images uri",this.logoUri);
     }
     editProp(){
+      this.propService.isEdit=true
       console.log(this.propService.isEdit);
       
       this.data=this.propService.currentPropHolder
@@ -310,10 +330,10 @@ export class PropformComponent implements OnInit {
      
       this.dimensionsUris=this.propService.currentPropHolder.dimensionMapImages
       this.amenities=this.propService.currentPropHolder.Amenities
-      this.bhkSpecificObj=this.propService.currentPropHolder.bhkSpecific
-      console.log(this.bhkSpecificObj);
-      console.log(this.bhkSpecificObj[0].value3);
+      this.editabletyopoArray=this.propService.currentPropHolder.bhkSpecific
+      console.log(this.tyopoArray);
       
+      this.tyopoArray=this.propService.currentPropHolder.tyopoArray
       this.propFeatures=this.propService.currentPropHolder.propFeatures
       this.staircaseList=this.propService.currentPropHolder.Staircase
       this.tyopoArray=this.propService.currentPropHolder.TypologyAvailable
@@ -338,20 +358,38 @@ export class PropformComponent implements OnInit {
       
   }
 
-
+  
   appendBHK(){
+    console.log(this.propService.isEdit);
+    
     let bhkTypo={
       bhk:this.bhk,
       bhkPrice:this.bhkPrice,
       bhkArea:this.bhkArea
     }
+
+    if(this.propService.isEdit==false){
     console.log(bhkTypo);
     
-    this.tyopoArray.push(bhkTypo)
+    
     console.log(this.tyopoArray);
+    
+ 
+   
+  }
+
+  else if(this.propService.isEdit==true)
+    this.tyopoArray=this.editabletyopoArray
+    this.tyopoArray.push(bhkTypo)
   }
   removetypo(ind:number){
+    if(this.propService.isEdit==false){
       this.tyopoArray.splice(ind,1)
+    }
+    else if(this.propService.isEdit==true){
+      this.editabletyopoArray.splice(ind,1)
+      this.tyopoArray=this.editabletyopoArray
+    }
   }
   appendNeighbour(){
     this.neighbourArr.push(this.neighbour)
@@ -360,5 +398,7 @@ export class PropformComponent implements OnInit {
   removeNeighbour(ind:number){
     this.neighbourArr.splice(ind,1)
   }
-  
+
+
+
 }

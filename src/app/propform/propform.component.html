@@ -205,24 +205,57 @@
   
 </div> 
    
-<table class="table table-bordered mt-4">
-  <thead> 
+
+<div>
+  <div class="input-group">
+    <label >Select BHK  </label>
+    <select class="form-select" [(ngModel)]="bhk">
+     
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <input type="text"  class="form-control" [(ngModel)]="bhkArea" placeholder="Carpet Area 102x205">
+    <input type="number"  class="form-control" [(ngModel)]="bhkPrice" placeholder="75000000">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="appendBHK()">Add</button>
+  </div>
+</div>
+
+<table class="table table-bordered mt-4" *ngIf="propService.isEdit==false">
+  <hr>
+  <thead>
     <tr>
-      <th></th>
-      <th>1BHK</th>
-      <th>2BHK</th>
-      <th>3BHK</th>
-      <th>4BHK</th>
+      <td>BHK</td>
+      <td>BHK Area</td>
+      <td>BHK Price</td>
     </tr>
   </thead>
-  <tbody *ngFor="let flat of bhkSpecificObj ;let i =index;">
+  <tbody *ngFor="let typoArr of tyopoArray;let i=index">
     <tr>
-      <td>{{flat.key}}</td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 1 BHK" [(ngModel)]="bhkSpecificObj[i].value1"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 2 BHK" [(ngModel)]="bhkSpecificObj[i].value2"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 3 BHK" [(ngModel)]="bhkSpecificObj[i].value3"></td>
-      <td><input type="text"  class="form-control" placeholder="{{flat.key}} of 4 BHK" [(ngModel)]="bhkSpecificObj[i].value4"></td>
+  <td>{{typoArr.bhk}}</td>
+  <td>{{typoArr.bhkArea}}</td>
+  <td>{{typoArr.bhkPrice}}</td>
+  <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
+</tr>
+  </tbody>
+</table>
+<table class="table table-bordered mt-4" *ngIf="propService.isEdit==true">
+  <hr>
+  <thead>
+    <tr>
+      <td>BHK</td>
+      <td>BHK Area</td>
+      <td>BHK Price</td>
     </tr>
+  </thead>
+  <tbody *ngFor="let typoArr of editabletyopoArray;let i=index">
+    <tr>
+  <td>{{typoArr.bhk}}</td>
+  <td>{{typoArr.bhkArea}}</td>
+  <td>{{typoArr.bhkPrice}}</td>
+  <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
+</tr>
   </tbody>
 </table>
 </div>
