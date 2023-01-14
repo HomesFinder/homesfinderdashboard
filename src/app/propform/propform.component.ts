@@ -27,7 +27,7 @@ export class PropformComponent implements OnInit {
    neighbourArr:any[]=[]
   imagesUri:any[]=[]
   dimensionsUris:any[]=[]
-  data=new propData('','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
+  @Input() data=new propData('','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
    amenities=[
     
@@ -327,7 +327,8 @@ export class PropformComponent implements OnInit {
       
       this.imagesUri=this.propService.currentPropHolder.imagesUri
       this.logoUri.push(this.propService.currentPropHolder.DeveloperLogo)
-     
+      this.data.aboutProperty=this.propService.currentPropHolder.aboutProperty
+      this.data.DeveloperBriefDetails=this.propService.currentPropHolder.DeveloperBriefDetails
       this.dimensionsUris=this.propService.currentPropHolder.dimensionMapImages
       this.amenities=this.propService.currentPropHolder.Amenities
       this.editabletyopoArray=this.propService.currentPropHolder.bhkSpecific

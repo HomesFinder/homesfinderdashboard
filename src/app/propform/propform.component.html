@@ -32,8 +32,16 @@
       </select>
     </div>
     <div class="mb-3">
+      <label for="number" class="form-label">Rating</label>
+      <input type="number" class="form-control" placeholder="Eg: 4.5" min="1" max="5" [(ngModel)]="data.rating" name="Rating">
+    </div>
+    <div class="mb-3">
       <label for="text" class="form-label">About Builder</label>
       <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">About Property</label>
+      <textarea class="from-control" [(ngModel)]="data.aboutProperty"></textarea>
     </div>
     <div class="input-group">
 
@@ -84,7 +92,7 @@
       <label for="number" class="form-label">No Of Lifts</label>
       <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="No Of Lifts">
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="number" class="form-label">Staircase</label>
       <div *ngFor="let stair of staircaseList">
     <div class="form-check">
@@ -95,8 +103,8 @@
       <input type="checkbox" class="form-check-input" id="check2" [(ngModel)]="stair.fireExit" name="option2" value=true>
       <label class="form-check-label" for="check2">Fire Exit:</label>
     </div>
-  </div>
-  </div>
+  </div> -->
+  <!-- </div> -->
   <div class="mb-3">
     <label for="text" class="form-label">Refugee Area- Floors</label>
     <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors">
@@ -104,8 +112,8 @@
   <div class="mb-3">
     <label for="text" class="form-label">DG Backup</label>
     <select class="form-select" [(ngModel)]="data.DGBackup">
-      <option>Common</option>
-      <option>Flats</option>
+      <option value="Common">Common</option>
+      <option value="Flats">Flats</option>
     </select>
   </div>
   </div>
@@ -262,3 +270,4 @@
 <button type="submit" class="btn btn-primary" (click)="postProp()">Submit</button>
 </form> 
 </div>
+
