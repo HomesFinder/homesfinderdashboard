@@ -31,7 +31,7 @@ export class propData {
     public imagesUri: any[],
     public bhkSpecific: any[],
     public propFeatures: any[],
-    public dimensionMapImages: any[],
+    public imageToShow: any[],
     public AreasNearby: any[],
     public TypologyAvailable: any[]
   ) {}

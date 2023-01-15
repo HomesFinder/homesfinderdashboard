@@ -16,6 +16,7 @@ export class PropformComponent implements OnInit {
   files:FileList | undefined
   @Input() tyopoArray:any[]=[]
   editabletyopoArray:any[]=[]
+  imageToShow: any;
   constructor(public propService:PropserviceService,private cd: ChangeDetectorRef) {
    
    }
@@ -26,6 +27,7 @@ export class PropformComponent implements OnInit {
    neighbour:any
    neighbourArr:any[]=[]
   imagesUri:any[]=[]
+
   dimensionsUris:any[]=[]
   @Input() data=new propData('','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
@@ -249,7 +251,7 @@ export class PropformComponent implements OnInit {
     this.propService.isEdit=false
     console.log("in prop");
       this.data.imagesUri=this.imagesUri
-      this.data.dimensionMapImages=this.dimensionsUris
+      this.data.imageToShow=this.imageToShow
       this.data.Amenities=this.amenities
       this.data.bhkSpecific=this.tyopoArray
       this.data.propFeatures=this.propFeatures
@@ -299,7 +301,7 @@ export class PropformComponent implements OnInit {
       
      
      // console.log((event.target as HTMLInputElement).files);
-      this.dimensionsUris=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.DimensionMapImages))
+      this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.DimensionMapImages))
      
       // uris.forEach(uris=>{
       //   this.imagesUri.push(uris)
