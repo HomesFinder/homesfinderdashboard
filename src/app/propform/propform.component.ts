@@ -244,6 +244,7 @@ export class PropformComponent implements OnInit {
   if(this.propService.isEdit){
     this.editProp();
   }
+  
  }
    
   
@@ -276,10 +277,21 @@ export class PropformComponent implements OnInit {
       
           
         this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+          
+        
       }
       else if(this.propService.currentPropHolder!=undefined){
-        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length))
+        if(this.imagesUri.length==0){
+          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+          this.cd.detectChanges();
+        }
+        else{
+          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length))
+          this.cd.detectChanges();
+        }
+       
       }
+    
  
         // this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
    
@@ -313,7 +325,7 @@ export class PropformComponent implements OnInit {
         
         this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imageToShow.length))
       }
- 
+      this.cd.detectChanges();
         // thi
       
       

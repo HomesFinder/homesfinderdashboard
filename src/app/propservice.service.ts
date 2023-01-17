@@ -14,8 +14,8 @@ export class PropserviceService {
   private basePath = '/uploads';
   currentPropHolder:any
   public isEdit:boolean = false
-
-  isButtonDisabled: boolean = false;
+   public uploadComplete = false;
+  public isButtonDisabled: boolean = false;
   constructor(private httpClient: HttpClient, private storage: AngularFireStorage) { }
   getPosts(){
     return this.httpClient.get(this.url+"getPropertyfromDB");
@@ -55,14 +55,18 @@ export class PropserviceService {
         storageRef.getDownloadURL().subscribe(downloadURL => {
            let url = downloadURL;
            imagesUri.push(url)
+          
             console.log(url);
-            
+             
+              
           
         });
+       
       })
     ).subscribe();
     }
     resolve(imagesUri)
+    console.log("images uploaded");
   return imagesUri
   }))
 }

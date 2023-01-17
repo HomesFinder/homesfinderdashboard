@@ -58,7 +58,7 @@
     <div>
       <label for="files">All Image for Property:</label><br>
       <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
-      <ul name="imagesUri" *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+      <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
       
     </div>
   </div>
