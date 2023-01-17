@@ -15,17 +15,23 @@ export class PropserviceService {
   currentPropHolder:any
   public isEdit:boolean = false
 
-
+  isButtonDisabled: boolean = false;
   constructor(private httpClient: HttpClient, private storage: AngularFireStorage) { }
   getPosts(){
     return this.httpClient.get(this.url+"getPropertyfromDB");
   }
 
   postProp(postData:any){
+    this.isButtonDisabled=true
+    console.log(this.isButtonDisabled);
+    
     this.httpClient.post(this.url + "postPropertyinDB", postData).subscribe(data => {
       console.log(data);
       console.log("data posted");
-      alert(data)
+      this.isButtonDisabled=false
+      console.log(this.isButtonDisabled);
+      
+      alert("Data Posted")
     })
   
   }

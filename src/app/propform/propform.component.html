@@ -25,7 +25,7 @@
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">Munciple Corporation Name</label>
-      <select class="form-select" [(ngModel)]="data.MuncipleCorporationName">
+      <select class="form-select" [(ngModel)]="data.MuncipleCorporationName" name="MuncipleCorporationName">
         <option>PMC</option>
         <option>PCMC</option>
         <option>PMRDA</option>
@@ -37,11 +37,11 @@
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">About Builder</label>
-      <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails"></textarea>
+      <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails" name="DeveloperBriefDetails"></textarea>
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">About Property</label>
-      <textarea class="from-control" [(ngModel)]="data.aboutProperty"></textarea>
+      <textarea class="from-control" [(ngModel)]="data.aboutProperty" name="aboutProperty"></textarea>
     </div>
     <div class="input-group">
 
@@ -51,14 +51,14 @@
     <br>
     <div>
       <label for="files">Image to show:</label><br>
-      <input type="file" id="files" name="files"  (change)="handleDimensionFileInput($event)"><br><br>
-      <ul *ngFor="let uri of imageToShow;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+      <input type="file" id="files" name="files"  (change)="imageToShowInput($event)"><br><br>
+      <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
       
     </div>
     <div>
       <label for="files">All Image for Property:</label><br>
       <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
-      <ul *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+      <ul name="imagesUri" *ngFor="let uri of imagesUri;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
       
     </div>
   </div>
@@ -69,7 +69,7 @@
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">Possession Timeline</label>
-      <select class="form-select" [(ngModel)]="data.possessionTimeline">
+      <select class="form-select" [(ngModel)]="data.possessionTimeline" name="Possession Timeline">
         <option>Ready Possession</option>
         <option>Under Construction</option>
       </select>
@@ -88,15 +88,15 @@
     </div>
     <div class="mb-3">
       <label for="number" class="form-label">Flat/Floor</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.Flat_Floor" name="Flat/Floor">
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.Flat_Floor" name="Flat_Floor">
     </div>
     <div class="mb-3">
       <label for="number" class="form-label">Project Open Space in %</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.ProjectOpenSpace" name="Project Open Space in %">
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.ProjectOpenSpace" name="ProjectOpenSpace">
     </div>
     <div class="mb-3">
       <label for="number" class="form-label">No Of Lifts</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="No Of Lifts">
+      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="noOfLifts">
     </div>
     <!-- <div class="mb-3">
       <label for="number" class="form-label">Staircase</label>
@@ -113,11 +113,11 @@
   <!-- </div> -->
   <div class="mb-3">
     <label for="text" class="form-label">Refugee Area- Floors</label>
-    <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors">
+    <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors" name="RefugeAreaFloors">
   </div>
   <div class="mb-3">
     <label for="text" class="form-label">DG Backup</label>
-    <select class="form-select" [(ngModel)]="data.DGBackup">
+    <select class="form-select" [(ngModel)]="data.DGBackup" name="DGBackup">
       <option value="Common">Common</option>
       <option value="Flats">Flats</option>
     </select>
@@ -143,11 +143,11 @@
          <td>
            <div class="form-check">
             
-             <input type="radio" class="form-check-input" id="radio1" name={{feature.key}} value=true [(ngModel)]="feature.value" >
+             <input type="radio"  class="form-check-input" id="radio1" name={{feature.key}} value=true [(ngModel)]="feature.value" >
              <label class="form-check-label" for="radio1">Yes</label>
            </div>
            <div class="form-check">
-             <input type="radio" class="form-check-input" id="radio2"  name={{feature.key}} value=false [(ngModel)]="feature.value"checked>
+             <input type="radio"  class="form-check-input" id="radio2"  name={{feature.key}} value=false [(ngModel)]="feature.value"checked>
              <label class="form-check-label" for="radio2">No</label>
            </div>
          </td>
@@ -161,7 +161,7 @@
       <div class="input-group">
         <!-- <span class="input-group-text" style="font-size: smaller;">Neighbourhood</span> -->
   
-        <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhoods" [(ngModel)]="neighbour">
+        <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhoods" [(ngModel)]="neighbour" name="neighbour">
        
       
       <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
@@ -172,7 +172,7 @@
       <td>Neighbourhood List</td>
    
     </tr>
-    <tr *ngFor="let n of neighbourArr; index as ind">
+    <tr *ngFor="let n of neighbourArr; index as ind" name="table">
         <td>{{n}}</td>
   
         <button class="btn btn-danger " (click)="removeNeighbour(ind)">X</button>
@@ -223,15 +223,15 @@
 <div>
   <div class="input-group">
     <label >Select BHK  </label>
-    <select class="form-select" [(ngModel)]="bhk">
+    <select class="form-select" [(ngModel)]="bhk" name="bhk">
      
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
     </select>
-    <input type="text"  class="form-control" [(ngModel)]="bhkArea" placeholder="Carpet Area 102x205">
-    <input type="number"  class="form-control" [(ngModel)]="bhkPrice" placeholder="75000000">
+    <input type="text"  class="form-control" name="bhkArea" [(ngModel)]="bhkArea" placeholder="Carpet Area 102x205">
+    <input type="number"  class="form-control"  name="bhkPrice" [(ngModel)]="bhkPrice" placeholder="75000000">
     <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="appendBHK()">Add</button>
   </div>
 </div>
@@ -273,7 +273,7 @@
   </tbody>
 </table>
 </div>
-<button type="submit" class="btn btn-primary" (click)="postProp()">Submit</button>
+<button type="submit" class="btn btn-primary" [disabled]="propService.isButtonDisabled" (click)="postProp()">Submit</button>
 </form> 
 </div>
 

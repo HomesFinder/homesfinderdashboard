@@ -296,18 +296,25 @@ export class PropformComponent implements OnInit {
     }
 
 
-    async handleDimensionFileInput(event: Event){
+    async imageToShowInput(event: Event){
       // console.log("before", this.dimensionsUris.length);
-      
+
+     
      
      // console.log((event.target as HTMLInputElement).files);
-      this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.DimensionMapImages))
-     
-      // uris.forEach(uris=>{
-      //   this.imagesUri.push(uris)
-      // })
-      // console.log("in images uri",this.dimensionsUris);
-      // console.log("after", this.dimensionsUris.length);
+     // this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imageToShow))
+      if(this.propService.currentPropHolder==undefined){
+      
+        console.log('in img to show undefiined'); 
+        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+      }
+      else if(this.propService.currentPropHolder!=undefined){        console.log('in img to show not undefiined'); 
+        console.log(this.propService.currentPropHolder);
+        
+        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imageToShow.length))
+      }
+ 
+        // thi
       
       
       
@@ -329,18 +336,29 @@ export class PropformComponent implements OnInit {
       
       this.imagesUri=this.propService.currentPropHolder.imagesUri
       this.logoUri.push(this.propService.currentPropHolder.DeveloperLogo)
+      
       this.data.aboutProperty=this.propService.currentPropHolder.aboutProperty
+      console.log(this.data.aboutProperty);
+      
       this.data.DeveloperBriefDetails=this.propService.currentPropHolder.DeveloperBriefDetails
+
+      
+      this.cd.detectChanges();
+
       this.dimensionsUris=this.propService.currentPropHolder.dimensionMapImages
       this.amenities=this.propService.currentPropHolder.Amenities
       this.editabletyopoArray=this.propService.currentPropHolder.bhkSpecific
-      console.log(this.tyopoArray);
-      
+    
+      this.imageToShow=this.propService.currentPropHolder.imageToShow
       this.tyopoArray=this.propService.currentPropHolder.tyopoArray
       this.propFeatures=this.propService.currentPropHolder.propFeatures
       this.staircaseList=this.propService.currentPropHolder.Staircase
       this.tyopoArray=this.propService.currentPropHolder.TypologyAvailable
       this.neighbourArr=this.propService.currentPropHolder.AreasNearby
+      this.neighbour=''
+      this.data.DGBackup=this.propService.currentPropHolder.DGBackup
+
+   
       this.cd.detectChanges();
     }
 
