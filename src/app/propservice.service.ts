@@ -58,7 +58,7 @@ export class PropserviceService {
           
             console.log(url);
              
-              
+            this.fileSignal()
           
         });
        
@@ -66,9 +66,12 @@ export class PropserviceService {
     ).subscribe();
     }
     resolve(imagesUri)
-    console.log("images uploaded");
+    
   return imagesUri
   }))
+}
+fileSignal(){
+    alert("File Uploaded")
 }
  
 // uploadSingleImage(images:any){
