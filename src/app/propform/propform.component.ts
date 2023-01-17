@@ -323,7 +323,7 @@ export class PropformComponent implements OnInit {
       else if(this.propService.currentPropHolder!=undefined){        console.log('in img to show not undefiined'); 
         console.log(this.propService.currentPropHolder);
         
-        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imageToShow.length))
+        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
       }
       this.cd.detectChanges();
         // thi

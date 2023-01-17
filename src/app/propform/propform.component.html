@@ -52,7 +52,7 @@
     <div>
       <label for="files">Image to show:</label><br>
       <input type="file" id="files" name="files"  (change)="imageToShowInput($event)"><br><br>
-      <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+      <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index"><li><img src={{uri}} height="100"> </li></ul>
       
     </div>
     <div>
