@@ -83,106 +83,69 @@ export class PropformComponent implements OnInit {
       "value": false
     }
   ]
-  // @Input()  bhkSpecificObj=[
-  //   {
-  //     "key": "Carpet_Area",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Pricing",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Lobby",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Living",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Dining",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "LivTerrace_Balcony",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Kitchen",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Dry_Balcony",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "CommonW_c",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "MasterBedroom",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "M_BW_c",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Terrace_Balcony",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "Guest_Bedroom",
-  //     "value1": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   },
-  //   {
-  //     "key": "G_BW_c",
-  //     "value": null,
-  //     "value2": null,
-  //     "value3": null,
-  //     "value4": null
-  //   }
-  // ]
+  @Input()  bhkSpecificObj=[
+    {
+      "key": "BHK",
+      "valueN":''
+    },
+    {
+      "key": "Carpet_Area",
+      "valueN":''
+    },
+    {
+      "key": "Pricing",
+      "valueN":''
+    },
+    {
+      "key": "Lobby",
+      "valueN":''
+    },
+    {
+      "key": "Living",
+      "valueN":''
+    },
+    {
+      "key": "Dining",
+      "valueN":''
+    },
+    {
+      "key": "LivTerrace_Balcony",
+      "valueN":''
+    },
+    {
+      "key": "Kitchen",
+      "valueN":''
+    },
+    {
+      "key": "Dry_Balcony",
+      "valueN":''
+    },
+    {
+      "key": "CommonW_c",
+      "valueN":''
+    },
+    {
+      "key": "MasterBedroom",
+      "valueN":''
+    },
+    {
+      "key": "M_BW_c",
+      "valueN":''
+    },
+    {
+      "key": "Terrace_Balcony",
+      "valueN":''
+    },
+    {
+      "key": "Guest_Bedroom",
+      "valueN":''
+    },
+    {
+      "key": "G_BW_c",
+      "valueN":''
+    }
+  ]
+  @Input() allBHK:any[]=[]
   propFeatures=[
     {
       "key": "Commercials_in_Project",
@@ -221,22 +184,22 @@ export class PropformComponent implements OnInit {
     },
   ]
 
-  newBhkSpecific=[
-    {
-      "key":"carpet",
-      value1: [] as string[],
-      value2: [] as string[],
-      value3: [] as string[],
-      value4: [] as string[]
-    },
-    {
-      "key":"pricing",
-      value1: [] as string[],
-      value2: [] as string[],
-      value3: [] as string[],
-      value4: [] as string[]
-    }
-  ]  
+  // newBhkSpecific=[
+  //   {
+  //     "key":"carpet",
+  //     value1: [] as string[],
+  //     value2: [] as string[],
+  //     value3: [] as string[],
+  //     value4: [] as string[]
+  //   },
+  //   {
+  //     "key":"pricing",
+  //     value1: [] as string[],
+  //     value2: [] as string[],
+  //     value3: [] as string[],
+  //     value4: [] as string[]
+  //   }
+  // ]  
   ngOnInit(): void {
   
   }
@@ -254,7 +217,7 @@ export class PropformComponent implements OnInit {
       this.data.imagesUri=this.imagesUri
       this.data.imageToShow=this.imageToShow
       this.data.Amenities=this.amenities
-      this.data.bhkSpecific=this.tyopoArray
+      this.data.bhkSpecific=this.allBHK
       this.data.propFeatures=this.propFeatures
       this.data.Staircase=this.staircaseList
       this.data.TypologyAvailable=this.tyopoArray
@@ -359,7 +322,7 @@ export class PropformComponent implements OnInit {
 
       this.dimensionsUris=this.propService.currentPropHolder.dimensionMapImages
       this.amenities=this.propService.currentPropHolder.Amenities
-      this.editabletyopoArray=this.propService.currentPropHolder.bhkSpecific
+      this.allBHK=this.propService.currentPropHolder.bhkSpecific
     
       this.imageToShow=this.propService.currentPropHolder.imageToShow
       this.tyopoArray=this.propService.currentPropHolder.tyopoArray
@@ -417,11 +380,11 @@ export class PropformComponent implements OnInit {
   }
   removetypo(ind:number){
     if(this.propService.isEdit==false){
-      this.tyopoArray.splice(ind,1)
+      this.allBHK.splice(ind,1)
     }
     else if(this.propService.isEdit==true){
-      this.editabletyopoArray.splice(ind,1)
-      this.tyopoArray=this.editabletyopoArray
+      this.allBHK.splice(ind,1)
+     
     }
   }
   appendNeighbour(){
@@ -432,6 +395,23 @@ export class PropformComponent implements OnInit {
     this.neighbourArr.splice(ind,1)
   }
 
+  
+  appendInividualBHK(){
+ 
+    
+
+
+    if(this.propService.isEdit==false){
+      let newData = JSON.parse(JSON.stringify(this.bhkSpecificObj))
+      this.allBHK.push(newData);
+       console.log(this.allBHK);   
+   }
+   else if(this.propService.isEdit==true){
+    let newData = JSON.parse(JSON.stringify(this.bhkSpecificObj))
+    this.allBHK.push(newData);
+   }
+
+  }
 
 
 }

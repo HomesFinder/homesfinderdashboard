@@ -220,7 +220,7 @@
 </div> 
    
 
-<div>
+<!-- <div>
   <div class="input-group">
     <label >Select BHK  </label>
     <select class="form-select" [(ngModel)]="bhk" name="bhk">
@@ -234,9 +234,9 @@
     <input type="number"  class="form-control"  name="bhkPrice" [(ngModel)]="bhkPrice" placeholder="75000000">
     <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="appendBHK()">Add</button>
   </div>
-</div>
+</div> -->
 
-<table class="table table-bordered mt-4" *ngIf="propService.isEdit==false">
+<!-- <table class="table table-bordered mt-4" *ngIf="propService.isEdit==false">
   <hr>
   <thead>
     <tr>
@@ -253,8 +253,8 @@
   <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
 </tr>
   </tbody>
-</table>
-<table class="table table-bordered mt-4" *ngIf="propService.isEdit==true">
+</table> -->
+<!-- <table class="table table-bordered mt-4" *ngIf="propService.isEdit==true">
   <hr>
   <thead>
     <tr>
@@ -271,7 +271,35 @@
   <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
 </tr>
   </tbody>
-</table>
+</table> -->
+<div class="row">
+  <div class="col col-lg-2">
+<form (ngSubmit)="appendInividualBHK()">
+  <div class="form-group" *ngFor="let field of bhkSpecificObj; let i = index">
+    <label [for]="field.key">{{ field.key }}:</label>
+    <input type="text" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
+  </div>
+  <button type="submit">Add</button>
+</form>
+</div>
+<div class="col col-lg-10">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th *ngFor="let key of bhkSpecificObj">{{key.key}}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bhk of allBHK;let i=index">
+        <td *ngFor="let field of bhk;">{{ field.valueN }}</td>
+        <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+</div>
 </div>
 <button type="submit" class="btn btn-primary" [disabled]="propService.isButtonDisabled" (click)="postProp()">Submit</button>
 </form> 
