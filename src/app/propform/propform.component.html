@@ -277,7 +277,8 @@
 <form (ngSubmit)="appendInividualBHK()">
   <div class="form-group" *ngFor="let field of bhkSpecificObj; let i = index">
     <label [for]="field.key">{{ field.key }}:</label>
-    <input type="text" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
+    <input *ngIf="field.key=='Carpet_Area'" type="text" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
+    <input *ngIf="field.key!='Carpet_Area'" type="number" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
   </div>
   <button type="submit">Add</button>
 </form>

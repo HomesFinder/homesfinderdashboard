@@ -126,54 +126,10 @@ deleteDatafromDB(id:any){
     alert(data)
   });
 }
+
+getAllInquries(){
+  return this.httpClient.get(this.url+"getInquriesfromDB");
+}
  }
 
-
-//  import { Pipe, PipeTransform } from '@angular/core';
-// @Pipe({
-//   name: 'priceFormat'
-// })
-// export class PriceFormatPipe implements PipeTransform {
-//   transform(value: number): string {
-//     if (value >= 10000000) {
-//       return (value / 10000000).toFixed(2) + ' Crore';
-//     } else if (value >= 100000) {
-//       return (value / 100000).toFixed(2) + 'Lakh';
-//     } else {
-//       return value.toFixed(2);
-//     }
-//   }
-// }
-
-// You can then use this pipe in your template like this:
-// {{ price | priceFormat }}
-
-// 2nd Option
-// import { Pipe, PipeTransform } from '@angular/core';
-
-// @Pipe({
-//   name: 'priceFormat'
-// })
-// export class PriceFormatPipe implements PipeTransform {
-//   transform(value: number, format: string = 'comma'): string {
-//     let formattedValue: string;
-//     if (value >= 10000000) {
-//       formattedValue = (value / 10000000).toFixed(2) + ' Crore';
-//     } else if (value >= 100000) {
-//       formattedValue = (value / 100000).toFixed(2) + 'Lakh';
-//     } else {
-//       formattedValue = value.toFixed(2);
-//     }
-
-//     if (format === 'comma') {
-//       return this.addComma(formattedValue);
-//     } else {
-//       return formattedValue;
-//     }
-//   }
-
-//   addComma(value: string): string {
-//     return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-//   }
-// }
 

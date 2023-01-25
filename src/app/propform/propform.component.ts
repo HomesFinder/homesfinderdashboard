@@ -86,7 +86,7 @@ export class PropformComponent implements OnInit {
   @Input()  bhkSpecificObj=[
     {
       "key": "BHK",
-      "valueN":''
+      "valueN":Number
     },
     {
       "key": "Carpet_Area",
@@ -94,56 +94,23 @@ export class PropformComponent implements OnInit {
     },
     {
       "key": "Pricing",
-      "valueN":''
+      "valueN":Number
     },
     {
-      "key": "Lobby",
-      "valueN":''
+      "key": "noOfBedrooms",
+      "valueN":Number
+    },
+    
+    {
+      "key": "noOfBalcony",
+      "valueN":Number
     },
     {
-      "key": "Living",
-      "valueN":''
+      "key": "noOfBathrooms",
+      "valueN":Number
     },
-    {
-      "key": "Dining",
-      "valueN":''
-    },
-    {
-      "key": "LivTerrace_Balcony",
-      "valueN":''
-    },
-    {
-      "key": "Kitchen",
-      "valueN":''
-    },
-    {
-      "key": "Dry_Balcony",
-      "valueN":''
-    },
-    {
-      "key": "CommonW_c",
-      "valueN":''
-    },
-    {
-      "key": "MasterBedroom",
-      "valueN":''
-    },
-    {
-      "key": "M_BW_c",
-      "valueN":''
-    },
-    {
-      "key": "Terrace_Balcony",
-      "valueN":''
-    },
-    {
-      "key": "Guest_Bedroom",
-      "valueN":''
-    },
-    {
-      "key": "G_BW_c",
-      "valueN":''
-    }
+    
+  
   ]
   @Input() allBHK:any[]=[]
   propFeatures=[
@@ -214,6 +181,15 @@ export class PropformComponent implements OnInit {
   postProp(){
     this.propService.isEdit=false
     console.log("in prop");
+    // const keysToTypecast = ["BHK","Pricing", "noOfBedrooms", "noOfBalcony", "noOfBathrooms"];
+
+    // for (let i = 0; i < this.bhkSpecificObj.length; i++) {
+    //   if (keysToTypecast.includes(this.bhkSpecificObj[i].key)) {
+    //     this.bhkSpecificObj[i].valueN = Number(this.bhkSpecificObj[i].valueN);
+    //   }
+    // }
+      console.log(this.bhkSpecificObj);
+      
       this.data.imagesUri=this.imagesUri
       this.data.imageToShow=this.imageToShow
       this.data.Amenities=this.amenities

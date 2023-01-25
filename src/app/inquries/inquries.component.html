@@ -1,1 +1,18 @@
-<p>inquries works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4"  *ngFor="let inq of Inquries.data">
+            <div class="card" style="margin: 1rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{ inq.name }}</h5>
+                  <p class="card-text"><b>Email:</b> {{ inq.email }}</p>
+                  <p class="card-text"><b>Mobile:</b> {{ inq.mobile }}</p>
+                  <p class="card-text"><b>Age:</b> {{ inq.age }}</p>
+                  <p class="card-text"><b>Marital Status:</b> {{ inq.maritalStatus }}</p>
+                  <p class="card-text"><b>Scheduled Date: </b>{{ inq.ScheduledDate | date }}</p>
+                  <p class="card-text"><b>Contact Method: </b>{{ inq.ContactMethod }}</p>
+                  <p class="card-text"><b>Posted On: </b>{{ inq.updatedAt | date }}</p>
+                </div>
+              </div>
+</div>
+</div>
+</div>
