@@ -33,8 +33,12 @@
       <input type="text" class="form-control" placeholder="7 Acres" [(ngModel)]="data.landParcelInAcres" name="Land Parcel in Acres">
     </div>
     <div class="mb-3">
-      <label for="text" class="form-label">Builder Land/JV</label>
-      <input type="text" class="form-control" placeholder="" [(ngModel)]="data.builder_land" name="Builder Land/JV">
+      <label for="text" class="form-label">Developer Land/JV</label>
+      <select class="form-select" [(ngModel)]="data.builder_land" name="Builder Land/JV">
+        <option>Developer land</option>
+        <option>Joint venture</option>
+    
+      </select>
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">Munciple Corporation Name</label>
