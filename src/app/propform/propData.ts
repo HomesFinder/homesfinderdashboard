@@ -2,6 +2,9 @@
 export class propData {
   constructor(
     public _id: String,
+    public reraNo: String,
+    public postedBy: String,
+    public buildFacing: String,
     public DeveloperName: String,
     public DeveloperBriefDetails: String,
     public ProjectName: String,

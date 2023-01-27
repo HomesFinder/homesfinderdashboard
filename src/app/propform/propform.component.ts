@@ -29,7 +29,7 @@ export class PropformComponent implements OnInit {
   imagesUri:any[]=[]
 
   dimensionsUris:any[]=[]
-  @Input() data=new propData('','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
+  @Input() data=new propData('','','','','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
    amenities=[
     
@@ -292,7 +292,9 @@ export class PropformComponent implements OnInit {
       console.log(this.data.aboutProperty);
       
       this.data.DeveloperBriefDetails=this.propService.currentPropHolder.DeveloperBriefDetails
-
+      this.data.reraNo=this.propService.currentPropHolder.reraNo
+      this.data.buildFacing=this.propService.currentPropHolder.buildFacing
+      this.data.constructionType=this.propService.currentPropHolder.constructionType
       
       this.cd.detectChanges();
 

@@ -12,6 +12,19 @@
       <input type="text" class="form-control" placeholder="Godrej Hills"  name="Project Name" [(ngModel)]="data.ProjectName">
     </div>
     <div class="mb-3">
+      <label for="text" class="form-label">Rera No</label>
+      <input type="text" class="form-control" placeholder="Rera no"  name="Rera No" [(ngModel)]="data.reraNo">
+    </div>
+    <div class="mb-3">
+      <label for="text" class="form-label">Project Facing</label>
+      <select class="form-select" [(ngModel)]="data.buildFacing" name="Project Facing">
+        <option>East</option>
+        <option>West</option>
+        <option>North</option>
+        <option>South</option>
+      </select>
+    </div>
+    <div class="mb-3">
       <label for="text" class="form-label">Location Name</label>
       <input type="text" class="form-control" placeholder="Example: Baner" [(ngModel)]="data.locationName" name="Location Name">
     </div>
@@ -65,7 +78,10 @@
   <div class="col">
     <div class="mb-3 mt-3">
       <label for="text" class="form-label">Construction Type</label>
-      <input type="text" class="form-control" placeholder="" [(ngModel)]="data.constructionType" name="Construction Type">
+      <select class="form-select" [(ngModel)]="data.constructionType" name="Construction Type">
+        <option>Aluform</option>
+        <option>RCC</option>
+      </select>
     </div>
     <div class="mb-3">
       <label for="text" class="form-label">Possession Timeline</label>
