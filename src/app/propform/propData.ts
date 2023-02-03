@@ -2,6 +2,7 @@
 export class propData {
   constructor(
     public _id: String,
+    public Developer:String,
     public reraNo: String,
     public postedBy: String,
     public buildFacing: String,
@@ -23,7 +24,7 @@ export class propData {
    
     public RefugeAreaFloors: String,
     public highriseCount: Number,
-    public Flat_Floor: String,
+   
     public DGBackup: String,
     public rating: number,
     public lattitude: String,
@@ -36,6 +37,7 @@ export class propData {
     public propFeatures: any[],
     public imageToShow: any[],
     public AreasNearby: any[],
-    public TypologyAvailable: any[]
+    public TypologyAvailable: any[],
+    public Flat_Floor:any[],
   ) {}
 }

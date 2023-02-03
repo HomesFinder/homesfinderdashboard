@@ -10,7 +10,7 @@ import { resolve } from 'dns';
 
 export class PropserviceService {
 
-  private url = 'https://homesfinder-service.onrender.com/api/';
+  private url = 'https://homesfinderserver2.onrender.com/api/';
   private basePath = '/uploads';
   currentPropHolder:any
   public isEdit:boolean = false
@@ -129,6 +129,11 @@ deleteDatafromDB(id:any){
 
 getAllInquries(){
   return this.httpClient.get(this.url+"getInquriesfromDB");
+}
+
+
+getAllDevelopers(): Observable<any> {
+  return this.httpClient.get<any>(this.url+"getAllDevelopersfromDB")
 }
  }
 

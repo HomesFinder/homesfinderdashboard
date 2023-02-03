@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PropformComponent } from './propform/propform.component';
 import { ProplistComponent } from './proplist/proplist.component';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AngularFireModule } from '@angular/fire/compat';
@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 import { InquriesComponent } from './inquries/inquries.component';
 import { UsersComponent } from './users/users.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
+import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +25,15 @@ import { TestimoniesComponent } from './testimonies/testimonies.component';
    
     InquriesComponent,
     UsersComponent,
-    TestimoniesComponent
+    TestimoniesComponent,
+    BuilderinfoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],

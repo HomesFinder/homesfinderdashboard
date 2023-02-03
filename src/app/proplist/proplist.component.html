@@ -1,9 +1,9 @@
 <div class="row" style="margin-top:1rem">
     <div class="col-lg-6"  *ngFor="let list of propList.data ">
       <div class="card" style="padding: 1rem;margin: 1rem;">
-      <h4>Developer Name: <b>{{list.DeveloperName}}</b></h4>
-      <h6>Project Name: <b>{{list.ProjectName}}</b></h6>
-      <h6>Flat_Floor: <b>{{list.Flat_Floor}}</b></h6>
+      <h4>Project Name: <b>{{list.ProjectName}}</b></h4>
+      <h6>Developer Name: <b>{{list.DeveloperName}}</b></h6>
+      <h6>Project Rera: <b>{{list.reraNo}}</b></h6>
       <div class="card-footer" style="background-color: white;">
         <div class="btn-group">
           <button type="button" class="btn btn-dark" (click)="editData(list)">Edit</button>

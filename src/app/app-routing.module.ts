@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InquriesComponent } from './inquries/inquries.component';
+import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
 
 import { PropformComponent } from './propform/propform.component';
 import { ProplistComponent } from './proplist/proplist.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'testimonies',
     component:TestimoniesComponent
+  },
+  {
+    path: 'builderinfo',
+    component:BuilderinfoComponent
   },
 
 ];

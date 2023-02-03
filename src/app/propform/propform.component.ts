@@ -2,6 +2,7 @@ import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectionStrategy, Component, OnInit,Input, ChangeDetectorRef  } from '@angular/core';
 import { flush } from '@angular/core/testing';
 import { fail } from 'assert';
+import { Observable } from 'rxjs';
 import {propData} from '../propform/propData'
 import {PropserviceService} from '../propservice.service'
 
@@ -27,9 +28,9 @@ export class PropformComponent implements OnInit {
    neighbour:any
    neighbourArr:any[]=[]
   imagesUri:any[]=[]
-
+  developers$!: Observable<any>;
   dimensionsUris:any[]=[]
-  @Input() data=new propData('','','','','','','','','','','','','','','',0,0,0,0,'',0,'','',0,'','','',[],[],[],[],[],[],[],[])
+  @Input() data=new propData('','','','','','','','','','','','','','','','',0,0,0,0,'',0,'',0,'','','',[],[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
    amenities=[
     
@@ -150,7 +151,13 @@ export class PropformComponent implements OnInit {
      
     },
   ]
-
+  Flat_Floor = [
+    {
+      min: 0,
+      max: 0,
+     
+    },
+  ]
   // newBhkSpecific=[
   //   {
   //     "key":"carpet",
@@ -167,8 +174,8 @@ export class PropformComponent implements OnInit {
   //     value4: [] as string[]
   //   }
   // ]  
-  ngOnInit(): void {
-  
+  ngOnInit(){
+     this.developers$= this.propService.getAllDevelopers()
   }
  ngOnChanges(){
   if(this.propService.isEdit){
@@ -198,6 +205,7 @@ export class PropformComponent implements OnInit {
       this.data.Staircase=this.staircaseList
       this.data.TypologyAvailable=this.tyopoArray
       this.data.AreasNearby=this.neighbourArr
+      this.data.Flat_Floor=this.Flat_Floor
        this.propService.postProp(this.data)
        
       console.log(this.data);
@@ -310,8 +318,13 @@ export class PropformComponent implements OnInit {
       this.neighbourArr=this.propService.currentPropHolder.AreasNearby
       this.neighbour=''
       this.data.DGBackup=this.propService.currentPropHolder.DGBackup
+      this.data.Developer=this.propService.currentPropHolder.Developer._id
 
-   
+
+      this.Flat_Floor[0].min=this.propService.currentPropHolder.Flat_Floor[0].min
+      this.Flat_Floor[0].max=this.propService.currentPropHolder.Flat_Floor[0].max
+
+
       this.cd.detectChanges();
     }
 

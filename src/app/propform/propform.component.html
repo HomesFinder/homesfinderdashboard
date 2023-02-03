@@ -2,11 +2,20 @@
   <button class="btn btn-warning" (click)="editProp()">Edit Mode</button>
   <form>
     <div class="row">
+      <div class="mb-3">
+        <label for="text" class="form-label">Developer</label>
+        <select class="form-select" name="Developers" [(ngModel)]="data.Developer">
+          <option selected disabled>select a developer</option>
+  <option *ngFor="let developer of (developers$ | async)?.data" value="{{developer._id}}">{{developer.DeveloperName}}  |   {{developer.DeveloperReraNumber}}</option>
+</select>
+
+      </div>
     <div class="col">
-    <div class="mb-3 mt-3">
+    <!-- <div class="mb-3 mt-3">
       <label for="text" class="form-label">Developer/Builder Name</label>
       <input type="text"  class="form-control" placeholder="Godrej Developers"  name="Developer Name" [(ngModel)]="data.DeveloperName">
-    </div>
+      
+    </div> -->
     <div class="mb-3">
       <label for="text" class="form-label">Project Name</label>
       <input type="text" class="form-control" placeholder="Godrej Hills"  name="Project Name" [(ngModel)]="data.ProjectName">
@@ -48,10 +57,10 @@
       <label for="number" class="form-label">Rating</label>
       <input type="number" class="form-control" placeholder="Eg: 4.5" min="1" max="5" [(ngModel)]="data.rating" name="Rating">
     </div>
-    <div class="mb-3">
+    <!-- <div class="mb-3">
       <label for="text" class="form-label">About Builder</label>
       <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails" name="DeveloperBriefDetails"></textarea>
-    </div>
+    </div> -->
     <div class="mb-3">
       <label for="text" class="form-label">About Property</label>
       <textarea class="from-control" [(ngModel)]="data.aboutProperty" name="aboutProperty"></textarea>
@@ -104,7 +113,8 @@
     </div>
     <div class="mb-3">
       <label for="number" class="form-label">Flat/Floor</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.Flat_Floor" name="Flat_Floor">
+      <input type="number" class="form-control" placeholder="min Flat/Floor" [(ngModel)]=" Flat_Floor[0].min" name="Flat_Floor">
+      <input type="number" class="form-control" placeholder="max Flat/Floor" [(ngModel)]="Flat_Floor[0].max" name="Flat_Floor">
     </div>
     <div class="mb-3">
       <label for="number" class="form-label">Project Open Space in %</label>
@@ -296,7 +306,7 @@
     <input *ngIf="field.key=='Carpet_Area'" type="text" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
     <input *ngIf="field.key!='Carpet_Area'" type="number" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
   </div>
-  <button type="submit">Add</button>
+  <button type="submit" style="margin-top: 15px; margin-bottom: 15px;">Add</button>
 </form>
 </div>
 <div class="col col-lg-10">
