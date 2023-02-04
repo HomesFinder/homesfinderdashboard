@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { PropserviceService } from 'src/app/propservice.service';
 
 @Component({
   selector: 'app-builderinfo',
@@ -11,21 +12,22 @@ export class BuilderinfoComponent implements OnInit {
   form: any;
   
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,public propService:PropserviceService) { }
 
   ngOnInit(): void {
    
 
   
       this.form = this.fb.group({
-        developerName: ['', Validators.required],
-        reraNumber: ['', Validators.required],
-        developerInformation: ['', Validators.required]
+        DeveloperName: ['', Validators.required],
+        DeveloperReraNumber: ['', Validators.required],
+        DeveloperBriefDetails: ['', Validators.required]
       });
     } 
   
     onsubmit() {
       console.log(this.form.value);
+      this.propService.postDeveloper(this.form.value)
     }
   }
   

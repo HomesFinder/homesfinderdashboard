@@ -16,6 +16,7 @@ import { InquriesComponent } from './inquries/inquries.component';
 import { UsersComponent } from './users/users.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.compone
     InquriesComponent,
     UsersComponent,
     TestimoniesComponent,
-    BuilderinfoComponent
+    BuilderinfoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

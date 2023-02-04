@@ -2,15 +2,15 @@
     <formGroup [formGroup]="form">
       <div class="mb-3 mt-3">
         <label for="text" class="form-label">Developer Name:</label>
-        <input type="text" class="form-control" placeholder=" Developers Name" formControlName="developerName">
+        <input type="text" class="form-control" placeholder=" Developers Name" formControlName="DeveloperName">
       </div>
       <div class="mb-3">
         <label for="text" class="form-label">Developer Rera Number:</label>
-        <input type="text" class="form-control" placeholder="Developer Rera Number" formControlName="reraNumber">
+        <input type="text" class="form-control" placeholder="Developer Rera Number" formControlName="DeveloperReraNumber">
       </div>
       <div class="mb-3">
         <label for="text" class="form-label">Developer Information:</label>
-        <textarea type="text" class="form-control" placeholder="Developer Information" formControlName="developerInformation"></textarea>
+        <textarea type="text" class="form-control" placeholder="Developer Information" formControlName="DeveloperBriefDetails"></textarea>
       </div>
       <button class="btn-btn dark" style="background-color: black;color: white;" type="submit" (click)="onsubmit()">submit</button>
     </formGroup>

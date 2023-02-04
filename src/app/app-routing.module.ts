@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthRouteGuard } from './auth-route.guard';
 import { InquriesComponent } from './inquries/inquries.component';
+import { LoginComponent } from './login/login.component';
 import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
 
 import { PropformComponent } from './propform/propform.component';
@@ -23,19 +25,28 @@ const routes: Routes = [
   },
   {
     path: 'inquiries',
-    component:InquriesComponent
+    component:InquriesComponent,
+    canActivate: [AuthRouteGuard]
+
   },
   {
     path: 'users',
-    component:UsersComponent
+    component:UsersComponent,
+    canActivate: [AuthRouteGuard]
   },
   {
     path: 'testimonies',
-    component:TestimoniesComponent
+    component:TestimoniesComponent,
+    canActivate: [AuthRouteGuard]
   },
   {
     path: 'builderinfo',
-    component:BuilderinfoComponent
+    component:BuilderinfoComponent,
+    canActivate: [AuthRouteGuard]
+  },
+  {
+    path: 'login',
+    component:LoginComponent
   },
 
 ];

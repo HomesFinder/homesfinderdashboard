@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, Observable } from 'rxjs';
 import { resolve } from 'dns';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class PropserviceService {
   public isEdit:boolean = false
    public uploadComplete = false;
   public isButtonDisabled: boolean = false;
+  isLoggedIn:boolean=false
   constructor(private httpClient: HttpClient, private storage: AngularFireStorage) { }
   getPosts(){
     return this.httpClient.get(this.url+"getPropertyfromDB");
@@ -134,6 +136,20 @@ getAllInquries(){
 
 getAllDevelopers(): Observable<any> {
   return this.httpClient.get<any>(this.url+"getAllDevelopersfromDB")
+}
+
+postDeveloper(form:any)  {
+  console.log(form);
+  
+  return this.httpClient.post(this.url+"postDeveloperinDB",form).subscribe((data:any) => {
+   
+    console.log("Developer Added");
+    alert(data.message)
+  },(error) => { alert(error.error.message); console.log(error);
+   });
+}
+isAuthenticated(){
+  return this.isLoggedIn
 }
  }
 
