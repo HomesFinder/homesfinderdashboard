@@ -6,7 +6,7 @@
         <label for="text" class="form-label">Developer</label>
         <select class="form-select" name="Developers" [(ngModel)]="data.Developer">
           <option selected disabled>select a developer</option>
-  <option *ngFor="let developer of (developers$ | async)?.data" value="{{developer._id}}">{{developer.DeveloperName}}  |   {{developer.DeveloperReraNumber}}</option>
+  <option *ngFor="let developer of (developers$ | async)?.data" value="{{developer._id}}">{{developer.DeveloperName}} </option>
 </select>
 
       </div>

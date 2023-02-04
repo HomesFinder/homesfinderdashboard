@@ -20,7 +20,7 @@ export class BuilderinfoComponent implements OnInit {
   
       this.form = this.fb.group({
         DeveloperName: ['', Validators.required],
-        DeveloperReraNumber: ['', Validators.required],
+        // DeveloperReraNumber: ['', Validators.required],
         DeveloperBriefDetails: ['', Validators.required]
       });
     } 
