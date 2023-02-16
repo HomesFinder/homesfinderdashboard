@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthRouteGuard } from './auth-route.guard';
+import { BhkSpecificComponent } from './bhk-specific/bhk-specific.component';
 import { InquriesComponent } from './inquries/inquries.component';
 import { LoginComponent } from './login/login.component';
 import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
@@ -48,6 +49,10 @@ const routes: Routes = [
     path: 'login',
     component:LoginComponent
   },
+  {
+    path:'bhkSpecific',
+    component:BhkSpecificComponent
+  }
 
 ];
 

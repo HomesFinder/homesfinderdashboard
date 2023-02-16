@@ -151,6 +151,19 @@ postDeveloper(form:any)  {
 isAuthenticated(){
   return this.isLoggedIn
 }
+
+  postBHKVariant(bhkForm:any){
+    this.httpClient.post(this.url + "postBhkVariantinDB",bhkForm ).subscribe((data:any) => {
+    
+      console.log("Variant Posted Successfully",data);
+      alert(data.msg)
+    },(err)=>{
+      console.log("Variant not posted ",err);
+      alert("Error Occured")
+    });
+  }
+
+
  }
 
 

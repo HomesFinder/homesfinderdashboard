@@ -17,7 +17,8 @@ import { UsersComponent } from './users/users.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
 import { LoginComponent } from './login/login.component';
-
+import { BhkSpecificComponent } from './bhk-specific/bhk-specific.component';
+import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { LoginComponent } from './login/login.component';
     UsersComponent,
     TestimoniesComponent,
     BuilderinfoComponent,
-    LoginComponent
+    LoginComponent,
+    BhkSpecificComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +39,11 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    NgbModule,
+    NgbTypeaheadModule
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

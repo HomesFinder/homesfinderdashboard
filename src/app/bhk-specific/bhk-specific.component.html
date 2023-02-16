@@ -1,10 +1,21 @@
 <div class="row-cols-auto justify-content-between align-items-start g-2">
-    <div class="col col-2">
+
+    <div class="col col-4">
+
+        
         <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="row g-3">
-            <!-- <div class="col-6">
-              <label for="PropertyID" class="form-label">Property ID</label>
-              <input type="text" id="PropertyID" formControlName="PropertyID" class="form-control" required>
-            </div> -->
+           
+          <div>
+           
+                  <div class="mb-3">
+                    <label for="" class="form-label">Project Name</label>
+                    <select class="form-select form-select-lg" name="" id="" formControlName="tempHolder" >
+                      <option selected disabled>Select one</option>
+                      <option *ngFor="let item of propList "   [ngValue]="{ id: item._id, locationName: item.locationName }" >{{item.ProjectName}} | {{item.reraNo}}</option>
+                     
+                    </select>
+                  </div>
+          </div>
             <div class="col-6">
               <label for="BHK" class="form-label">BHK</label>
               <input type="number" id="BHK" formControlName="BHK" class="form-control" required>
