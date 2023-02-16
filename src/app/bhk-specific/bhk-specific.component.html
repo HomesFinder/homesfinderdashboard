@@ -1,0 +1,41 @@
+<div class="row-cols-auto justify-content-between align-items-start g-2">
+    <div class="col col-2">
+        <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()" class="row g-3">
+            <!-- <div class="col-6">
+              <label for="PropertyID" class="form-label">Property ID</label>
+              <input type="text" id="PropertyID" formControlName="PropertyID" class="form-control" required>
+            </div> -->
+            <div class="col-6">
+              <label for="BHK" class="form-label">BHK</label>
+              <input type="number" id="BHK" formControlName="BHK" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="Carpet_Area" class="form-label">Carpet Area</label>
+              <input type="number" id="Carpet_Area" formControlName="Carpet_Area" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="Pricing" class="form-label">Pricing</label>
+              <input type="number" id="Pricing" formControlName="Pricing" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="noOfBedrooms" class="form-label">No. of Bedrooms</label>
+              <input type="number" id="noOfBedrooms" formControlName="noOfBedrooms" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="noOfBalcony" class="form-label">No. of Balconies</label>
+              <input type="number" id="noOfBalcony" formControlName="noOfBalcony" class="form-control" required>
+            </div>
+            <div class="col-6">
+              <label for="noOfBathrooms" class="form-label">No. of Bathrooms</label>
+              <input type="number" id="noOfBathrooms" formControlName="noOfBathrooms" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+    </div>
+    <div class="col">
+
+    </div>
+   
+</div>
