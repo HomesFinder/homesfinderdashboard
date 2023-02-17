@@ -153,17 +153,15 @@ isAuthenticated(){
 }
 
   postBHKVariant(bhkForm:any){
-    this.httpClient.post(this.url + "postBhkVariantinDB",bhkForm ).subscribe((data:any) => {
-    
-      console.log("Variant Posted Successfully",data);
-      alert(data.msg)
-    },(err)=>{
-      console.log("Variant not posted ",err);
-      alert("Error Occured")
-    });
+    return this.httpClient.post(this.url + "postBhkVariantinDB",bhkForm )
   }
 
-
+  getAllVaraintofProject(id:any){
+    return this.httpClient.post(this.url + "getAllBhkVarinatbyID",{"projectID":id} )
+  }
+  deleteSpecificVariant(id:any){
+    return this.httpClient.post(this.url + "deleteBhkVariantfromDB",{"_id":id} )
+  }
  }
 
 

@@ -17,7 +17,8 @@ export class BhkSpecificComponent implements OnInit {
   propertyForm!: FormGroup;
   propList:any[]=[]
   selectedProjectLocation:any
-
+  variantList:any[]=[]
+  variantNo:Number=0
   constructor(private fb: FormBuilder,public propService:PropserviceService) { 
       this.propService.getPosts().subscribe((data:any)=>{
         console.log(data);
@@ -64,8 +65,35 @@ export class BhkSpecificComponent implements OnInit {
     }
    
     // this.propertyForm.value.ProjectLocation=this.selectedProjectLocation
-    this.propService.postBHKVariant(this.propertyForm.value)
+    this.propService.postBHKVariant(this.propertyForm.value).subscribe((data:any) => {
+    
+      console.log("Variant Posted Successfully",data);
+      alert(data.msg)
+      this.getBHKVariants()
+    },(err)=>{
+      console.log("Variant not posted ",err);
+      alert("Error Occured")
+    });
     // Do something with the new property data (e.g. save it to a database)
   }
 
+  getBHKVariants(){
+        const tempHolderValue = this.propertyForm.value.tempHolder;
+        this.propService.getAllVaraintofProject(tempHolderValue.id).subscribe((data:any)=>{
+          this.variantList=data.data
+          this.variantNo=this.variantList.length
+        },(err:any)=>{console.log(err);
+        })
+  }
+  deleteVariant(id:any){
+    this.propService.deleteSpecificVariant(id).subscribe((data:any)=>{
+      console.log(data);
+      alert(data.msg)
+      this.getBHKVariants()
+      
+    },(err:any)=>{
+      console.log(err);
+      alert(err)
+    })
+  }
 }
