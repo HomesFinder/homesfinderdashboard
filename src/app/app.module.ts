@@ -19,6 +19,7 @@ import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.compone
 import { LoginComponent } from './login/login.component';
 import { BhkSpecificComponent } from './bhk-specific/bhk-specific.component';
 import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +42,8 @@ import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFireModule.initializeApp(environment.firebase),
     ReactiveFormsModule,
     NgbModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+   
     
 
   ],

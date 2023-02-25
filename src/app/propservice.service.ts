@@ -148,6 +148,9 @@ postDeveloper(form:any)  {
   },(error) => { alert(error.error.message); console.log(error);
    });
 }
+updateDeveloperPriority(form:any){
+  return this.httpClient.put(this.url + "priorotizeDeveloper",form )
+}
 isAuthenticated(){
   return this.isLoggedIn
 }

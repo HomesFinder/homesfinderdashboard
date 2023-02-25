@@ -1,4 +1,6 @@
 <div class="container" style="margin-top: 5rem;">
+  <div class="row">
+    <div class="col-6">
     <formGroup [formGroup]="form">
       <div class="mb-3 mt-3">
         <label for="text" class="form-label">Developer Name:</label>
@@ -12,6 +14,52 @@
         <label for="text" class="form-label">Developer Information:</label>
         <textarea type="text" class="form-control" placeholder="Developer Information" formControlName="DeveloperBriefDetails"></textarea>
       </div>
+      <div class="mb-3 mt-3">
+        <label for="number" class="form-label">Developer Priority:</label>
+        <input type="number" class="form-control" placeholder="within 1 to 3" min="1" max="3" formControlName="DeveloperPriority">
+      </div>
       <button class="btn-btn dark" style="background-color: black;color: white;" type="submit" (click)="onsubmit()">submit</button>
     </formGroup>
+
+    <div class="container">
+      <h3>Update the Priority</h3>
+      <form [formGroup]="updateID" (ngSubmit)="onIDUpdate()">
+        <div class="form-group">
+          <label for="_id">ID:</label>
+          <input type="text" formControlName="_id" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="DeveloperName">Developer Name:</label>
+          <input type="text" formControlName="DeveloperName" class="form-control" [disabled]="disable">
+        </div>
+        <div class="form-group">
+          <label for="DeveloperPriority">Developer Priority:</label>
+          <input type="number" formControlName="priority" class="form-control" min="1" max="3">
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+      </form>
+      
+    </div>
+    </div>
+    <div class="col-6" >
+      <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="Search by Name"
+          class="form-control" name="Name" id="Name" aria-describedby="helpId" placeholder="" [(ngModel)]="search">
+        <small id="helpId" class="form-text text-muted">Search by Developer Name</small>
+      </div>
+      <div class="container"  style="position: fixed; height: 80%; overflow: auto;margin-bottom: 3rem;">
+      <div *ngFor="let item of allDevelopers">
+        <div class="card">
+          
+          <div class="card-body">
+            <h4 class="card-title">Developer Name: <b>{{item.DeveloperName}}</b></h4>
+            <h5 class="card-title">Developer Priority:<b> {{item.DeveloperPriority}}</b></h5>
+            <button type="button" class="btn btn-danger btn-lg" (click)="editProp(item)">Edit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
 </div>
