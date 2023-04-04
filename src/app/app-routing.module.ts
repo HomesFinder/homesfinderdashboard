@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.component';
 
 import { PropformComponent } from './propform/propform.component';
+import { Propform2Component } from './propform2/propform2.component';
 import { ProplistComponent } from './proplist/proplist.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { UsersComponent } from './users/users.component';
@@ -52,6 +53,11 @@ const routes: Routes = [
   {
     path:'bhkSpecific',
     component:BhkSpecificComponent
+  },
+
+  {
+    path:'propform2',
+    component:Propform2Component
   }
 
 ];

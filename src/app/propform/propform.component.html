@@ -6,329 +6,241 @@
         <label for="text" class="form-label">Developer</label>
         <select class="form-select" name="Developers" [(ngModel)]="data.Developer">
           <option selected disabled>select a developer</option>
-  <option *ngFor="let developer of (developers$ | async)?.data" value="{{developer._id}}">{{developer.DeveloperName}} </option>
-</select>
-
+          <option *ngFor="let developer of (developers$ | async)?.data" value="{{developer._id}}">{{developer.DeveloperName}} </option>
+        </select>
       </div>
-    <div class="col">
-    <!-- <div class="mb-3 mt-3">
-      <label for="text" class="form-label">Developer/Builder Name</label>
-      <input type="text"  class="form-control" placeholder="Godrej Developers"  name="Developer Name" [(ngModel)]="data.DeveloperName">
-      
-    </div> -->
-    <div class="mb-3">
-      <label for="text" class="form-label">Project Name</label>
-      <input type="text" class="form-control" placeholder="Godrej Hills"  name="Project Name" [(ngModel)]="data.ProjectName">
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Rera No</label>
-      <input type="text" class="form-control" placeholder="Rera no"  name="Rera No" [(ngModel)]="data.reraNo">
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Flat Facing</label>
-      <input type="text" class="form-control" placeholder="Flat Facing"  name="Flat Facing" [(ngModel)]="data.buildFacing">
-   
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Location Name</label>
-      <input type="text" class="form-control" placeholder="Example: Baner" [(ngModel)]="data.locationName" name="Location Name">
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Land Parcel in Acres</label>
-      <input type="text" class="form-control" placeholder="7 Acres" [(ngModel)]="data.landParcelInAcres" name="Land Parcel in Acres">
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Developer Land/JV</label>
-      <select class="form-select" [(ngModel)]="data.builder_land" name="Builder Land/JV">
-        <option>Developer land</option>
-        <option>Joint venture</option>
-    
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Munciple Corporation Name</label>
-      <select class="form-select" [(ngModel)]="data.MuncipleCorporationName" name="MuncipleCorporationName">
-        <option>PMC</option>
-        <option>PCMC</option>
-        <option>PMRDA</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">Rating</label>
-      <input type="number" class="form-control" placeholder="Eg: 4.5" min="1" max="5" [(ngModel)]="data.rating" name="Rating">
-    </div>
-    <!-- <div class="mb-3">
-      <label for="text" class="form-label">About Builder</label>
-      <textarea class="from-control" [(ngModel)]="data.DeveloperBriefDetails" name="DeveloperBriefDetails"></textarea>
-    </div> -->
-    <div class="mb-3">
-      <label for="text" class="form-label">About Property</label>
-      <textarea class="from-control" [(ngModel)]="data.aboutProperty" name="aboutProperty"></textarea>
-    </div>
-    <div class="input-group">
-
-      <input type="text" aria-label="lattitude" class="form-control"  placeholder="lattitude" name="lattitude" [(ngModel)]="data.lattitude">
-      <input type="text" aria-label="longitiude" class="form-control" placeholder="longitude" name="longititude" [(ngModel)]="data.longitude">
-    </div>
-    <br>
-    <div>
-      <label for="files">Image to show:</label><br>
-      <input type="file" id="files" name="files"  (change)="imageToShowInput($event)"><br><br>
-      <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index"><li><img src={{uri}} height="100"> </li></ul>
-      
-    </div>
-    <div>
-      <label for="files">All Image for Property:</label><br>
-      <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
-      <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
-      
-    </div>
-  </div>
-  <div class="col">
-    <div class="mb-3 mt-3">
-      <label for="text" class="form-label">Construction Type</label>
-      <select class="form-select" [(ngModel)]="data.constructionType" name="Construction Type">
-        <option>Aluform</option>
-        <option>RCC</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="text" class="form-label">Possession Timeline</label>
-      <select class="form-select" [(ngModel)]="data.possessionTimeline" name="Possession Timeline">
-        <option>Ready Possession</option>
-        <option>Under Construction</option>
-      </select>
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">Total Number of Units</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.totalNumberOfUnits" name="Total Number of Units">
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">No of Towers</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfTowers" name="No of Towers">
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">Highrise Count</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.highriseCount" name="Highrise Count">
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">Flat/Floor</label>
-      <input type="number" class="form-control" placeholder="min Flat/Floor" [(ngModel)]=" Flat_Floor[0].min" name="Flat_Floor">
-      <input type="number" class="form-control" placeholder="max Flat/Floor" [(ngModel)]="Flat_Floor[0].max" name="Flat_Floor">
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">Project Open Space in %</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.ProjectOpenSpace" name="ProjectOpenSpace">
-    </div>
-    <div class="mb-3">
-      <label for="number" class="form-label">No Of Lifts</label>
-      <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="noOfLifts">
-    </div>
-    <!-- <div class="mb-3">
-      <label for="number" class="form-label">Staircase</label>
-      <div *ngFor="let stair of staircaseList">
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="check1" [(ngModel)]="stair.common" name="option1" value=true checked>
-      <label class="form-check-label" for="check1">Common: </label>
-    </div>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="check2" [(ngModel)]="stair.fireExit" name="option2" value=true>
-      <label class="form-check-label" for="check2">Fire Exit:</label>
-    </div>
-  </div> -->
-  <!-- </div> -->
-  <div class="mb-3">
-    <label for="text" class="form-label">Refugee Area- Floors</label>
-    <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors" name="RefugeAreaFloors">
-  </div>
-  <div class="mb-3">
-    <label for="text" class="form-label">DG Backup</label>
-    <select class="form-select" [(ngModel)]="data.DGBackup" name="DGBackup">
-      <option value="Common">Common</option>
-      <option value="Flats">Flats</option>
-    </select>
-  </div>
-  </div>
-  <div class="col">
-  <!-- Features -->
-  <div class="mb-3 mt-3">
-    <label for="radio" class="form-label">Features</label>
-     <table class="table table-bordered">
-       <thead>
-         <tr>
-       <th>Feature</th>
-       <th>Value</th>
-     </tr>
-   </thead>
-       
-   
-    <tbody  *ngFor="let feature of propFeatures">
-         <tr>
-         <td>{{feature.key}}</td>
-      
-         <td>
-           <div class="form-check">
-            
-             <input type="radio"  class="form-check-input" id="radio1" name={{feature.key}} value=true [(ngModel)]="feature.value" >
-             <label class="form-check-label" for="radio1">Yes</label>
-           </div>
-           <div class="form-check">
-             <input type="radio"  class="form-check-input" id="radio2"  name={{feature.key}} value=false [(ngModel)]="feature.value"checked>
-             <label class="form-check-label" for="radio2">No</label>
-           </div>
-         </td>
-       </tr>
-     </tbody>
-       
-     </table>
-      
-     <div class="form-floating  mb-3">
-
-      <div class="input-group">
-        <!-- <span class="input-group-text" style="font-size: smaller;">Neighbourhood</span> -->
-  
-        <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhoods" [(ngModel)]="neighbour" name="neighbour">
-       
-      
-      <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
-     
-    </div>
-    <table class="table">
-      <tr>
-      <td>Neighbourhood List</td>
-   
-    </tr>
-    <tr *ngFor="let n of neighbourArr; index as ind" name="table">
-        <td>{{n}}</td>
-  
-        <button class="btn btn-danger " (click)="removeNeighbour(ind)">X</button>
-    </tr>
-    </table>
-    </div>
-   </div>
-  </div>
-  <div class="col">
-  <!-- Amenities -->
-  <div class="mb-3 mt-3">
-   <label for="radio" class="form-label">Amenities</label>
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-      <th>Amenity</th>
-      <th>Value</th>
-    </tr>
-  </thead>
-      
-  
-   <tbody  *ngFor="let amenity of amenities">
-        <tr>
-        <td>{{amenity.key}}</td>
-     
-        <td>
-          <div class="form-check">
-           
-            <input type="radio" class="form-check-input" id="radio1" name={{amenity.key}} value=true [(ngModel)]="amenity.value" >
-            <label class="form-check-label" for="radio1">Yes</label>
+      <div class="col">
+        <div class="mb-3">
+          <label for="text" class="form-label">Project Name</label>
+          <input type="text" class="form-control" placeholder="Godrej Hills" name="Project Name" [(ngModel)]="data.ProjectName">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Rera No</label>
+          <input type="text" class="form-control" placeholder="Rera no" name="Rera No" [(ngModel)]="data.reraNo">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Flat Facing</label>
+          <input type="text" class="form-control" placeholder="Flat Facing" name="Flat Facing" [(ngModel)]="data.buildFacing">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Location Name</label>
+          <input type="text" class="form-control" placeholder="Example: Baner" [(ngModel)]="data.locationName" name="Location Name">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Land Parcel in Acres</label>
+          <input type="text" class="form-control" placeholder="7 Acres" [(ngModel)]="data.landParcelInAcres" name="Land Parcel in Acres">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Developer Land/JV</label>
+          <select class="form-select" [(ngModel)]="data.builder_land" name="Builder Land/JV">
+            <option>Developer land</option>
+            <option>Joint venture</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Munciple Corporation Name</label>
+          <select class="form-select" [(ngModel)]="data.MuncipleCorporationName" name="MuncipleCorporationName">
+            <option>PMC</option>
+            <option>PCMC</option>
+            <option>PMRDA</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">Rating</label>
+          <input type="number" class="form-control" placeholder="Eg: 4.5" min="1" max="5" [(ngModel)]="data.rating" name="Rating">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">About Property</label>
+          <textarea class="from-control" [(ngModel)]="data.aboutProperty" name="aboutProperty"></textarea>
+        </div>
+        <div class="input-group">
+          <input type="text" aria-label="lattitude" class="form-control" placeholder="lattitude" name="lattitude" [(ngModel)]="data.lattitude">
+          <input type="text" aria-label="longitiude" class="form-control" placeholder="longitude" name="longititude" [(ngModel)]="data.longitude">
+        </div>
+        <br>
+        <div>
+          <label for="files">Image to show:</label>
+          <br>
+          <input type="file" id="files" name="files" (change)="imageToShowInput($event)">
+          <br>
+          <br>
+          <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index">
+            <li>
+              <img src={{uri}} height="100">
+            </li>
+          </ul>
+        </div>
+        <div>
+          <label for="files">All Image for Property:</label>
+          <br>
+          <input type="file" id="files" name="files" (change)="handleFileInput($event)" multiple>
+          <br>
+          <br>
+          <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index">
+            <li>
+              <img src={{uri}} height="100">
+              <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3 mt-3">
+          <label for="text" class="form-label">Construction Type</label>
+          <select class="form-select" [(ngModel)]="data.constructionType" name="Construction Type">
+            <option>Aluform</option>
+            <option>RCC</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Possession Timeline</label>
+          <select class="form-select" [(ngModel)]="data.possessionTimeline" name="Possession Timeline">
+            <option>Ready Possession</option>
+            <option>Under Construction</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">Total Number of Units</label>
+          <input type="number" class="form-control" placeholder="" [(ngModel)]="data.totalNumberOfUnits" name="Total Number of Units">
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">No of Towers</label>
+          <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfTowers" name="No of Towers">
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">Highrise Count</label>
+          <input type="number" class="form-control" placeholder="" [(ngModel)]="data.highriseCount" name="Highrise Count">
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">Flat/Floor</label>
+          <input type="number" class="form-control" placeholder="min Flat/Floor" [(ngModel)]=" Flat_Floor[0].min" name="Flat_Floor">
+          <input type="number" class="form-control" placeholder="max Flat/Floor" [(ngModel)]="Flat_Floor[0].max" name="Flat_Floor">
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">Project Open Space in %</label>
+          <input type="number" class="form-control" placeholder="" [(ngModel)]="data.ProjectOpenSpace" name="ProjectOpenSpace">
+        </div>
+        <div class="mb-3">
+          <label for="number" class="form-label">No Of Lifts</label>
+          <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="noOfLifts">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">Refugee Area- Floors</label>
+          <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors" name="RefugeAreaFloors">
+        </div>
+        <div class="mb-3">
+          <label for="text" class="form-label">DG Backup</label>
+          <select class="form-select" [(ngModel)]="data.DGBackup" name="DGBackup">
+            <option value="Common">Common</option>
+            <option value="Flats">Flats</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <!-- Features -->
+        <div class="mb-3 mt-3">
+          <label for="radio" class="form-label">Features</label>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let feature of propFeatures">
+              <tr>
+                <td>{{feature.key}}</td>
+                <td>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio1" name={{feature.key}} value=true [(ngModel)]="feature.value">
+                    <label class="form-check-label" for="radio1">Yes</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio2" name={{feature.key}} value=false [(ngModel)]="feature.value" checked>
+                    <label class="form-check-label" for="radio2">No</label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="form-floating  mb-3">
+            <div class="input-group">
+              <!-- <span class="input-group-text" style="font-size: smaller;">Neighbourhood</span> -->
+              <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhoods" [(ngModel)]="neighbour" name="neighbour">
+              <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
+            </div>
+            <table class="table">
+              <tr>
+                <td>Neighbourhood List</td>
+              </tr>
+              <tr *ngFor="let n of neighbourArr; index as ind" name="table">
+                <td>{{n}}</td>
+                <button class="btn btn-danger " (click)="removeNeighbour(ind)">X</button>
+              </tr>
+            </table>
           </div>
-          <div class="form-check">
-            <input type="radio" class="form-check-input" id="radio2"  name={{amenity.key}} value=false [(ngModel)]="amenity.value" checked>
-            <label class="form-check-label" for="radio2">No</label>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-      
-    </table>
-     
-   
-  </div>
-  
-</div> 
-   
-
-<!-- <div>
-  <div class="input-group">
-    <label >Select BHK  </label>
-    <select class="form-select" [(ngModel)]="bhk" name="bhk">
-     
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-    </select>
-    <input type="text"  class="form-control" name="bhkArea" [(ngModel)]="bhkArea" placeholder="Carpet Area 102x205">
-    <input type="number"  class="form-control"  name="bhkPrice" [(ngModel)]="bhkPrice" placeholder="75000000">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="appendBHK()">Add</button>
-  </div>
-</div> -->
-
-<!-- <table class="table table-bordered mt-4" *ngIf="propService.isEdit==false">
-  <hr>
-  <thead>
-    <tr>
-      <td>BHK</td>
-      <td>BHK Area</td>
-      <td>BHK Price</td>
-    </tr>
-  </thead>
-  <tbody *ngFor="let typoArr of tyopoArray;let i=index">
-    <tr>
-  <td>{{typoArr.bhk}}</td>
-  <td>{{typoArr.bhkArea}}</td>
-  <td>{{typoArr.bhkPrice}}</td>
-  <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
-</tr>
-  </tbody>
-</table> -->
-<!-- <table class="table table-bordered mt-4" *ngIf="propService.isEdit==true">
-  <hr>
-  <thead>
-    <tr>
-      <td>BHK</td>
-      <td>BHK Area</td>
-      <td>BHK Price</td>
-    </tr>
-  </thead>
-  <tbody *ngFor="let typoArr of editabletyopoArray;let i=index">
-    <tr>
-  <td>{{typoArr.bhk}}</td>
-  <td>{{typoArr.bhkArea}}</td>
-  <td>{{typoArr.bhkPrice}}</td>
-  <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
-</tr>
-  </tbody>
-</table> -->
-<div class="row">
-  <div class="col col-lg-2">
-<form (ngSubmit)="appendInividualBHK()">
-  <div class="form-group" *ngFor="let field of bhkSpecificObj; let i = index">
-    <label [for]="field.key">{{ field.key }}:</label>
-    <input *ngIf="field.key=='Carpet_Area'" type="text" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
-    <input *ngIf="field.key!='Carpet_Area'" type="number" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
-  </div>
-  <button type="submit" style="margin-top: 15px; margin-bottom: 15px;">Add</button>
-</form>
+        </div>
+      </div>
+      <div class="col">
+        <!-- Amenities -->
+        <div class="mb-3 mt-3">
+          <label for="radio" class="form-label">Amenities</label>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Amenity</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let amenity of amenities">
+              <tr>
+                <td>{{amenity.key}}</td>
+                <td>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio1" name={{amenity.key}} value=true [(ngModel)]="amenity.value">
+                    <label class="form-check-label" for="radio1">Yes</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" class="form-check-input" id="radio2" name={{amenity.key}} value=false [(ngModel)]="amenity.value" checked>
+                    <label class="form-check-label" for="radio2">No</label>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col col-lg-2">
+          <form (ngSubmit)="appendInividualBHK()">
+            <div class="form-group" *ngFor="let field of bhkSpecificObj; let i = index">
+              <label [for]="field.key">{{ field.key }}:</label>
+              <input *ngIf="field.key=='Carpet_Area'" type="text" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
+              <input *ngIf="field.key!='Carpet_Area'" type="number" class="form-control" [id]="field.key" [(ngModel)]="bhkSpecificObj[i].valueN" [name]="field.key" [placeholder]="field.key">
+            </div>
+            <button type="submit" style="margin-top: 15px; margin-bottom: 15px;">Add</button>
+          </form>
+        </div>
+        <div class="col col-lg-10">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th *ngFor="let key of bhkSpecificObj">{{key.key}}</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bhk of allBHK;let i=index">
+                <td *ngFor="let field of bhk;">{{ field.valueN }}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="removetypo(i)">X</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="propService.isButtonDisabled" (click)="postProp()">Submit</button>
+  </form>
 </div>
-<div class="col col-lg-10">
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th *ngFor="let key of bhkSpecificObj">{{key.key}}</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let bhk of allBHK;let i=index">
-        <td *ngFor="let field of bhk;">{{ field.valueN }}</td>
-        <td><button class="btn btn-danger" (click)="removetypo(i)">X</button></td>
-      </tr>
-    </tbody>
-  </table>
-  
-</div>
-</div>
-</div>
-<button type="submit" class="btn btn-primary" [disabled]="propService.isButtonDisabled" (click)="postProp()">Submit</button>
-</form> 
-</div>
-

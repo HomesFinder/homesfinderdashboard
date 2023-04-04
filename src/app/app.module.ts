@@ -19,7 +19,15 @@ import { BuilderinfoComponent } from './propform/builderinfo/builderinfo.compone
 import { LoginComponent } from './login/login.component';
 import { BhkSpecificComponent } from './bhk-specific/bhk-specific.component';
 import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { Propform2Component } from './propform2/propform2.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +39,12 @@ import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     TestimoniesComponent,
     BuilderinfoComponent,
     LoginComponent,
-    BhkSpecificComponent
+    BhkSpecificComponent,
+    Propform2Component
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -43,6 +53,13 @@ import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     NgbModule,
     NgbTypeaheadModule,
+    MatSlideToggleModule,
+    MatStepperModule,
+    MatInputModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule
    
     
 
