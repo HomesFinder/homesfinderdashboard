@@ -30,7 +30,7 @@ export class PropformComponent implements OnInit {
   imagesUri:any[]=[]
   developers$!: Observable<any>;
   dimensionsUris:any[]=[]
-  @Input() data=new propData('','','','','','','','','','','','','','','','',0,0,0,0,'',0,'',0,'','','',[],[],[],[],[],[],[],[],[])
+  @Input() data=new propData('','','','','','','','','','','','','','','','','',0,0,0,0,'',0,'',0,'','','',[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
    amenities=[
     

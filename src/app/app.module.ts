@@ -28,6 +28,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { Propform2Component } from './propform2/propform2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatChipsModule} from '@angular/material/chips';
+import { ListfilterPipe } from './Pipes/listfilter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BuilderinfoComponent,
     LoginComponent,
     BhkSpecificComponent,
-    Propform2Component
+    Propform2Component,
+    ListfilterPipe
   ],
   imports: [
     BrowserModule,
@@ -59,12 +63,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatSelectModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
    
     
 
   ],
-  providers: [],
+  providers: [ListfilterPipe],
+  exports:[ListfilterPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

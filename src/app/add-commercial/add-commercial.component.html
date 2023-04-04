@@ -1,0 +1,64 @@
+<form>
+    <div class="row g-3">
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <!-- <label for="developerID" class="form-label">Developer ID</label>
+        <input type="text" class="form-control" id="developerID" name="developerID"> -->
+  
+        <label for="projectName" class="form-label">Project Name</label>
+        <input type="text" class="form-control" id="projectName" name="projectName" [(ngModel)]="data.projectName">
+  
+        <label for="ReraNo" class="form-label">Rera No</label>
+        <input type="text" class="form-control" id="ReraNo" name="ReraNo" [(ngModel)]="data.ReraNo">
+  
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" id="location" name="location" [(ngModel)]="data.location">
+  
+        <label for="muncilpleCorpName" class="form-label">Municipal Corp Name</label>
+        <input type="text" class="form-control" id="muncilpleCorpName" name="muncilpleCorpName" [(ngModel)]="data.muncilpleCorpName">
+      
+        <label for="latittude" class="form-label">Latittude</label>
+        <input type="text" class="form-control" id="latittude" name="latittude" [(ngModel)]="data.latittude">
+            
+        <label for="longitude" class="form-label">Longitude</label>
+        <input type="text" class="form-control" id="longitude" name="longitude" [(ngModel)]="data.longitude">
+    </div>
+
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <form>
+          <div *ngFor="let detail of projectDetails" class="mb-3">
+            <label for="{{ detail.key }}" class="form-label">{{ detail.key }}</label>
+            <input type="text" *ngIf="detail.value!==0" id="{{ detail.key }}" name="{{ detail.key }}" class="form-control" [(ngModel)]="detail.value">
+            <input type="number" *ngIf="detail.value===0" id="{{ detail.key }}" name="{{ detail.key }}" class="form-control" [(ngModel)]="detail.value">
+          </div>
+        </form>
+      </div>
+    
+      <div class="col-md-4 col-lg-3 col-xl-3">
+        <div *ngFor="let feature of features" class="mb-3">
+          <label class="form-label">{{ feature.key }}</label>
+          <div>
+            <input type="radio" id="{{ feature.key }}-true" name="{{ feature.key }}" value="true" [(ngModel)]="feature.value" class="form-check-input">
+            <label for="{{ feature.key }}-true" class="form-check-label">True</label>
+            <input type="radio" id="{{ feature.key }}-false" name="{{ feature.key }}" value="false" [(ngModel)]="feature.value" class="form-check-input">
+            <label for="{{ feature.key }}-false" class="form-check-label">False</label>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-4 col-lg-3 col-xl-3">
+         <div>
+            <label for="files">Image to show:</label><br>
+            <input type="file" id="files" name="files"  (change)="imageToShowInput($event)"><br><br>
+            <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index"><li><img src={{uri}} height="100"> </li></ul>
+            
+          </div>
+          <div>
+            <label for="files">All Image for Property:</label><br>
+            <input type="file" id="files" name="files"  (change)="handleFileInput($event)" multiple><br><br>
+            <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index"><li><img src={{uri}} height="100"> <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button></li></ul>
+            
+          </div>
+      </div>
+    </div>
+    <button type="submit" (click)="postProp()" class="btn btn-dark">Submit</button>
+  </form>
+  

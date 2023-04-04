@@ -1,42 +1,245 @@
 <div class="container-fluid">
-    <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-      </button>
-      <mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="propform">
-          <form>
-            <ng-template matStepLabel>Fill out your name</ng-template>
-            <mat-form-field appearance="fill">
-              <mat-label>Name</mat-label>
-              <input matInput placeholder="Last name, First name"  required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
+  <div>
+    <button class="btn btn-warning" (click)="editProp()">Edit Mode</button>
+  </div>
+  <mat-stepper orientation="vertical">
+    <mat-step>
+      <ng-template matStepLabel>Project Details</ng-template>
+      <ng-template matStepContent>
+        <div class="container" style="width: max-content;margin: 0;">
+        <div class="mb-3">
+          <label for="text" class="form-label">Developer</label>
+          <select class="form-select" name="Developers" [(ngModel)]="data.Developer">
+            <option selected disabled>select a developer</option>
+            <option *ngFor="let developer of (developers$ | async)?.data" value="{{developer._id}}">{{developer.DeveloperName}} </option>
+          </select>
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="text" class="form-label">Project Name</label>
+            <input type="text" class="form-control" placeholder="Godrej Hills" name="Project Name" [(ngModel)]="data.ProjectName">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Rera No</label>
+            <input type="text" class="form-control" placeholder="Rera no" name="Rera No" [(ngModel)]="data.reraNo">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Flat Facing</label>
+            <input type="text" class="form-control" placeholder="Flat Facing" name="Flat Facing" [(ngModel)]="data.buildFacing">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Location Name</label>
+            <input type="text" class="form-control" placeholder="Example: Baner" [(ngModel)]="data.locationName" name="Location Name">
+          </div>
+          <div class="input-group mb-3">
+            <input type="text" aria-label="lattitude" class="form-control" placeholder="lattitude" name="lattitude" [(ngModel)]="data.lattitude">
+            <input type="text" aria-label="longitiude" class="form-control" placeholder="longitude" name="longititude" [(ngModel)]="data.longitude">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Land Parcel in Acres</label>
+            <input type="text" class="form-control" placeholder="7 Acres" [(ngModel)]="data.landParcelInAcres" name="Land Parcel in Acres">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Developer Land/JV</label>
+            <select class="form-select" [(ngModel)]="data.builder_land" name="Builder Land/JV">
+              <option>Developer land</option>
+              <option>Joint venture</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Munciple Corporation Name</label>
+            <select class="form-select" [(ngModel)]="data.MuncipleCorporationName" name="MuncipleCorporationName">
+              <option>PMC</option>
+              <option>PCMC</option>
+              <option>PMRDA</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">Rating</label>
+            <input type="number" class="form-control" placeholder="Eg: 4.5" min="1" max="5" [(ngModel)]="data.rating" name="Rating">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">About Property</label>
+            <textarea class="from-control" [(ngModel)]="data.aboutProperty" name="aboutProperty"></textarea>
+          </div>
+         
+          </div>
+        </div>
+        <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Project Details 2</ng-template>
+      <ng-template matStepContent>
+        <div class="container" style="width: max-content;margin: 0;">
+          <div class="mb-3 mt-3">
+            <label for="text" class="form-label">Construction Type</label>
+            <select class="form-select" [(ngModel)]="data.constructionType" name="Construction Type">
+              <option>Aluform</option>
+              <option>RCC</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Possession Timeline</label>
+            <select class="form-select" [(ngModel)]="data.possessionTimeline" name="Possession Timeline">
+              <option>Ready Possession</option>
+              <option>Under Construction</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Possession Month & Year</label>
+                <input class="form-control" type="date"  placeholder="DD-MM-YYYY" min="2023-01-01" max="2040-12-31" [(ngModel)]="data.possessionMonthAndYear">
+                <div><small *ngIf="data.possessionMonthAndYear">Existing Date :<b>{{possessionMonthAndYear}}</b></small></div>
+                <div><small style="font-size: 10px;"> Note: Date will be default 1 for any month</small></div>
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">Total Number of Units</label>
+            <input type="number" class="form-control" placeholder="" [(ngModel)]="data.totalNumberOfUnits" name="Total Number of Units">
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">No of Towers</label>
+            <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfTowers" name="No of Towers">
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">Highrise Count</label>
+            <input type="number" class="form-control" placeholder="" [(ngModel)]="data.highriseCount" name="Highrise Count">
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">Flat/Floor</label>
+            <input type="number" class="form-control" placeholder="min Flat/Floor" [(ngModel)]=" Flat_Floor[0].min" name="Flat_Floor">
+            <input type="number" class="form-control" placeholder="max Flat/Floor" [(ngModel)]="Flat_Floor[0].max" name="Flat_Floor">
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">Project Open Space in %</label>
+            <input type="number" class="form-control" placeholder="" [(ngModel)]="data.ProjectOpenSpace" name="ProjectOpenSpace">
+          </div>
+          <div class="mb-3">
+            <label for="number" class="form-label">No Of Lifts</label>
+            <input type="number" class="form-control" placeholder="" [(ngModel)]="data.noOfLifts" name="noOfLifts">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">Refugee Area- Floors</label>
+            <input type="text" class="form-control" placeholder="" [(ngModel)]="data.RefugeAreaFloors" name="Refugee Area- Floors" name="RefugeAreaFloors">
+          </div>
+          <div class="mb-3">
+            <label for="text" class="form-label">DG Backup</label>
+            <select class="form-select" [(ngModel)]="data.DGBackup" name="DGBackup">
+              <option value="Common">Common</option>
+              <option value="Flats">Flats</option>
+            </select>
+          </div>
+        </div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
+      </ng-template>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Neighbourhood</ng-template>
+      <ng-template matStepContent>
+        <div class="container" style="width: max-content;margin: 0;">
+      <div class="form-floating  mb-3">
+        <div class="input-group">
+          <!-- <span class="input-group-text" style="font-size: smaller;">Neighbourhood</span> -->
+          <input type="text" aria-label="Neighbourhood" class="form-control" placeholder="Neighbourhoods" [(ngModel)]="neighbour" name="neighbour">
+          <button type="button" class="btn btn-dark" (click)="appendNeighbour()">Add</button>
+        </div>
+        <table class="table">
+          <tr>
+            <td>Neighbourhood List</td>
+          </tr>
+          <tr *ngFor="let n of neighbourArr; index as ind" name="table">
+            <td>{{n}}</td>
+            <button class="btn btn-danger " (click)="removeNeighbour(ind)">X</button>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <button mat-button matStepperPrevious color="primary">Back</button>
+    <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
+      </ng-template>
+   
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Features</ng-template>
+      <ng-template matStepContent>
+        <div class="container" style="width: max-content;margin: 0;">
+          <div class="mb-3 mt-3">
+            <label for="chips" class="form-label">Project Features</label>
+
+                <mat-chip-listbox multiple>
+                  <mat-chip-option *ngFor="let feature of propFeatures" [selected]="feature.value" (click)="feature.value = !feature.value">{{feature.key}}</mat-chip-option>
+                </mat-chip-listbox>
+
+          </div>
+          
+          
+        </div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
+      </ng-template>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Amenities</ng-template>
+        <ng-template matStepContent>
+          <div class="container" style="width: max-content;margin: 0;">
+            <div class="mb-3 mt-3">
+             
+             
+                  <mat-chip-listbox multiple>
+                    <mat-chip-option *ngFor="let amenity of amenities" [selected]="amenity.value" (click)="amenity.value = !amenity.value">{{amenity.key}}</mat-chip-option>
+                  </mat-chip-listbox>
+          
+             
+              
             </div>
-          </form>
-        </mat-step>
-        <mat-step [stepControl]="propform">
-          <form>
-            <ng-template matStepLabel>Fill out your address</ng-template>
-            <mat-form-field appearance="fill">
-              <mat-label>Address</mat-label>
-              <input matInput placeholder="Ex. 1 Main St, New York, NY"
-                     required>
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </form>
+            
+          </div>
+          <button mat-button matStepperPrevious color="primary">Back</button>
+          <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
+        </ng-template>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          <p>You are now done.</p>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
-          </div>
-        </mat-step>
-      </mat-stepper>
-
+          <ng-template matStepLabel>Images</ng-template>
+          <ng-template matStepContent>
+            <div class="container" style="width: max-content;margin: 0;">
+           
+              <div>
+                <label for="files">Image to show:</label>
+                <br>
+                <input type="file" id="files" name="files" (change)="imageToShowInput($event)">
+                <br>
+                <br>
+                <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index">
+                  <li>
+                    <img src={{uri}} height="100">
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <label for="files">All Image for Property:</label>
+                <br>
+                <input type="file" id="files" name="files" (change)="handleFileInput($event)" multiple>
+                <br>
+                <br>
+                <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index">
+                  <li>
+                    <img src={{uri}} height="100">
+                    <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <button mat-button matStepperPrevious color="primary">Back</button>
+            <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
+           
+          </ng-template>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Submit</ng-template>
+            <button mat-button matStepperPrevious color="primary">Back</button>
+            
+            <button mat-button  mat-raised-button color="primary" (click)="postProp()">Submit</button>
+            </mat-step>
+  </mat-stepper>
+  
 </div>

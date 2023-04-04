@@ -11,7 +11,8 @@ import { error } from 'console';
 
 export class PropserviceService {
 
-  private url = 'https://homesfinderserver2.onrender.com/api/';
+  // private url = 'https://homesfinder.in/api/';
+  private url = 'http://localhost:8089/api/';
   private basePath = '/uploads';
   currentPropHolder:any
   public isEdit:boolean = false
@@ -122,10 +123,10 @@ postTestimony(obj:any) {
 }
 
 deleteDatafromDB(id:any){
-  this.httpClient.post(this.url + "deleteDatafromDB", {"_id":id}).subscribe(data => {
+  this.httpClient.post(this.url + "deleteDatafromDB", {"_id":id}).subscribe((data:any) => {
     
     console.log("Deleted Successfully");
-    alert(data)
+    alert(data.msg)
   });
 }
 

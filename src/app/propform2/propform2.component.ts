@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ThisReceiver } from '@angular/compiler';
 import { ChangeDetectionStrategy, OnInit,Input, ChangeDetectorRef  } from '@angular/core';
+import {MatChipInputEvent} from '@angular/material/chips';
 import { flush } from '@angular/core/testing';
 import { fail } from 'assert';
 import { Observable } from 'rxjs';
@@ -19,6 +20,7 @@ export class Propform2Component {
   imageToShow: any;
   isLinear = false;
   propform!:any
+  searchParameter:any
   constructor(public propService:PropserviceService,private cd: ChangeDetectorRef) {
    
    }
@@ -31,7 +33,9 @@ export class Propform2Component {
   imagesUri:any[]=[]
   developers$!: Observable<any>;
   dimensionsUris:any[]=[]
-  @Input() data=new propData('','','','','','','','','','','','','','','','',0,0,0,0,'',0,'',0,'','','',[],[],[],[],[],[],[],[],[])
+  dummyDate=new Date()
+  possessionMonthAndYear:any
+  @Input() data=new propData('','','','','','','','','','','','','','','','','',0,0,0,0,'',0,'',0,'','','',[],[],[],[],[],[],[],[],[])
    logoUri:any[]=[]
    amenities=[
     
@@ -49,6 +53,46 @@ export class Propform2Component {
       "value": false
     },
     {
+      "key": "Indoor_Kidsplay",
+      "value": false
+    },
+    {
+      "key": "Guest_Suites",
+      "value": false
+    },
+    {
+      "key": "Library",
+      "value": false
+    },
+    {
+      "key": "Gazebo",
+      "value": false
+    },
+    {
+      "key": "Multi_Purpose_Court",
+      "value": false
+    },
+    {
+      "key": "Barbeque_Zone",
+      "value": false
+    },
+    {
+      "key": "Spa",
+      "value": false
+    },
+    {
+      "key": "Party_Lawn",
+      "value": false
+    },
+    {
+      "key": "Multi_Purpose_Hall",
+      "value": false
+    },
+    {
+      "key": "Yoga",
+      "value": false
+    },
+    {
       "key": "Co_WorkSpace",
       "value": false
     },
@@ -57,7 +101,7 @@ export class Propform2Component {
       "value": false
     },
     {
-      "key": "SeniorCitizenSitout",
+      "key": "Senior_Citizen_Sitout",
       "value": false
     },
     {
@@ -66,6 +110,18 @@ export class Propform2Component {
     },
     {
       "key": "Football_Cricket",
+      "value": false
+    },
+    {
+      "key": "Tennis_Court",
+      "value": false
+    },
+    {
+      "key": "BasketBall_Court",
+      "value": false
+    },
+    {
+      "key": "Box_Cricket_Pitch",
       "value": false
     },
     {
@@ -121,11 +177,55 @@ export class Propform2Component {
       "value": false
     },
     {
+      "key": "Fire_Alarm",
+      "value": false
+    },
+    {
+      "key": "Internet_WiFi",
+      "value": false
+    },
+    {
+      "key": "Maintainance_Staff",
+      "value": false
+    },
+    {
+      "key": "Water_Storage",
+      "value": false
+    },
+    {
+      "key": "Waste_Disposal",
+      "value": false
+    },
+    {
       "key": "Gas_Connection",
       "value": false
     },
     {
       "key": "Water_Provision",
+      "value": false
+    },
+    {
+      "key": "Piped_Gas",
+      "value": false
+    },
+    {
+      "key": "Feng_Shui_Vaastu_Compliant",
+      "value": false
+    },
+    {
+      "key": "Intercom",
+      "value": false
+    },
+    {
+      "key": "Security_Person",
+      "value": false
+    },
+    {
+      "key": "Pet_Friendly",
+      "value": false
+    },
+    {
+      "key": "Security_Cameras",
       "value": false
     },
     {
@@ -207,6 +307,11 @@ export class Propform2Component {
       this.data.TypologyAvailable=this.tyopoArray
       this.data.AreasNearby=this.neighbourArr
       this.data.Flat_Floor=this.Flat_Floor
+      // this.data.possessionMonthAndYear=this.possessionMonthAndYear
+
+      if(this.data.possessionMonthAndYear==='' ||this.data.possessionMonthAndYear===undefined ){
+        this.data.possessionMonthAndYear="2099-01-01"
+      }
        this.propService.postProp(this.data)
        
       console.log(this.data);
@@ -308,18 +413,53 @@ export class Propform2Component {
       this.cd.detectChanges();
 
       this.dimensionsUris=this.propService.currentPropHolder.dimensionMapImages
-      this.amenities=this.propService.currentPropHolder.Amenities
+      // this.amenities=this.propService.currentPropHolder.Amenities
+      
+      for (const amenity of this.propService.currentPropHolder.Amenities) {
+        const matchingIndex = this.amenities.findIndex((f) => f.key === amenity.key);
+        if (matchingIndex !== -1) {
+          this.amenities[matchingIndex].value = amenity.value === "true";
+        } else {
+          this.amenities.push({ key: amenity.key, value: amenity.value === "true" });
+        }
+      }
+      
+      console.log(this.propService.currentPropHolder.Amenities,this.amenities);
+
+
       this.allBHK=this.propService.currentPropHolder.bhkSpecific
     
       this.imageToShow=this.propService.currentPropHolder.imageToShow
       this.tyopoArray=this.propService.currentPropHolder.tyopoArray
-      this.propFeatures=this.propService.currentPropHolder.propFeatures
+      // this.propFeatures=this.propService.currentPropHolder.propFeatures
+
+      for (const feature of this.propService.currentPropHolder.propFeatures) {
+        const matchingIndex = this.propFeatures.findIndex((f) => f.key === feature.key);
+        if (matchingIndex !== -1) {
+          this.propFeatures[matchingIndex].value = feature.value;
+        } else {
+          this.propFeatures.push({ key: feature.key, value: false });
+        }
+      }
+      
+     
+      
+    
+
+
+
       this.staircaseList=this.propService.currentPropHolder.Staircase
       this.tyopoArray=this.propService.currentPropHolder.TypologyAvailable
       this.neighbourArr=this.propService.currentPropHolder.AreasNearby
       this.neighbour=''
       this.data.DGBackup=this.propService.currentPropHolder.DGBackup
       this.data.Developer=this.propService.currentPropHolder.Developer._id
+
+      // this.possessionMonthAndYear=this.data.possessionMonthAndYear
+      let fetchedDate=this.data.possessionMonthAndYear.toString()
+      const date = new Date(fetchedDate);
+     this.possessionMonthAndYear = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
 
 
       this.Flat_Floor[0].min=this.propService.currentPropHolder.Flat_Floor[0].min

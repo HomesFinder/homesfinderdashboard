@@ -17,6 +17,9 @@ export class propData {
     public builder_land:string,
     public constructionType: String,
     public possessionTimeline: String,
+    public possessionMonthAndYear:String,
+  
+    
     public totalNumberOfUnits: Number,
     public ProjectOpenSpace: Number,
     public noOfTowers: Number,
@@ -26,7 +29,7 @@ export class propData {
     public highriseCount: Number,
    
     public DGBackup: String,
-    public rating: number,
+    public rating: Number,
     public lattitude: String,
     public longitude: String,
     public youtubeUri: String,
@@ -38,6 +41,7 @@ export class propData {
     public imageToShow: any[],
     public AreasNearby: any[],
     public TypologyAvailable: any[],
-    public Flat_Floor:any[],
+    public Flat_Floor:any[]=[]
+    
   ) {}
 }

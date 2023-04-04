@@ -15,11 +15,11 @@ import { UsersComponent } from './users/users.component';
 const routes: Routes = [
   {
     path: '',
-    component:PropformComponent
+    component:Propform2Component
   },
   {
     path: 'prop-add',
-    component:PropformComponent
+    component:Propform2Component
   },
   {
     path: 'prop-edit',

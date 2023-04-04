@@ -11,6 +11,7 @@ export class ProplistComponent implements OnInit {
 
   constructor(private propService:PropserviceService, private router:Router) {this.getData() }
   propList:any=[]
+  searchParameter:any
 
   ngOnInit(): void {
     this.getData();
@@ -27,7 +28,7 @@ export class ProplistComponent implements OnInit {
 
   editData(prop:any){
     this.propService.editProp(prop)
-    this.router.navigateByUrl('prop-add')
+    this.router.navigateByUrl('propform2')
   }
 
   deleteData(id:any){
