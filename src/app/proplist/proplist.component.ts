@@ -32,7 +32,12 @@ export class ProplistComponent implements OnInit {
   }
 
   deleteData(id:any){
-    this.propService.deleteDatafromDB(id)
+    this.propService.deleteDatafromDB(id).subscribe((data:any)=>{
+      alert(data.msg)
+      this.getData()
+    },(err:any)=>{
+      alert(err.error.msg)
+    })
     this.getData()
   }
 }

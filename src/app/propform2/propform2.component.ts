@@ -45,7 +45,87 @@ export class Propform2Component {
       "value": false
     },
     {
+      "key": "Pool_Side_Deck_Area_Lap_Pool",
+      "value": false
+    },
+    {
+      "key": "Wifi_Zone",
+      "value": false
+    },
+    {
+      "key": "Movie_Arena",
+      "value": false
+    },
+    {
+      "key": "Game_Room",
+      "value": false
+    },
+    {
+      "key": "Sky_Workout_Zone",
+      "value": false
+    },
+    {
+      "key": "Home_Automation",
+      "value": false
+    },
+    {
+      "key": "Star_Gazing_Deck",
+      "value": false
+    },
+    {
+      "key": "Pergola_Seating",
+      "value": false
+    },
+    {
+      "key": "Creche",
+      "value": false
+    },
+    {
+      "key": "Working_Pods",
+      "value": false
+    },
+    {
+      "key": "Solar_Pods",
+      "value": false
+    },
+    {
+      "key": "Reading_Pods",
+      "value": false
+    },
+    {
+      "key": "Outdoor_Cinema",
+      "value": false
+    },
+    {
+      "key": "Bar_Area",
+      "value": false
+    },
+    {
+      "key": "Outdoor_Board_Game_Zone",
+      "value": false
+    },
+    {
+      "key": "Musical_Garden",
+      "value": false
+    },
+    {
+      "key": "Aroma_Garden",
+      "value": false
+    },
+    {
+      "key": "Delivery_Pods",
+      "value": false
+    },
+    {
+      "key": "Jacuzzi",
+      "value": false
+    },
+    {
       "key": "Amphi_Theatre",
+      "value": false
+    },
+    {
+      "key": "Sky_Walk",
       "value": false
     },
     {
