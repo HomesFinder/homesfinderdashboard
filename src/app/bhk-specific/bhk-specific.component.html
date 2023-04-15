@@ -11,10 +11,10 @@
                     <label for="" class="form-label">Project Name</label>
                     <select class="form-select form-select-lg" name="" id="" formControlName="tempHolder" >
                       <option selected disabled>Select one</option>
-                      <option *ngFor="let item of propList "   [ngValue]="{ id: item._id, locationName: item.locationName }" >{{item.ProjectName}} | {{item.reraNo}}</option>
+                      <option *ngFor="let item of propList "   [ngValue]="{ id: item._id, locationName: item.locationName,ProjectName:item.ProjectName}" >{{item.ProjectName}} | {{item.reraNo}}</option>
                      
                     </select>
-                    <button type="button" class="btn btn-outline-info" (click)="getBHKVariants()">Get Variants</button>
+                    <button type="button" class="btn btn-outline-info mt-2" (click)="getBHKVariants()">Get Variants</button>
                     
                   </div>
           </div>
@@ -44,7 +44,7 @@
               <input type="number" id="noOfBathrooms" formControlName="noOfBathrooms" class="form-control" required>
             </div>
             <div class="col-12">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary mt-5">Submit</button>
             </div>
           </div>
           </form>
@@ -52,6 +52,7 @@
     <div class="col col-6">
         <div class="container" style="position: fixed; height: 80%; overflow: auto;margin-bottom: 3rem;">
           <h1>Total Result : {{variantNo}}</h1>
+          <h5>Selected Project: {{selectedProjectLocation}}</h5>
           <ul class="list-group">
             <li class="list-group-item" *ngFor="let item of variantList"><div>
            <h6> <b>BHK : </b> {{item.BHK}}</h6>

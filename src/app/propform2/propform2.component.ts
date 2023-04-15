@@ -423,7 +423,7 @@ export class Propform2Component {
           this.amenities.push({ key: amenity.key, value: amenity.value === "true" });
         }
       }
-      
+      this.amenities=this.propService.currentPropHolder.Amenities
       console.log(this.propService.currentPropHolder.Amenities,this.amenities);
 
 
@@ -544,7 +544,9 @@ export class Propform2Component {
    }
 
   }
-
+  refresh(){
+    location.reload()
+  }
 
 }
 

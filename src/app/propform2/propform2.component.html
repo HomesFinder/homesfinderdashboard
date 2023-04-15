@@ -237,7 +237,7 @@
           <mat-step>
             <ng-template matStepLabel>Submit</ng-template>
             <button mat-button matStepperPrevious color="primary">Back</button>
-            
+            <button mat-button (click)="refresh()" color="warn">Reset</button>
             <button mat-button  mat-raised-button color="primary" (click)="postProp()">Submit</button>
             </mat-step>
   </mat-stepper>

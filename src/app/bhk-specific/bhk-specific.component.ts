@@ -16,7 +16,7 @@ export class BhkSpecificComponent implements OnInit {
 
   propertyForm!: FormGroup;
   propList:any[]=[]
-  selectedProjectLocation:any
+  selectedProjectLocation:any="Not Selected"
   variantList:any[]=[]
   variantNo:Number=0
   constructor(private fb: FormBuilder,public propService:PropserviceService) { 
@@ -42,7 +42,7 @@ export class BhkSpecificComponent implements OnInit {
 
   ngOnInit(): void {
     this.propertyForm = this.fb.group({
-      tempHolder:['temp'],
+      tempHolder:[''],
       PropertyID: ['', Validators.required],
       BHK: ['', Validators.required],
       Carpet_Area: ['', Validators.required],
@@ -53,9 +53,11 @@ export class BhkSpecificComponent implements OnInit {
       ProjectLocation:['']
     });
   }
-  tempHolder:any
+
   onSubmit() {
     console.log(this.propertyForm.value);
+  
+    
     if (this.propertyForm.value.tempHolder) {
       const tempHolderValue = this.propertyForm.value.tempHolder;
       if (tempHolderValue) {
@@ -79,6 +81,8 @@ export class BhkSpecificComponent implements OnInit {
 
   getBHKVariants(){
         const tempHolderValue = this.propertyForm.value.tempHolder;
+        this.selectedProjectLocation=this.propertyForm.value.tempHolder.ProjectName
+        console.log(this.selectedProjectLocation);
         this.propService.getAllVaraintofProject(tempHolderValue.id).subscribe((data:any)=>{
           this.variantList=data.data
           this.variantNo=this.variantList.length
