@@ -17,7 +17,7 @@ status=''
   }
 
   onSubmit(){
-    if(this.username==="Admin" && this.pswd==="Paper@2023"){
+    if(this.username==="Admin" && this.pswd==="Paperbox@2023"){
         this.propService.isLoggedIn=true
         this.status="Login Successful"
         this.router.navigateByUrl('builderinfo')

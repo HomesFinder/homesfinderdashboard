@@ -15,15 +15,18 @@ import { UsersComponent } from './users/users.component';
 const routes: Routes = [
   {
     path: '',
-    component:Propform2Component
+    component:Propform2Component,
+    canActivate: [AuthRouteGuard]
   },
   {
     path: 'prop-add',
-    component:Propform2Component
+    component:Propform2Component,
+    canActivate: [AuthRouteGuard]
   },
   {
     path: 'prop-edit',
-    component:ProplistComponent
+    component:ProplistComponent,
+    canActivate: [AuthRouteGuard]
   },
   {
     path: 'inquiries',
@@ -52,12 +55,14 @@ const routes: Routes = [
   },
   {
     path:'bhkSpecific',
-    component:BhkSpecificComponent
+    component:BhkSpecificComponent,
+    canActivate: [AuthRouteGuard]
   },
 
   {
     path:'propform2',
-    component:Propform2Component
+    component:Propform2Component,
+    canActivate: [AuthRouteGuard]
   }
 
 ];
