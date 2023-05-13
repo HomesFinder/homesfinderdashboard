@@ -30,6 +30,7 @@ import { Propform2Component } from './propform2/propform2.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatChipsModule} from '@angular/material/chips';
 import { ListfilterPipe } from './Pipes/listfilter.pipe';
+import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ListfilterPipe } from './Pipes/listfilter.pipe';
     LoginComponent,
     BhkSpecificComponent,
     Propform2Component,
-    ListfilterPipe
+    ListfilterPipe,
+    EmployeeloginComponent
   ],
   imports: [
     BrowserModule,

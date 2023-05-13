@@ -45,23 +45,27 @@ export class Propform2Component {
       "value": false
     },
     {
-      "key": "Pool_Side_Deck_Area_Lap_Pool",
+      "key": "Club_House",
       "value": false
     },
     {
-      "key": "Wifi_Zone",
+      "key": "GYM",
       "value": false
     },
     {
-      "key": "Movie_Arena",
+      "key": "Swimming_Pool",
       "value": false
     },
     {
-      "key": "Game_Room",
+      "key": "Multi_Purpose_Play_Court",
+      "value": false
+    }, 
+    {
+      "key": "Pool_Side_Deck",
       "value": false
     },
     {
-      "key": "Sky_Workout_Zone",
+      "key": "Senior_Citizen_Sitout",
       "value": false
     },
     {
@@ -69,95 +73,15 @@ export class Propform2Component {
       "value": false
     },
     {
-      "key": "Star_Gazing_Deck",
-      "value": false
-    },
-    {
-      "key": "Pergola_Seating",
-      "value": false
-    },
-    {
-      "key": "Creche",
-      "value": false
-    },
-    {
-      "key": "Working_Pods",
-      "value": false
-    },
-    {
-      "key": "Solar_Pods",
-      "value": false
-    },
-    {
-      "key": "Reading_Pods",
-      "value": false
-    },
-    {
-      "key": "Outdoor_Cinema",
-      "value": false
-    },
-    {
-      "key": "Bar_Area",
-      "value": false
-    },
-    {
-      "key": "Outdoor_Board_Game_Zone",
-      "value": false
-    },
-    {
-      "key": "Musical_Garden",
-      "value": false
-    },
-    {
-      "key": "Aroma_Garden",
-      "value": false
-    },
-    {
-      "key": "Delivery_Pods",
-      "value": false
-    },
-    {
-      "key": "Jacuzzi",
-      "value": false
-    },
-    {
-      "key": "Amphi_Theatre",
-      "value": false
-    },
-    {
-      "key": "Sky_Walk",
-      "value": false
-    },
-    {
-      "key": "Kids_Play",
-      "value": false
-    },
-    {
-      "key": "Indoor_Kidsplay",
-      "value": false
-    },
-    {
-      "key": "Guest_Suites",
-      "value": false
-    },
-    {
-      "key": "Library",
-      "value": false
-    },
-    {
       "key": "Gazebo",
       "value": false
     },
     {
-      "key": "Multi_Purpose_Court",
+      "key": "Kids_Play_Area",
       "value": false
     },
     {
-      "key": "Barbeque_Zone",
-      "value": false
-    },
-    {
-      "key": "Spa",
+      "key": "Indoor_Kidsplay",
       "value": false
     },
     {
@@ -169,7 +93,7 @@ export class Propform2Component {
       "value": false
     },
     {
-      "key": "Yoga",
+      "key": "Amphi_Theatre",
       "value": false
     },
     {
@@ -177,39 +101,15 @@ export class Propform2Component {
       "value": false
     },
     {
-      "key": "GYM",
-      "value": false
-    },
-    {
-      "key": "Senior_Citizen_Sitout",
-      "value": false
-    },
-    {
-      "key": "Club_House",
-      "value": false
-    },
-    {
-      "key": "Football_Cricket",
-      "value": false
-    },
-    {
-      "key": "Tennis_Court",
-      "value": false
-    },
-    {
-      "key": "BasketBall_Court",
-      "value": false
-    },
-    {
       "key": "Box_Cricket_Pitch",
       "value": false
     },
     {
-      "key": "Swimming_Pool",
+      "key": "Yoga_Zone",
       "value": false
     },
     {
-      "key": "Badminton_Squash",
+      "key": "Library",
       "value": false
     },
     {
@@ -217,9 +117,102 @@ export class Propform2Component {
       "value": false
     },
     {
+      "key": "Creche",
+      "value": false
+    },
+    {
+      "key": "Sky_Walk",
+      "value": false
+    },
+    {
+      "key": "Barbeque_Zone",
+      "value": false
+    },
+    {
+      "key": "Football_Court",
+      "value": false
+    },
+    {
+      "key": "Tennis_Court",
+      "value": false
+    },   {
+      "key": "Squash_Court",
+      "value": false
+    },
+    {
+      "key": "Badminton_Court ",
+      "value": false
+    },
+    {
+      "key": "BasketBall_Court",
+      "value": false
+    },
+    {
       "key": "E_Charging",
       "value": false
-    }
+    },
+    {
+      "key": "Spa",
+      "value": false
+    },
+    
+    {
+      "key": "Jacuzzi",
+      "value": false
+    },
+    {
+      "key": "Bar_Area",
+      "value": false
+    },
+    {
+      "key": "Outdoor_Cinema",
+      "value": false
+    },
+    {
+      "key": "Skating_Ring",
+      "value": false
+    },
+    
+    {
+      "key": "Star_Gazing_Deck",
+      "value": false
+    },
+    
+
+    {
+      "key": "Guest_Suites",
+      "value": false
+    },
+    
+
+    {
+      "key": "Cloud_Kitchen",
+      "value": false
+    },
+    
+
+    {
+      "key": "24x7_Clinic",
+      "value": false
+    },
+    
+
+    {
+      "key": "Beauty_Salon",
+      "value": false
+    },
+    
+
+    {
+      "key": "Acupressure_Park",
+      "value": false
+    },
+    {
+      "key": "Musical_Garden",
+      "value": false
+    },
+ 
+    
   ]
   @Input()  bhkSpecificObj=[
     {

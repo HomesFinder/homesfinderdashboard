@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Create Employee Credentials</h4>
+          <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+            <div>
+              <div class="mb-3">
+                <label for="orgId" class="form-label">OrgID</label>
+                <input type="text"  class="form-control" id="orgId" formControlName="orgId" value="homesfinder.in@gmail.com">
+              </div>
+              <div class="mb-3">
+                <label for="employeeEmail" class="form-label">Employee Email ID</label>
+                <input type="email" class="form-control" id="employeeEmail" formControlName="employeeEmail" placeholder="Enter a valid Email ID">
+                <div *ngIf="employeeForm.get('employeeEmail')?.invalid && (employeeForm.get('employeeEmail')?.dirty || employeeForm.get('employeeEmail')?.touched)">
+                  <small class="text-danger" *ngIf="employeeForm.get('employeeEmail')?.errors?.['required']">Email is required.</small>
+                  <small class="text-danger" *ngIf="employeeForm.get('employeeEmail')?.errors?.['email']">Invalid email format.</small>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="employeePassword" class="form-label">Employee Password</label>
+                <input type="password" class="form-control" id="employeePassword" formControlName="employeePassword" placeholder="">
+                <small class="text-danger" *ngIf="employeeForm.get('employeePassword')?.invalid && (employeeForm.get('employeePassword')?.dirty || employeeForm.get('employeePassword')?.touched)">Password is required.</small>
+              </div>
+              <div class="mb-3">
+                <label for="adminPassword" class="form-label">Admin Password</label>
+                <input type="password" class="form-control" id="adminPassword" formControlName="adminPassword" placeholder="">
+                <small class="text-danger" *ngIf="employeeForm.get('adminPassword')?.invalid && (employeeForm.get('adminPassword')?.dirty || employeeForm.get('adminPassword')?.touched)">Admin password is required.</small>
+              </div>
+              <button type="submit" class="btn btn-primary"  [disabled]="!employeeForm.valid">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7"></div>
+  </div>
+</div>

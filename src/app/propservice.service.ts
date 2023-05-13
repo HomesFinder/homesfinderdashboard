@@ -11,7 +11,7 @@ import { error } from 'console';
 
 export class PropserviceService {
 
-  private url = 'https://homesfinder.in/api/';
+  private url = 'https://homefindr.in/api/';
   // private url = 'http://localhost:8089/api/';
   private basePath = '/uploads';
   currentPropHolder:any
@@ -161,6 +161,10 @@ isAuthenticated(){
   }
   deleteSpecificVariant(id:any){
     return this.httpClient.post(this.url + "deleteBhkVariantfromDB",{"_id":id} )
+  }
+
+  addEmployee(credentials:any){
+    return this.httpClient.post(this.url + "addEmployee",credentials )
   }
  }
 

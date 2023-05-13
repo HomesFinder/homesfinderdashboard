@@ -11,6 +11,7 @@ import { Propform2Component } from './propform2/propform2.component';
 import { ProplistComponent } from './proplist/proplist.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { UsersComponent } from './users/users.component';
+import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
 
 const routes: Routes = [
   {
@@ -63,7 +64,13 @@ const routes: Routes = [
     path:'propform2',
     component:Propform2Component,
     canActivate: [AuthRouteGuard]
-  }
+  },
+
+  {
+    path:'employeelogin',
+    component:EmployeeloginComponent,
+    canActivate: [AuthRouteGuard]
+  },
 
 ];
 
