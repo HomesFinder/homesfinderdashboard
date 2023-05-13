@@ -28,7 +28,7 @@ export class EmployeeloginComponent {
       // Process form data here
       console.log(this.employeeForm.value);
       let normalizedForm={
-        "orgID":this.employeeForm.value.orgId,
+        "orgId":this.employeeForm.value.orgId,
         "emailId":this.employeeForm.value.employeeEmail,
         "pswd":this.employeeForm.value.employeePassword,
       }
