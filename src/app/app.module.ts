@@ -31,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatChipsModule} from '@angular/material/chips';
 import { ListfilterPipe } from './Pipes/listfilter.pipe';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
+import { PostedPropsComponent } from './posted-props/posted-props.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { EmployeeloginComponent } from './employeelogin/employeelogin.component'
     BhkSpecificComponent,
     Propform2Component,
     ListfilterPipe,
-    EmployeeloginComponent
+    EmployeeloginComponent,
+    PostedPropsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-12 col-md-6 col-lg-4 col-xl-4"  *ngFor="let props of properties.data">
+            <div class="card" style="margin: 1rem;">
+                <div class="card-body">
+                  <p class="card-text">Project Name: {{ props.projectSocietyName }}</p>
+                  <p class="card-text"><b>Location: </b> {{ props.selectLocation }}</p>
+                  <p class="card-text"><b>Type:</b> {{ props.propertyType }}</p>
+                  <p class="card-text"><b>Status:</b> {{ props.propertyStatus }}</p>
+           
+                  <p class="card-text"><b>Posted On: </b>{{ props.createdAt | date }}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-dark btn-block">View</button>
+                      </div>
+                </div>
+              </div>
+</div>
+</div>
+</div>

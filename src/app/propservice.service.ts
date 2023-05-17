@@ -166,6 +166,14 @@ isAuthenticated(){
   addEmployee(credentials:any){
     return this.httpClient.post(this.url + "addEmployee",credentials )
   }
+  changePropStatus(propId:any){
+    const url = this.url + 'property/' + propId + '/change-status';
+    return this.httpClient.post(url,{});
+  }
+  getAllUserPostedProps(){
+    return this.httpClient.get(this.url+"getAllUserPostedProp");
+  }
+  
  }
 
 

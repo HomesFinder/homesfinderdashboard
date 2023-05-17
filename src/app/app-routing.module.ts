@@ -12,6 +12,7 @@ import { ProplistComponent } from './proplist/proplist.component';
 import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { UsersComponent } from './users/users.component';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
+import { PostedPropsComponent } from './posted-props/posted-props.component';
 
 const routes: Routes = [
   {
@@ -71,7 +72,11 @@ const routes: Routes = [
     component:EmployeeloginComponent,
     canActivate: [AuthRouteGuard]
   },
-
+  {
+    path:'postedProps',
+    component:PostedPropsComponent,
+    canActivate: [AuthRouteGuard]
+  },
 ];
 
 @NgModule({
