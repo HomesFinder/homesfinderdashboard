@@ -140,7 +140,7 @@ export class Propform2Component {
       "value": false
     },
     {
-      "key": "Badminton_Court ",
+      "key": "Badminton_Court",
       "value": false
     },
     {

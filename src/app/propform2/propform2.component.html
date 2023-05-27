@@ -2,7 +2,7 @@
   <div>
     <button class="btn btn-warning m-2" (click)="editProp()">Edit Mode</button>
     <button class="btn btn-danger m-2 " (click)="refresh()">Reset</button>
-  </div>
+  </div>  
   <mat-stepper orientation="vertical">
     <mat-step>
       <ng-template matStepLabel>Project Details</ng-template>
@@ -129,7 +129,7 @@
               <option value="Flats">Flats</option>
             </select>
           </div>
-        </div>
+        </div> 
         <button mat-button matStepperPrevious color="primary">Back</button>
         <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
       </ng-template>
@@ -158,7 +158,6 @@
     <button mat-button matStepperPrevious color="primary">Back</button>
     <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
       </ng-template>
-   
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Features</ng-template>
@@ -172,8 +171,7 @@
                 </mat-chip-listbox>
 
           </div>
-          
-          
+
         </div>
         <button mat-button matStepperPrevious color="primary">Back</button>
         <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
@@ -183,17 +181,11 @@
         <ng-template matStepLabel>Amenities</ng-template>
         <ng-template matStepContent>
           <div class="container" style="width: max-content;margin: 0;">
-            <div class="mb-3 mt-3">
-             
-             
+            <div class="mb-3 mt-3">  
                   <mat-chip-listbox multiple>
                     <mat-chip-option *ngFor="let amenity of amenities" [selected]="amenity.value" (click)="amenity.value = !amenity.value">{{amenity.key}}</mat-chip-option>
                   </mat-chip-listbox>
-          
-             
-              
-            </div>
-            
+            </div>  
           </div>
           <button mat-button matStepperPrevious color="primary">Back</button>
           <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
@@ -203,7 +195,6 @@
           <ng-template matStepLabel>Images</ng-template>
           <ng-template matStepContent>
             <div class="container" style="width: max-content;margin: 0;">
-           
               <div>
                 <label for="files">Image to show:</label>
                 <br>
@@ -231,8 +222,7 @@
               </div>
             </div>
             <button mat-button matStepperPrevious color="primary">Back</button>
-            <button mat-button matStepperNext color="primary" mat-raised-button>Next</button>
-           
+            <button mat-button matStepperNext color="primary" mat-raised-button>Next</button> 
           </ng-template>
           </mat-step>
           <mat-step>
@@ -242,5 +232,4 @@
             <button mat-button  mat-raised-button color="primary" (click)="postProp()">Submit</button>
             </mat-step>
   </mat-stepper>
-  
 </div>
