@@ -21,7 +21,6 @@ search: any;
 
   
       this.form = this.fb.group({
-        _id: [""],
         DeveloperName: ['', Validators.required],
         // DeveloperReraNumber: ['', Validators.required],
         DeveloperBriefDetails: ['', Validators.required],
@@ -30,7 +29,7 @@ search: any;
       this.updateID = this.fb.group({
         _id: ["", Validators.required,],
         DeveloperName: ["", Validators.required],
-        DeveloperBriefDetails: ['', Validators.required],
+        DeveloperBriefDetails: ["", Validators.required],
         priority: ["", Validators.required]
       });
     } 
@@ -49,17 +48,17 @@ search: any;
     }
     editProp(developer:any){
         console.log(developer);
-        this.form.patchValue({
+        this.updateID.patchValue({
         _id:developer._id,
         DeveloperName:developer.DeveloperName,
         DeveloperBriefDetails:developer.DeveloperBriefDetails,
-        DeveloperPriority:developer.DeveloperPriority,
+        priority:developer.DeveloperPriority,
       })
     }
     onIDUpdate(){
       console.log(this.updateID.value);
       
-      this.propService.updateDeveloperPriority(this.form.value).subscribe((data:any)=>{
+      this.propService.updateDeveloperPriority(this.updateID.value).subscribe((data:any)=>{
         alert("Updated Successfully")
         console.log(data);
         

@@ -491,13 +491,16 @@ export class Propform2Component {
       for (const amenity of this.propService.currentPropHolder.Amenities) {
         const matchingIndex = this.amenities.findIndex((f) => f.key === amenity.key);
         if (matchingIndex !== -1) {
-          this.amenities[matchingIndex].value = amenity.value === "true";
+          this.amenities[matchingIndex].value = amenity.value;
+          console.log('replace')
         } else {
-          this.amenities.push({ key: amenity.key, value: amenity.value === "true" });
+          // this.amenities.push({ key: amenity.key, value: amenity.value === "true" });
+          // console.log('push')
         }
       }
       // this.amenities=this.propService.currentPropHolder.Amenities
-      console.log(this.propService.currentPropHolder.Amenities,this.amenities);
+      console.log(this.propService.currentPropHolder.Amenities);
+      console.log(this.amenities);
 
 
       this.allBHK=this.propService.currentPropHolder.bhkSpecific
