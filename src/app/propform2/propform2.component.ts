@@ -394,7 +394,7 @@ export class Propform2Component {
     async handleFileInput(event: Event){
         console.log("before", this.imagesUri.length);
         
-       
+        
        // console.log((event.target as HTMLInputElement).files);
        
       console.log(this.propService.currentPropHolder);
@@ -402,17 +402,17 @@ export class Propform2Component {
        if(this.propService.currentPropHolder==undefined){
       
           
-        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[],this.data.ProjectName))
           
         
       }
       else if(this.propService.currentPropHolder!=undefined){
         if(this.imagesUri.length==0){
-          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[],this.data.ProjectName))
           this.cd.detectChanges();
         }
         else{
-          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length))
+          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length,this.data.ProjectName))
           this.cd.detectChanges();
         }
        
@@ -444,12 +444,12 @@ export class Propform2Component {
       if(this.propService.currentPropHolder==undefined){
       
         console.log('in img to show undefiined'); 
-        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+        this.imageToShow=(<any>await this.propService.uploadDisplayImages((event.target as HTMLInputElement).files,[],this.data.ProjectName))
       }
       else if(this.propService.currentPropHolder!=undefined){        console.log('in img to show not undefiined'); 
         console.log(this.propService.currentPropHolder);
         
-        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+        this.imageToShow=(<any>await this.propService.uploadDisplayImages((event.target as HTMLInputElement).files,[],this.data.ProjectName))
       }
       this.cd.detectChanges();
         // thi
@@ -462,7 +462,7 @@ export class Propform2Component {
 
     async handleLogoFileInput(event: Event){
       console.log((event.target as HTMLInputElement).files);
-      this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[])
+      this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[],this.data.ProjectName)
       console.log("in logo images uri",this.logoUri);
     }
     editProp(){
@@ -555,6 +555,17 @@ export class Propform2Component {
         this.imagesUri.splice(index, 1)
         console.log(this.imagesUri);
         
+    }
+    removeSingleImages(index:number){
+      this.imageToShow.splice(index, 1)
+    } 
+    async removeImgFromStorage(url: any){
+      try {
+        await this.propService.deleteImageByUrl(url) ;
+      } catch (error) {
+        console.log('Error removing files:', error);
+        // Handle the error as needed
+      }
     }
     removeMultipleDimensionImages(index:number){
       this.dimensionsUris.splice(index, 1)
