@@ -12,7 +12,7 @@ export class EmployeeloginComponent {
   constructor(private formBuilder: FormBuilder,private propService:PropserviceService) {}
   ngOnInit() {
     this.employeeForm = this.formBuilder.group({
-      orgId: ['homesfinder.in@gmail.com', Validators.required],
+      orgId: ['homefindr.in', Validators.required],
       employeeEmail: ['', [Validators.required, Validators.email]],
       employeePassword: ['', Validators.required],
       adminPassword: ['', Validators.required]
