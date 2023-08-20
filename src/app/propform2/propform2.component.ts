@@ -357,8 +357,7 @@ export class Propform2Component {
   }
   
  }
-   
-  
+ 
   postProp(){
     this.propService.isEdit=false
     console.log("in prop");
@@ -417,8 +416,7 @@ export class Propform2Component {
         }
        
       }
-    
- 
+
         // this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
    
         // uris.forEach(uris=>{
@@ -426,19 +424,14 @@ export class Propform2Component {
         // })
         console.log("in images uri",this.imagesUri);
         console.log("after", this.imagesUri.length);
-        
-        
+
         
        // this.data.imagesUri=this.propService.uploadImages((event.target as HTMLInputElement).files)
                
     }
 
-
     async imageToShowInput(event: Event){
-      // console.log("before", this.dimensionsUris.length);
-
-     
-     
+      // console.log("before", this.dimensionsUris.length);     
      // console.log((event.target as HTMLInputElement).files);
      // this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imageToShow))
       if(this.propService.currentPropHolder==undefined){
@@ -452,10 +445,7 @@ export class Propform2Component {
         this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
       }
       this.cd.detectChanges();
-        // thi
-      
-      
-      
+ 
      // this.data.imagesUri=this.propService.uploadImages((event.target as HTMLInputElement).files)
              
   }
@@ -518,11 +508,6 @@ export class Propform2Component {
         }
       }
       
-     
-      
-    
-
-
 
       this.staircaseList=this.propService.currentPropHolder.Staircase
       this.tyopoArray=this.propService.currentPropHolder.TypologyAvailable
@@ -605,9 +590,6 @@ export class Propform2Component {
 
   
   appendInividualBHK(){
- 
-    
-
 
     if(this.propService.isEdit==false){
       let newData = JSON.parse(JSON.stringify(this.bhkSpecificObj))
