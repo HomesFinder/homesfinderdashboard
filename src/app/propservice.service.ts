@@ -40,16 +40,26 @@ export class PropserviceService {
   }
 
 
-  uploadImages(images:any,imgsArray:any[]){
+  uploadImages(images:any,imgsArray:any[],projectName: String){
     
    let imagesUri=imgsArray
    console.log(imagesUri);
    
     return new Promise((resolve=>{
-    console.log("inimg",images.length);
+    console.log("inimg",images);
     for (let i = 0; i < images.length; i++) {
-      
-      const filePath = `${this.basePath}/${images[i].name}`;
+
+     
+      const currentDate = new Date();
+      const day = currentDate.getDate();
+      const month = currentDate.toLocaleString('default', { month: 'short' });
+      const year = currentDate.getFullYear();
+      const hours = currentDate.getHours();
+      const minutes = currentDate.getMinutes();
+      const imgType="Img2Slider"
+      const newFileName = `${projectName}_${day}-${month}-${year} ${hours}:${minutes}_${i}_${imgType}`
+
+      const filePath = `${this.basePath}/${newFileName}`;
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath,images[i]);
 
@@ -73,6 +83,99 @@ export class PropserviceService {
   return imagesUri
   }))
 }
+
+uploadDisplayImages(images:any,imgsArray:any[],projectName: String){
+    
+  let imagesUri=imgsArray
+  console.log(imagesUri);
+  
+   return new Promise((resolve=>{
+   console.log("inimg",images);
+   for (let i = 0; i < images.length; i++) {
+
+    
+     const currentDate = new Date();
+     const day = currentDate.getDate();
+     const month = currentDate.toLocaleString('default', { month: 'short' });
+     const year = currentDate.getFullYear();
+     const hours = currentDate.getHours();
+     const minutes = currentDate.getMinutes();
+     const imgType="Img2Show"
+     const newFileName = `${projectName}_${day}-${month}-${year} ${hours}:${minutes}_${i}_${imgType}`
+
+     const filePath = `${this.basePath}/${newFileName}`;
+   const storageRef = this.storage.ref(filePath);
+   const uploadTask = this.storage.upload(filePath,images[i]);
+
+   uploadTask.snapshotChanges().pipe(
+     finalize(() => {
+       storageRef.getDownloadURL().subscribe(downloadURL => {
+          let url = downloadURL;
+          imagesUri.push(url)
+         
+           console.log(url);
+            
+           this.fileSignal()
+         
+       });
+      
+     })
+   ).subscribe();
+   }
+   resolve(imagesUri)
+   
+ return imagesUri
+ }))
+}
+
+removeFilesFromFirebase(images: any): Promise<void> {
+  const deletePromises: Promise<void>[] = [];
+
+
+
+    console.log(images);
+    
+    const filePath = `${this.basePath}/${images.name}`;
+    const fileRef = this.storage.ref(filePath);
+
+    // Delete the file and add the promise to the deletePromises array
+    const deletePromise = fileRef.delete().toPromise();
+    deletePromises.push(deletePromise);
+  
+
+  // Wait for all delete promises to complete
+  return Promise.all(deletePromises)
+    .then(() => {
+      console.log('File deleted successfully.');
+    })
+    .catch((error) => {
+      console.log('Error deleting files:', error);
+      throw error;
+    });
+}
+
+deleteImageByUrl(imageUrl: string): Promise<void> {
+  const filePathMatch = imageUrl.match(/\/o\/([^?]+)/);
+  if (!filePathMatch || filePathMatch.length < 2) {
+    throw new Error('Invalid image URL');
+  }
+
+  const filePath = decodeURIComponent(filePathMatch[1]);
+  const fileRef = this.storage.ref(filePath);
+
+  return fileRef
+    .delete()
+    .toPromise()
+    .then(() => {
+      console.log('Image deleted successfully.');
+    })
+    .catch((error) => {
+      console.log('Error deleting image:', error);
+      throw error;
+    });
+}
+
+
 fileSignal(){
     alert("File Uploaded")
 }

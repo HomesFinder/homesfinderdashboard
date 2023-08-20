@@ -17,7 +17,7 @@ export class TestimoniesComponent implements OnInit {
 
   async handleLogoFileInput(event: Event){
     console.log((event.target as HTMLInputElement).files);
-    this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[])
+    // this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[])
     console.log("in logo images uri",this.logoUri);
   }
   postData(){

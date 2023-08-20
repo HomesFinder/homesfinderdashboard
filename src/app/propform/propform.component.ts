@@ -223,17 +223,17 @@ export class PropformComponent implements OnInit {
        if(this.propService.currentPropHolder==undefined){
       
           
-        this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+        // this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
           
         
       }
       else if(this.propService.currentPropHolder!=undefined){
         if(this.imagesUri.length==0){
-          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+          // this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
           this.cd.detectChanges();
         }
         else{
-          this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length))
+          // this.imagesUri=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,this.propService.currentPropHolder.imagesUri.length))
           this.cd.detectChanges();
         }
        
@@ -265,12 +265,12 @@ export class PropformComponent implements OnInit {
       if(this.propService.currentPropHolder==undefined){
       
         console.log('in img to show undefiined'); 
-        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+        // this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
       }
       else if(this.propService.currentPropHolder!=undefined){        console.log('in img to show not undefiined'); 
         console.log(this.propService.currentPropHolder);
         
-        this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
+        // this.imageToShow=(<any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[]))
       }
       this.cd.detectChanges();
         // thi
@@ -283,7 +283,7 @@ export class PropformComponent implements OnInit {
 
     async handleLogoFileInput(event: Event){
       console.log((event.target as HTMLInputElement).files);
-      this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[])
+      // this.logoUri= <any>await this.propService.uploadImages((event.target as HTMLInputElement).files,[])
       console.log("in logo images uri",this.logoUri);
     }
     editProp(){

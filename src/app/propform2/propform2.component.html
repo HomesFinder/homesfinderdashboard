@@ -204,6 +204,7 @@
                 <ul name="imageToShow" *ngFor="let uri of imageToShow;let i=index">
                   <li>
                     <img src={{uri}} height="100">
+                    <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeSingleImages(i);removeImgFromStorage(uri)">Remove</button>
                   </li>
                 </ul>
               </div>
@@ -216,7 +217,7 @@
                 <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index">
                   <li>
                     <img src={{uri}} height="100">
-                    <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i)">Remove</button>
+                    <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i);removeImgFromStorage(uri)">Remove</button>
                   </li>
                 </ul>
               </div>
