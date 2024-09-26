@@ -20,6 +20,7 @@ export class PropserviceService {
   public isButtonDisabled: boolean = false;
   isLoggedIn:boolean=false
   constructor(private httpClient: HttpClient, private storage: AngularFireStorage) { }
+
   getPosts(){
     return this.httpClient.get(this.url+"getPropertyfromDB");
   }
@@ -33,23 +34,33 @@ export class PropserviceService {
       console.log("data posted");
       this.isButtonDisabled=false
       console.log(this.isButtonDisabled);
-      
       alert("Data Posted")
     })
   
   }
+
+  // poststudio(postData:any){
+  //   this.isButtonDisabled=true
+  //   console.log(this.isButtonDisabled);
+    
+  //   this.httpClient.post(this.url + "postPropertyinDB", postData).subscribe(data => {
+  //     console.log(data);
+  //     console.log("data posted");
+  //     this.isButtonDisabled=false
+  //     console.log(this.isButtonDisabled);
+  //     alert("Data Posted")
+  //   })
+  
+  // }
 
 
   uploadImages(images:any,imgsArray:any[],projectName: String){
     
    let imagesUri=imgsArray
    console.log(imagesUri);
-   
     return new Promise((resolve=>{
     console.log("inimg",images);
     for (let i = 0; i < images.length; i++) {
-
-     
       const currentDate = new Date();
       const day = currentDate.getDate();
       const month = currentDate.toLocaleString('default', { month: 'short' });
@@ -60,17 +71,15 @@ export class PropserviceService {
       const newFileName = `${projectName}_${day}-${month}-${year} ${hours}:${minutes}_${i}_${imgType}`
 
       const filePath = `${this.basePath}/${newFileName}`;
-    const storageRef = this.storage.ref(filePath);
-    const uploadTask = this.storage.upload(filePath,images[i]);
+      const storageRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath,images[i]);
 
     uploadTask.snapshotChanges().pipe(
       finalize(() => {
         storageRef.getDownloadURL().subscribe(downloadURL => {
            let url = downloadURL;
            imagesUri.push(url)
-          
             console.log(url);
-             
             this.fileSignal()
           
         });
@@ -91,9 +100,7 @@ uploadDisplayImages(images:any,imgsArray:any[],projectName: String){
   
    return new Promise((resolve=>{
    console.log("inimg",images);
-   for (let i = 0; i < images.length; i++) {
-
-    
+   for (let i = 0; i < images.length; i++) {    
      const currentDate = new Date();
      const day = currentDate.getDate();
      const month = currentDate.toLocaleString('default', { month: 'short' });
@@ -104,19 +111,17 @@ uploadDisplayImages(images:any,imgsArray:any[],projectName: String){
      const newFileName = `${projectName}_${day}-${month}-${year} ${hours}:${minutes}_${i}_${imgType}`
 
      const filePath = `${this.basePath}/${newFileName}`;
-   const storageRef = this.storage.ref(filePath);
-   const uploadTask = this.storage.upload(filePath,images[i]);
+     const storageRef = this.storage.ref(filePath);
+     const uploadTask = this.storage.upload(filePath,images[i]);
 
    uploadTask.snapshotChanges().pipe(
      finalize(() => {
        storageRef.getDownloadURL().subscribe(downloadURL => {
           let url = downloadURL;
           imagesUri.push(url)
-         
-           console.log(url);
-            
+           console.log(url);       
            this.fileSignal()
-         
+
        });
       
      })
@@ -130,18 +135,13 @@ uploadDisplayImages(images:any,imgsArray:any[],projectName: String){
 
 removeFilesFromFirebase(images: any): Promise<void> {
   const deletePromises: Promise<void>[] = [];
-
-
-
     console.log(images);
-    
     const filePath = `${this.basePath}/${images.name}`;
     const fileRef = this.storage.ref(filePath);
 
     // Delete the file and add the promise to the deletePromises array
     const deletePromise = fileRef.delete().toPromise();
     deletePromises.push(deletePromise);
-  
 
   // Wait for all delete promises to complete
   return Promise.all(deletePromises)
@@ -210,10 +210,8 @@ fileSignal(){
 
 editProp(prop:any) {
   console.log(prop);
-  
   this.currentPropHolder=prop;
   console.log(this.currentPropHolder);
-  
 }
 
 postTestimony(obj:any) {
@@ -248,20 +246,23 @@ postDeveloper(form:any)  {
   },(error) => { alert(error.error.message); console.log(error);
    });
 }
+
 updateDeveloperPriority(form:any){
   return this.httpClient.put(this.url + "priorotizeDeveloper",form )
 }
+
 isAuthenticated(){
   return this.isLoggedIn
 }
 
-  postBHKVariant(bhkForm:any){
+ postBHKVariant(bhkForm:any){
     return this.httpClient.post(this.url + "postBhkVariantinDB",bhkForm )
   }
 
   getAllVaraintofProject(id:any){
     return this.httpClient.post(this.url + "getAllBhkVarinatbyID",{"projectID":id} )
   }
+
   deleteSpecificVariant(id:any){
     return this.httpClient.post(this.url + "deleteBhkVariantfromDB",{"_id":id} )
   }
@@ -269,14 +270,34 @@ isAuthenticated(){
   addEmployee(credentials:any){
     return this.httpClient.post(this.url + "addEmployee",credentials )
   }
+
   changePropStatus(propId:any){
     const url = this.url + 'property/' + propId + '/change-status';
     return this.httpClient.post(url,{});
   }
+  
   getAllUserPostedProps(){
     return this.httpClient.get(this.url+"getAllUserPostedProp");
   }
-  
+
+  // ****** STUDIO PROPERTIES API *******//
+
+  getAllStudiofromDB(){
+    return this.httpClient.get(this.url + "getAllStudiofromDB",)
+  }
+
+  postStudioinDB(property:any){
+    return this.httpClient.post(this.url + "postStudioinDB",property)
+  }
+
+  updateStudioinDB(propform:any){
+    return this.httpClient.put(this.url + "updateStudioinDB",propform)
+  }
+
+  deleteStudiofromDB(id:any){
+    return this.httpClient.post(this.url + "deleteStudiofromDB",{"_id":id})
+  }
+
  }
 
 

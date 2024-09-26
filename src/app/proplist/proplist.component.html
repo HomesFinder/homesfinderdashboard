@@ -2,20 +2,20 @@
   <input class="form-control" type="text" placeholder="Search by Project Name, ReraNo" [(ngModel)]="searchParameter">
 </nav>
 <div class="row" style="margin-top:1rem">
-    <div class="col-lg-6"  *ngFor="let list of propList.data | listfilter:searchParameter">
-      <div class="card" style="padding: 1rem;margin: 1rem;">
-      <h4>Project Name: <b>{{list.ProjectName}}</b></h4>
-      <h6>Developer Name: <b>{{list.Developer.DeveloperName}}</b></h6>
-      <h6>Project Rera: <b>{{list.reraNo}}</b></h6>
+  <div class="col-lg-6" *ngFor="let list of propList.data | listfilter:searchParameter">
+    <div class="card" style="padding: 1rem;margin: 1rem;">
+      <h4>Project Name: <b>{{list.ProjectName}}</b>
+      </h4>
+      <h6>Developer Name: <b>{{list.Developer.DeveloperName}}</b>
+    </h6>
+      <h6>Project Rera: <b>{{list.reraNo}}</b>
+      </h6>
       <div class="card-footer" style="background-color: white;">
         <div class="btn-group">
           <button type="button" class="btn btn-dark" (click)="editData(list)">Edit</button>
-          <!-- <button type="button" class="btn btn-danger" (click)="deleteData(list._id)">Delete</button> -->
+          <button type="button" class="btn btn-danger" (click)="deleteData(list._id)">Delete</button>
+        </div>
         </div>
       </div>
     </div>
-        
-        </div> 
-      </div>
-
-      
+</div> 

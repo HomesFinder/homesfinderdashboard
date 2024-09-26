@@ -32,6 +32,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { ListfilterPipe } from './Pipes/listfilter.pipe';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
 import { PostedPropsComponent } from './posted-props/posted-props.component';
+import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PostedPropsComponent } from './posted-props/posted-props.component';
     Propform2Component,
     ListfilterPipe,
     EmployeeloginComponent,
-    PostedPropsComponent
+    PostedPropsComponent,
+    StudioApartFormComponent
   ],
   imports: [
     BrowserModule,

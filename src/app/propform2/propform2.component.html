@@ -61,6 +61,7 @@
           </div>
           <div class="mb-3">
             <label for="text" class="form-label">About Property</label>
+            <br>
             <textarea class="from-control" [(ngModel)]="data.aboutProperty" name="aboutProperty"></textarea>
           </div>
          
@@ -217,10 +218,10 @@
                 <ul name="imagesUri" *ngFor="let uri of imagesUri  ;let i=index">
                   <li>
                     <img src={{uri}} height="100">
-                    <button *ngIf="uri!==''" class="btn btn-danger" (click)="removeMultipleImages(i);removeImgFromStorage(uri)">Remove</button>
+                    <button *ngIf="uri!==''"class="btn btn-danger" (click)="removeMultipleImages(i);removeImgFromStorage(uri)">Remove</button>
                   </li>
                 </ul>
-              </div>
+              </div> 
             </div>
             <button mat-button matStepperPrevious color="primary">Back</button>
             <button mat-button matStepperNext color="primary" mat-raised-button>Next</button> 

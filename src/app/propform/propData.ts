@@ -18,7 +18,10 @@ export class propData {
     public constructionType: String,
     public possessionTimeline: String,
     public possessionMonthAndYear:String,
-  
+
+    // public Renovation:string,
+    // public Maintenance:string,
+    // public PropertyTax:string,
     
     public totalNumberOfUnits: Number,
     public ProjectOpenSpace: Number,

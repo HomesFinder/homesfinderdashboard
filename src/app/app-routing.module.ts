@@ -13,6 +13,7 @@ import { TestimoniesComponent } from './testimonies/testimonies.component';
 import { UsersComponent } from './users/users.component';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
 import { PostedPropsComponent } from './posted-props/posted-props.component';
+import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.component';
 
 const routes: Routes = [
   {
@@ -75,6 +76,11 @@ const routes: Routes = [
   {
     path:'postedProps',
     component:PostedPropsComponent,
+    canActivate: [AuthRouteGuard]
+  },
+  {
+    path:'studio-apart-form',
+    component:StudioApartFormComponent,
     canActivate: [AuthRouteGuard]
   },
 ];
