@@ -12,7 +12,7 @@ import { error } from 'console';
 export class PropserviceService {
 
   private url = 'https://homefindr.in/api/';
-  // private url = 'http://localhost:8089/api/';
+  //  private url = 'http://localhost:8089/api/';
   private basePath = '/uploads';
   currentPropHolder:any
   public isEdit:boolean = false
@@ -296,6 +296,23 @@ isAuthenticated(){
 
   deleteStudiofromDB(id:any){
     return this.httpClient.post(this.url + "deleteStudiofromDB",{"_id":id})
+  }
+
+// ****** Resale PROPERTIES API *******//
+  getresalefromDB(){
+    return this.httpClient.get(this.url + "getresalefromDB",)
+  }
+
+  postresaleinDB(property:any){
+    return this.httpClient.post(this.url + "postresaleinDB",property)
+  }
+
+  updateresaleinDB(propform:any){
+    return this.httpClient.put(this.url + "updateresaleinDB",propform)
+  }
+
+  deleteresalefromDB(id:any){
+    return this.httpClient.post(this.url + "deleteresalefromDB",{"_id":id})
   }
 
  }

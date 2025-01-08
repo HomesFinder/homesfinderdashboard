@@ -14,6 +14,7 @@ import { UsersComponent } from './users/users.component';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
 import { PostedPropsComponent } from './posted-props/posted-props.component';
 import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.component';
+import { RentalpropertiesformComponent } from './rentalpropertiesform/rentalpropertiesform.component';
 
 const routes: Routes = [
   {
@@ -82,6 +83,11 @@ const routes: Routes = [
     path:'studio-apart-form',
     component:StudioApartFormComponent,
     canActivate: [AuthRouteGuard]
+  },
+  {
+    path:'rentalpropertiesform',
+    component:RentalpropertiesformComponent,
+    
   },
 ];
 

@@ -33,13 +33,15 @@ import { ListfilterPipe } from './Pipes/listfilter.pipe';
 import { EmployeeloginComponent } from './employeelogin/employeelogin.component';
 import { PostedPropsComponent } from './posted-props/posted-props.component';
 import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.component';
+import { RentalpropertiesformComponent } from './rentalpropertiesform/rentalpropertiesform.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PropformComponent,
     ProplistComponent,
-   
+    
     InquriesComponent,
     UsersComponent,
     TestimoniesComponent,
@@ -50,7 +52,8 @@ import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.
     ListfilterPipe,
     EmployeeloginComponent,
     PostedPropsComponent,
-    StudioApartFormComponent
+    StudioApartFormComponent,
+    RentalpropertiesformComponent
   ],
   imports: [
     BrowserModule,
@@ -71,9 +74,6 @@ import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.
     MatFormFieldModule,
     MatIconModule,
     MatChipsModule
-   
-    
-
   ],
   providers: [ListfilterPipe],
   exports:[ListfilterPipe],

@@ -26,6 +26,8 @@ export class ProplistComponent implements OnInit {
     });   
   }
 
+  
+
   editData(prop:any){
     this.propService.editProp(prop)
     this.router.navigateByUrl('propform2')

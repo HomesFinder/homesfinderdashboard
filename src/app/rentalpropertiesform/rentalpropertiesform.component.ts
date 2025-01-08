@@ -6,16 +6,16 @@ import { flush } from '@angular/core/testing';
 import { fail } from 'assert';
 import { Observable } from 'rxjs';
 import {propData} from '../propform/propData'
-import { studiopropdata } from '../propform/studiopropdata';
+import { resaleprop } from '../propform/resaleprop';
 import {PropserviceService} from '../propservice.service'
 
 @Component({
-  selector: 'app-studio-apart-form',
-  templateUrl: './studio-apart-form.component.html',
-  styleUrls: ['./studio-apart-form.component.scss']
+  selector: 'app-rentalpropertiesform',
+  templateUrl: './rentalpropertiesform.component.html',
+  styleUrls: ['./rentalpropertiesform.component.scss']
 })
-export class StudioApartFormComponent {
-
+export class RentalpropertiesformComponent {
+  
   fileToUpload: File | null = null;
   files:FileList | undefined
   @Input() tyopoArray:any[]=[]
@@ -36,71 +36,181 @@ export class StudioApartFormComponent {
   dimensionsUris:any[]=[]
   dummyDate=new Date()
   possessionMonthAndYear:any
-  @Input() data=new studiopropdata('','','','','','','','',0,'','','',0,[],[],[],[],'','','',[],0,0,0,0,0,0,'','','','','')
+  @Input() data=new resaleprop('','','','','','','','',[],[],[],[],[],'',0,'',0,'','','','')
    logoUri:any[]=[]
 
    amenities=[
 
+   
+    {
+      "key": "Garden",
+      "value": false
+    },
     {
       "key": "Club_House",
       "value": false
     },
-
     {
       "key": "GYM",
       "value": false
     },
-
+    {
+      "key": "Swimming_Pool",
+      "value": false
+    },
+    {
+      "key": "Multi_Purpose_Play_Court",
+      "value": false
+    }, 
+    {
+      "key": "Pool_Side_Deck",
+      "value": false
+    },
+    {
+      "key": "Senior_Citizen_Sitout",
+      "value": false
+    },
+    {
+      "key": "Home_Automation",
+      "value": false
+    },
+    {
+      "key": "Gazebo",
+      "value": false
+    },
+    {
+      "key": "Kids_Play_Area",
+      "value": false
+    },
+    {
+      "key": "Indoor_Kidsplay",
+      "value": false
+    },
+    {
+      "key": "Party_Lawn",
+      "value": false
+    },
+    {
+      "key": "Multi_Purpose_Hall",
+      "value": false
+    },
+    {
+      "key": "Amphi_Theatre",
+      "value": false
+    },
+    {
+      "key": "Co_WorkSpace",
+      "value": false
+    },
+    {
+      "key": "Box_Cricket_Pitch",
+      "value": false
+    },
+    {
+      "key": "Yoga_Zone",
+      "value": false
+    },
     {
       "key": "Library",
       "value": false
     },
     {
-      "key": "Cafe",
+      "key": "Jogging_Track",
       "value": false
     },
     {
-      "key": "Parking",
+      "key": "Creche",
       "value": false
     },
     {
-      "key": "Air_Conditioner",
+      "key": "Sky_Walk",
       "value": false
     },
     {
-      "key": "Cupboard",
+      "key": "Barbeque_Zone",
       "value": false
     },
     {
-      "key": "Study_Table",
+      "key": "Football_Court",
       "value": false
     },
     {
-      "key": "Bed",
+      "key": "Tennis_Court",
       "value": false
     },   {
-      "key": "Fridge",
+      "key": "Squash_Court",
       "value": false
     },
     {
-      "key": "TV",
+      "key": "Badminton_Court",
       "value": false
     },
     {
-      "key": "Oven",
+      "key": "BasketBall_Court",
       "value": false
     },
     {
-      "key": "Wifi",
+      "key": "E_Charging",
       "value": false
     },
     {
-      "key": "Restaurant",
+      "key": "Spa",
       "value": false
     },
     
     {
-      "key": "DG_Backup",
+      "key": "Jacuzzi",
+      "value": false
+    },
+    {
+      "key": "Bar_Area",
+      "value": false
+    },
+    {
+      "key": "Outdoor_Cinema",
+      "value": false
+    },
+    {
+      "key": "Skating_Ring",
+      "value": false
+    },
+    
+    {
+      "key": "Star_Gazing_Deck",
+      "value": false
+    },
+    
+
+    {
+      "key": "Guest_Suites",
+      "value": false
+    },
+    
+
+    {
+      "key": "Cloud_Kitchen",
+      "value": false
+    },
+    
+
+    {
+      "key": "24x7_Clinic",
+      "value": false
+    },
+    
+
+    {
+      "key": "Beauty_Salon",
+      "value": false
+    },
+    
+
+    {
+      "key": "Acupressure_Park",
+      "value": false
+    },
+    {
+      "key": "Musical_Garden",
       "value": false
     },
  
@@ -149,18 +259,16 @@ export class StudioApartFormComponent {
   
  }
 
-  poststudio(){
+  postresale(){
     this.propService.isEdit=false
     console.log("studio in prop");
       this.data.imagesUri=this.imagesUri
       this.data.imageToShow=this.imageToShow
       this.data.Amenities=this.amenities 
       this.data.AreasNearby=this.neighbourArr
-      if(this.data.possessionMonthAndYear==='' ||this.data.possessionMonthAndYear===undefined ){
-        this.data.possessionMonthAndYear="2099-01-01"
-      }
+   
       console.log(this.data);
-       this.propService.postStudioinDB(this.data).subscribe(data => {
+       this.propService.postresaleinDB(this.data).subscribe(data => {
       console.log(data);
       console.log("data posted");
       alert("Data Posted")
@@ -222,9 +330,6 @@ export class StudioApartFormComponent {
       this.imagesUri=this.propService.currentPropHolder.imagesUri
       this.logoUri.push(this.propService.currentPropHolder.DeveloperLogo)
       
-      this.data.aboutProperty=this.propService.currentPropHolder.aboutProperty
-      console.log(this.data.aboutProperty);
-      
       this.data.DeveloperBriefDetails=this.propService.currentPropHolder.DeveloperBriefDetails
       this.data.reraNo=this.propService.currentPropHolder.reraNo  
       this.cd.detectChanges();
@@ -257,10 +362,8 @@ export class StudioApartFormComponent {
       this.data.Developer=this.propService.currentPropHolder.Developer._id
 
       // this.possessionMonthAndYear=this.data.possessionMonthAndYear
-      let fetchedDate=this.data.possessionMonthAndYear.toString()
-      const date = new Date(fetchedDate);
-     this.possessionMonthAndYear = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-      this.cd.detectChanges();
+   
+     
     }
 
     removeLogoImage(){
@@ -323,7 +426,3 @@ export class StudioApartFormComponent {
   }
 
 }
-
-
-
-
