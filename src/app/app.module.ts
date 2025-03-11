@@ -34,6 +34,7 @@ import { EmployeeloginComponent } from './employeelogin/employeelogin.component'
 import { PostedPropsComponent } from './posted-props/posted-props.component';
 import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.component';
 import { RentalpropertiesformComponent } from './rentalpropertiesform/rentalpropertiesform.component';
+import { ResalepropertiesComponent } from './resaleproperties/resaleproperties.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { RentalpropertiesformComponent } from './rentalpropertiesform/rentalprop
     EmployeeloginComponent,
     PostedPropsComponent,
     StudioApartFormComponent,
-    RentalpropertiesformComponent
+    RentalpropertiesformComponent,
+    ResalepropertiesComponent
   ],
   imports: [
     BrowserModule,

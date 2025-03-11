@@ -11,8 +11,8 @@ import { error } from 'console';
 
 export class PropserviceService {
 
-  private url = 'https://homefindr.in/api/';
-  //  private url = 'http://localhost:8089/api/';
+  // private url = 'https://homefindr.in/api/';
+   private url = 'http://localhost:8089/api/';
   private basePath = '/uploads';
   currentPropHolder:any
   public isEdit:boolean = false
@@ -39,20 +39,7 @@ export class PropserviceService {
   
   }
 
-  // poststudio(postData:any){
-  //   this.isButtonDisabled=true
-  //   console.log(this.isButtonDisabled);
-    
-  //   this.httpClient.post(this.url + "postPropertyinDB", postData).subscribe(data => {
-  //     console.log(data);
-  //     console.log("data posted");
-  //     this.isButtonDisabled=false
-  //     console.log(this.isButtonDisabled);
-  //     alert("Data Posted")
-  //   })
   
-  // }
-
 
   uploadImages(images:any,imgsArray:any[],projectName: String){
     
@@ -267,6 +254,10 @@ isAuthenticated(){
     return this.httpClient.post(this.url + "deleteBhkVariantfromDB",{"_id":id} )
   }
 
+  updateSpecificVariant(propertyForm: any) {
+    return this.httpClient.put(this.url + '/updatebhkvariantDB', propertyForm);
+}
+
   addEmployee(credentials:any){
     return this.httpClient.post(this.url + "addEmployee",credentials )
   }
@@ -313,6 +304,24 @@ isAuthenticated(){
 
   deleteresalefromDB(id:any){
     return this.httpClient.post(this.url + "deleteresalefromDB",{"_id":id})
+  }
+
+
+  // ****** Rental PROPERTIES API *******//
+  getrentalfromDB(){
+    return this.httpClient.get(this.url + "getrentalfromDB",)
+  }
+  
+  postrentalinDB(property:any){
+    return this.httpClient.post(this.url + "postrentalinDB",property)
+  }
+
+  updaterentalinDB(propform:any){
+    return this.httpClient.put(this.url + "updaterentalinDB",propform)
+  }
+
+  deleterentalfromDB(id:any){
+    return this.httpClient.post(this.url + "deleterentalfromDB",{"_id":id})
   }
 
  }

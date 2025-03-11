@@ -15,6 +15,7 @@ import { EmployeeloginComponent } from './employeelogin/employeelogin.component'
 import { PostedPropsComponent } from './posted-props/posted-props.component';
 import { StudioApartFormComponent } from './studio-apart-form/studio-apart-form.component';
 import { RentalpropertiesformComponent } from './rentalpropertiesform/rentalpropertiesform.component';
+import { ResalepropertiesComponent } from './resaleproperties/resaleproperties.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,11 @@ const routes: Routes = [
   {
     path:'rentalpropertiesform',
     component:RentalpropertiesformComponent,
+    
+  },
+  {
+    path:'resaleproperties',
+    component:ResalepropertiesComponent,
     
   },
 ];

@@ -25,7 +25,6 @@ export class RentalpropertiesformComponent {
   propform!:any
   searchParameter:any
   constructor(public propService:PropserviceService,private cd: ChangeDetectorRef ) {}
- 
   bhk:any
   bhkArea:any
   bhkPrice:any
