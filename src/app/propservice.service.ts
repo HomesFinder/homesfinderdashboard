@@ -11,8 +11,8 @@ import { error } from 'console';
 
 export class PropserviceService {
 
-  // private url = 'https://homefindr.in/api/';
-   private url = 'http://localhost:8089/api/';
+   private url = 'https://homefindr.in/api/';
+  //  private url = 'http://localhost:8089/api/';
   private basePath = '/uploads';
   currentPropHolder:any
   public isEdit:boolean = false
